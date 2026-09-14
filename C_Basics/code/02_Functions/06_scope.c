@@ -8,6 +8,7 @@ int f()
 int g()
 {
    int x = 1;
+   (void)x; // shadows global x; unused here, f() reads the global instead
    return f();
 }
 int main()

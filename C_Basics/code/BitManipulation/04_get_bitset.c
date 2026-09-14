@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "common/utils.h"
 #define TOTAL_BITS 32
 #define GROUP_SIZE 4
 void printBinary(unsigned int num) {

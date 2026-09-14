@@ -9,7 +9,7 @@ int main()
         int temp = b;
         b = b + a;
         a = temp;
-        count+;
+        count++;
     }
     printf("Val = %d",b);
     return 1;
