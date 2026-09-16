@@ -1,22 +1,29 @@
 #include "common/utils.h"
 #define TOTAL_BITS 32
 #define GROUP_SIZE 4
-void printBinary(unsigned int num) {
-    int bits = sizeof(num) * 8;  // Total bits in the number (usually 32)
+#define HELLO_Y 45
+
+void printBinary(unsigned int num)
+{
+    int bits = sizeof(num) * 8; // Total bits in the number (usually 32)
     printf("Bin Val:");
-    for (int i = bits - 1; i >= 0; i--) {
+    for(int i = bits - 1; i >= 0; i--)
+    {
         // Print the bit
         printf("%d", (num >> i) & 1);
 
         // Format with space every 4 bits
-        if (i % 4 == 0 && i != 0) {
+        if(i % 4 == 0 && i != 0)
+        {
             printf(" ");
         }
     }
     printf("\n");
     printf("Bit pos:");
-    for (int i = TOTAL_BITS - 1; i >= 0; i--) {
-        if (i % GROUP_SIZE == 0) {
+    for(int i = TOTAL_BITS - 1; i >= 0; i--)
+    {
+        if(i % GROUP_SIZE == 0)
+        {
             // Align position under the 4-bit group
             printf(" %3d ", i);
         }
