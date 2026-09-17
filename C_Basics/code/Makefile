@@ -4,7 +4,7 @@ CXX := g++
 # 19_Threads/*.c against pthread.
 CFLAGS := -Wall -I. -pthread
 CXXFLAGS := -Wall -I.
-BIN_DIR := bin
+BIN_DIR := ../bin
 
 C_SRCS := $(shell find . -path ./$(BIN_DIR) -prune -o -name '*.c' -print)
 CPP_SRCS := $(shell find . -path ./$(BIN_DIR) -prune -o -name '*.cpp' -print)

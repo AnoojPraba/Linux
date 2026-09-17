@@ -342,6 +342,13 @@ and dynamic memory (section 12), one node at a time:
 - `03_doublyLinkedList.c` — adding a `prev` pointer alongside `next` enables backward
   traversal from any node (e.g. from the tail) without restarting from `head`, which a
   singly linked list can't do.
+- `04_loopFinder.c` — Floyd's cycle detection (tortoise and hare): a slow pointer
+  advancing one node at a time and a fast pointer advancing two will meet inside a loop
+  if one exists; once they meet, resetting one pointer to `head` and advancing both one
+  step at a time finds the loop's start node. `findLoopStartHash` solves the same problem
+  by hashing each node's own pointer value into a visited set and returning the first
+  node seen twice — O(n) time like Floyd's, but O(n) space instead of O(1), trading
+  memory for a more direct "have I seen this node" check.
 
 ## 26. Binary trees
 
@@ -373,6 +380,63 @@ from section 11 to a branching structure:
 
 - `code/25_Generics/01_genericMacro.c` — compile-time type dispatch with `_Generic`, used
   to fake function overloading and to write a type-name macro.
+
+## 29. Heaps
+
+`Notes/12_Heap.c` covers the basic definition (min-heap vs. max-heap, the array-index
+parent/child formulas, and why a heap can't be binary-searched) before the code:
+- `code/26_Heap/01_minHeap.c` — a binary min-heap stored in a flat array (child at
+  `2i+1`/`2i+2`, parent at `(i-1)/2` — no explicit pointers, unlike the BST in
+  `23_BinaryTree/`); `push` bubbles a new element up, `pop` removes the root and bubbles
+  the replacement down, both O(log n).
+- `code/26_Heap/02_heapSort.c` — heap sort: build a max-heap in place, then repeatedly
+  swap the root to the end of the shrinking heap and re-sift — O(n log n), in place, no
+  extra array.
+
+## 30. Graphs
+
+`Notes/13_Graph.c` covers the basic definition (vertices/edges, directed vs. undirected,
+weighted vs. unweighted, and how a graph relates to the trees in section 26) before the
+code:
+- `code/27_Graph/01_adjacencyListBFS.c` — graph as an adjacency list (array of per-vertex
+  linked lists); breadth-first search with an explicit queue, marking vertices `visited`
+  to handle cycles (which trees, in section 26, don't have to worry about).
+- `code/27_Graph/02_adjacencyMatrixDFS.c` — graph as an adjacency matrix (O(1) edge check,
+  O(V²) memory regardless of edge count — contrast with the adjacency list's O(degree)
+  check but edge-proportional memory); depth-first search recursing via the call stack
+  instead of BFS's explicit queue.
+- `code/27_Graph/03_dijkstraShortestPath.c` — Dijkstra's shortest path: repeatedly
+  finalize the closest unvisited vertex and relax its neighbors' distances through it;
+  only correct with non-negative edge weights. `minDistanceVertex`'s linear scan is the
+  same "take the cheapest next option" idea as popping from the min-heap in section 29 —
+  a real implementation would use that heap instead of an O(V) scan.
+
+## 31. Tries
+
+`Notes/14_Trie.c` covers the basic definition (one child slot per possible next
+character, shared prefixes stored once, and the difference between a node existing at
+all vs. `isEndOfWord` being set) before the code:
+- `code/28_Trie/01_insertSearch.c` — `insert` walking one character at a time, creating
+  nodes only where the path doesn't already exist; `search` requires both reaching the
+  last character's node *and* `isEndOfWord` being set — a node existing only means some
+  inserted word passes through it, not that this exact path is itself a complete word.
+- `code/28_Trie/02_prefixSearch.c` — `startsWith`, the trie's signature use case
+  (autocomplete/spell-check): just walking a path and checking it exists, without
+  needing `isEndOfWord` on the final node.
+
+## 32. Dynamic programming
+
+`Notes/15_DynamicProgramming.c` covers the basic definition (optimal substructure,
+overlapping sub-problems, and top-down/memoization vs. bottom-up/tabulation) before the
+code:
+- `code/29_DynamicProgramming/01_fibMemoVsTabulation.c` — the same fibonacci problem
+  solved both ways side by side; compare against the naive O(2^n) recursion in
+  `09_Recursion/02_fibonacci.c` to see exactly what memoization is fixing.
+- `code/29_DynamicProgramming/02_knapsack.c` — a 2D DP table (items considered ×
+  remaining capacity), each cell choosing the better of "skip this item" vs. "take it".
+- `code/29_DynamicProgramming/03_longestCommonSubsequence.c` — a 2D DP table over two
+  strings' positions instead of items/capacity, showing the same table-filling pattern
+  applies once you identify what two numbers describe a sub-problem.
 
 ## Suggested order for a first pass
 
@@ -409,6 +473,15 @@ from section 11 to a branching structure:
     inter-process communication, over a network stack instead of pipes/shared memory
 17. Section 28 (`_Generic`) any time after section 16 (`const`/`volatile`) — a
     small, self-contained language feature with no other prerequisites
+18. Section 29 (heaps) once section 9 (algorithms/arrays) feels solid — a heap is an
+    array with implicit tree structure, so array intuition transfers directly
+19. Section 30 (graphs) right after section 26 (binary trees) — BFS/DFS extend the tree
+    traversals directly, generalized to structures with cycles
+20. Section 31 (tries) right after section 26 (binary trees) — another tree variant,
+    branching on characters instead of a two-way comparison, and leaning on section 10's
+    strings
+21. Section 32 (dynamic programming) once section 11 (recursion) feels solid —
+    memoization is a direct, small addition to recursion you already know
 
 ## Gaps not yet covered by this repo
 

@@ -25,7 +25,7 @@ int main()
     char *walker = arr;
 
     printf("walking arr: ");
-    while (*walker != '\0')
+    while(*walker != '\0')
     {
         printf("%c", *walker);
         walker++;
@@ -36,7 +36,7 @@ int main()
     // string literal, not at a 2D block of characters.
     char *names[] = {"Alice", "Bob", "Carol"};
 
-    for (i = 0; i < 3; i++)
+    for(i = 0; i < 3; i++)
     {
         printf("names[%d] = %s\n", i, names[i]);
     }

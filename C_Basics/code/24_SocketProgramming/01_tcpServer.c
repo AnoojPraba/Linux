@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define SERVER_PORT 8080
+#define SERVER_PORT   8080
 #define RECV_BUF_SIZE 128
 
 int main()
@@ -22,9 +22,9 @@ int main()
     // with "address already in use".
     setsockopt(serverFd, SOL_SOCKET, SO_REUSEADDR, &reuseAddr, sizeof(reuseAddr));
 
-    address.sin_family = AF_INET;
+    address.sin_family      = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(SERVER_PORT);
+    address.sin_port        = htons(SERVER_PORT);
 
     bind(serverFd, (struct sockaddr *)&address, sizeof(address));
     // backlog of 1: only one pending connection is queued before accept()
@@ -37,7 +37,7 @@ int main()
     // accept further connections.
     clientFd = accept(serverFd, (struct sockaddr *)&address, (socklen_t *)&addrLen);
 
-    bytesReceived = read(clientFd, buffer, RECV_BUF_SIZE - 1);
+    bytesReceived         = read(clientFd, buffer, RECV_BUF_SIZE - 1);
     buffer[bytesReceived] = '\0';
     printf("server: received \"%s\"\n", buffer);
 

@@ -4,7 +4,7 @@
 // the same sub-values many times.
 int fibNaive(int n)
 {
-    if (n <= 1)
+    if(n <= 1)
     {
         return n;
     }
@@ -16,11 +16,11 @@ int fibNaive(int n)
 
 int fibMemo(int n, int *cache)
 {
-    if (n <= 1)
+    if(n <= 1)
     {
         return n;
     }
-    if (cache[n] != -1)
+    if(cache[n] != -1)
     {
         return cache[n];
     }
@@ -36,11 +36,10 @@ int main()
 
     printf("fibNaive(%d) = %d\n", n, fibNaive(n));
 
-    for (i = 0; i < MAX_FIB_N; i++)
+    for(i = 0; i < MAX_FIB_N; i++)
     {
         cache[i] = -1;
     }
     printf("fibMemo(%d) = %d\n", n, fibMemo(n, cache));
-
     return 0;
 }

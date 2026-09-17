@@ -15,8 +15,8 @@ void allocateAndFill(int **out, int size)
 
 int main()
 {
-    int x = 5;
-    int *p = &x;
+    int x    = 5;
+    int *p   = &x;
     int **pp = &p;
 
     printf("x = %d\n", x);
@@ -33,7 +33,7 @@ int main()
     int i;
 
     allocateAndFill(&buf, size);
-    for (i = 0; i < size; i++)
+    for(i = 0; i < size; i++)
     {
         printf("buf[%d] = %d\n", i, buf[i]);
     }
