@@ -1,1 +1,8 @@
 code/bin/
+code/.cache/
+code/compile_commands.json
+code/cscope.in.out
+code/cscope.out
+code/cscope.po.out
+code/tags
+
