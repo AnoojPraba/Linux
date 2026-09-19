@@ -1,0 +1,47 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# Space rules (removes space after 'for')
+SpaceBeforeParens: ControlStatements
+
+# Prevent clang-format from reordering includes
+SortIncludes: Never
+
+# Indentation & Braces
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+BreakBeforeBraces: Allman
+InsertBraces: true
+
+# Prevent single-line collapsing
+AllowShortBlocksOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortLoopsOnASingleLine: false
+
+ColumnLimit: 100
+
+AlignArrayOfStructures: Right
+AlignConsecutiveMacros: Consecutive
+AlignConsecutiveAssignments: Consecutive
+MaxEmptyLinesToKeep: 1
+
+# Align trailing comments vertically across adjacent lines
+AlignTrailingComments: true
+
+# Reflow comments to stay within ColumnLimit
+ReflowComments: true
+
+# Keep standard C-style comment blocks intact (* )
+CommentPragmas: '^NOLINT'
+
+# Align consecutive declarations (matches your macro/assignment alignment)
+#AlignConsecutiveDeclarations: Consecutive
+
+# Space around operators and inside braces
+SpaceBeforeAssignmentOperators: true
+#SpacesInInitializerLists: true
+SpaceAfterCStyleCast: false
+---
