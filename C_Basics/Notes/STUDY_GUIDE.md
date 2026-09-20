@@ -438,6 +438,44 @@ code:
   strings' positions instead of items/capacity, showing the same table-filling pattern
   applies once you identify what two numbers describe a sub-problem.
 
+## 33. System calls
+
+`Notes/16_SystemCalls.c` covers the basic definition (crossing into kernel-space,
+libc wrappers vs. raw syscalls, and errno-based failure reporting) and groups every
+syscall example in this repo by category:
+- `code/30_SystemCalls/01_libcWrapperVsRawSyscall.c` — `getpid()` vs.
+  `syscall(SYS_getpid)`, showing a libc wrapper and the raw syscall interface doing the
+  same thing.
+- `code/30_SystemCalls/02_errnoAndPerror.c` — `errno`/`perror`; save `errno` into a local
+  immediately after a failing call, since another library call in between (even a
+  successful one) can overwrite it.
+- **File system**: `code/11_FileIO/03_syscallIO.c` (`open`/`read`/`write`/`close`/
+  `lseek` — file *contents*) and `code/30_SystemCalls/03_fileSystemCalls.c`
+  (`stat`/`mkdir`/`rmdir`/`creat`/`unlink` — file *metadata and directory entries*).
+- **Process control**: `code/18_Processes/01_forkBasics.c` (`fork`/`waitpid`) and
+  `code/18_Processes/02_execFamily.c` (`execvp`) — section 21.
+- **Memory management**: `code/30_SystemCalls/05_memoryManagementMprotect.c` —
+  `mprotect` changes an already-mapped region's page permissions; writing to a page
+  after marking it read-only faults with `SIGSEGV`. See also section 34 (paging) and
+  section 12 (dynamic memory).
+- **IPC**: `code/20_IPC/` (`pipe`, `mmap`+`MAP_SHARED`, process-shared semaphores) —
+  section 23.
+- **Device management**: `code/30_SystemCalls/04_deviceManagementIoctl.c` — `ioctl`, the
+  catch-all syscall for device-specific requests that don't fit the read/write model
+  (here, asking a terminal for its window size).
+
+## 34. Paging
+
+`Notes/17_Paging.c` covers the basic definition (fixed-size pages, virtual-to-physical
+translation via page tables, per-page protection bits, and demand paging) before the
+code:
+- `code/31_Paging/01_pageSizeAndMmap.c` — querying the runtime page size
+  (`sysconf(_SC_PAGESIZE)`) and `mmap`'ing a multi-page region, one byte written per page.
+- `code/31_Paging/02_demandPaging.c` — reading this process's own resident set size (RSS)
+  from `/proc/self/status` before an `mmap`, right after it (barely changes — no physical
+  memory assigned yet), and after touching every page (grows roughly one page at a time)
+  — demand paging made directly observable.
+
 ## Suggested order for a first pass
 
 1. Sections 1–3 (fundamentals, compilation, data types)
@@ -482,6 +520,11 @@ code:
     strings
 21. Section 32 (dynamic programming) once section 11 (recursion) feels solid —
     memoization is a direct, small addition to recursion you already know
+22. Section 33 (system calls) after section 21 (processes) and section 23 (IPC) — it's
+    the unifying category those two (plus the file I/O in section 20) already sit under,
+    now filled out with file-metadata, device-management, and memory-management syscalls
+23. Section 34 (paging) right after section 33 (system calls) and section 12 (dynamic
+    memory) — makes concrete what `mmap`/`mprotect` are actually doing underneath
 
 ## Gaps not yet covered by this repo
 
@@ -495,3 +538,4 @@ following the existing numbering/naming convention:
 - System V IPC (`shmget`/`msgget`/`semget`) as an alternative to the POSIX `mmap`/pipe
   approach in `code/20_IPC/`
 - Process scheduling/priority (`nice`, `sched_setscheduler`) and `/proc` inspection
+
