@@ -43,7 +43,7 @@ What heaps are actually used for:
     now?" - exactly what a min-heap answers in O(log n) instead of the O(n)
     linear scan a naive implementation would use.
 
-See the runnable examples: `code/26_Heap/01_minHeap.c` (push/pop) and
-`code/26_Heap/02_heapSort.c` (heap sort). `code/27_Graph/03_dijkstraShortestPath.c`
+See the runnable examples: `code/31_Heap/01_minHeap.c` (push/pop) and
+`code/31_Heap/02_heapSort.c` (heap sort). `code/32_Graph/03_dijkstraShortestPath.c`
 notes in a comment where a real implementation would swap its O(V) linear
 scan for a min-heap.

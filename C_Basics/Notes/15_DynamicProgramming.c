@@ -10,7 +10,7 @@ Two things a problem needs before DP applies at all:
     sets could hold).
 *   Overlapping sub-problems - naive recursion would solve the *same*
     sub-problem many times. This is the part that's actually expensive to
-    fix - see `code/09_Recursion/02_fibonacci.c`'s fibNaive, which is
+    fix - see `code/12_Recursion/02_fibonacci.c`'s fibNaive, which is
     O(2^n) purely because fib(n-2) gets recomputed from scratch inside both
     the fib(n-1) and fib(n-2) branches, over and over.
 
@@ -41,10 +41,10 @@ described:
     common subsequence needs a position in *each* of the two strings).
 
 See the runnable examples:
-*   `code/29_DynamicProgramming/01_fibMemoVsTabulation.c` - the same
+*   `code/34_DynamicProgramming/01_fibMemoVsTabulation.c` - the same
     problem solved both ways, side by side, to see the direct correspondence
     between them.
-*   `code/29_DynamicProgramming/02_knapsack.c` - a 2D table, and the
+*   `code/34_DynamicProgramming/02_knapsack.c` - a 2D table, and the
     "skip this item vs. take it" choice that fills each cell.
-*   `code/29_DynamicProgramming/03_longestCommonSubsequence.c` - a 2D table
+*   `code/34_DynamicProgramming/03_longestCommonSubsequence.c` - a 2D table
     over two strings' positions instead of over items/capacity.

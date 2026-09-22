@@ -57,7 +57,7 @@ iteration; a `do...while` checks it after, so the body always runs at least once
 
 ## 6. Arrays
 
-Not covered by dedicated notes — the `code/03_array/` examples form the progression:
+Not covered by dedicated notes — the `code/04_array/` examples form the progression:
 1. `03_array_print.c` — declare, fill, and print a 1D array.
 2. `04_average.c` — accumulate over an array (`sum`, then divide).
 3. `02_array_copy.c` — copying an array both by hand (element loop) and with `memcpy`.
@@ -72,7 +72,7 @@ Not covered by dedicated notes — the `code/03_array/` examples form the progre
 
 ## 7. Pointers
 
-Not covered by dedicated notes — `code/pointers/` builds the concept in two steps:
+Not covered by dedicated notes — `code/03_pointers/` builds the concept in two steps:
 1. `01_changeValueWithPointers.c` — `&` (address-of) and `*` (dereference); a pointer just
    holds an address, and dereferencing it reads/writes the value at that address.
 2. `02_pointers.c` — same idea, but shows the pointer tracking a variable across
@@ -112,7 +112,7 @@ Then tackle the hardest pointer topic in the repo:
 
 ## 8. Bit manipulation
 
-`code/BitManipulation/` is a self-contained mini-module (shares `utils.h` for
+`code/05_BitManipulation/` is a self-contained mini-module (shares `utils.h` for
 hex/decimal input parsing, see the project CLAUDE.md):
 1. `02_Boolean.c` — using bitwise ops for boolean-style logic.
 2. `03_OddOrEven.c` — checking a bit (`n & 1`) to classify a number.
@@ -123,19 +123,19 @@ hex/decimal input parsing, see the project CLAUDE.md):
 
 ## 9. Searching, sorting, and patterns
 
-- `code/04_Search_alg/02_LinearSearch.c` — the baseline O(n) search: check every element,
+- `code/09_Search_alg/02_LinearSearch.c` — the baseline O(n) search: check every element,
   no ordering assumption. Start here before the others.
-- `code/04_Search_alg/03_BinarySearchIterative.c` — O(log n) search on a *sorted* array,
+- `code/09_Search_alg/03_BinarySearchIterative.c` — O(log n) search on a *sorted* array,
   halving the search range each iteration; compare against the recursive version in
-  section 11 (`09_Recursion/03_recursiveBinarySearch.c`) to see the same logic with and
+  section 11 (`12_Recursion/03_recursiveBinarySearch.c`) to see the same logic with and
   without a call stack.
-- `code/04_Search_alg/01_Second_Largest.c` — single-pass second-largest-in-array by
+- `code/09_Search_alg/01_Second_Largest.c` — single-pass second-largest-in-array by
   tracking two running values (`max`, `sec_max`) instead of sorting first; a good example
   of trading a full sort (O(n log n)) for a linear scan (O(n)) when you only need one
   statistic.
-- `code/06_Sorting/Simplesort.cpp` — a basic sort implementation for comparison (note:
+- `code/10_Sorting/Simplesort.cpp` — a basic sort implementation for comparison (note:
   this one is C++, not C — useful to see how similar the syntax is for simple algorithms).
-- `code/05_pattern/Pattern.c` — nested-loop pattern printing (triangles, etc.); a good
+- `code/11_pattern/Pattern.c` — nested-loop pattern printing (triangles, etc.); a good
   drill for nested-loop index reasoning, independent of any data structure.
 
 ## 10. Structs, unions, and strings
@@ -149,17 +149,17 @@ Not covered by dedicated notes — build the mental model directly from the exam
 - `code/07_Structures/03_union.c` — a `union`'s members all share the same memory (unlike
   a struct, where each member has its own space), so `sizeof(union)` is just the size of
   its largest member.
-- `code/08_Strings/01_stringBasics.c` — a C string is a `char` array terminated by `\0`;
+- `code/06_Strings/01_stringBasics.c` — a C string is a `char` array terminated by `\0`;
   `strlen`/`strcpy`/`strcat`/`strcmp`/`strchr` from `<string.h>`.
-- `code/08_Strings/02_manualStringFunctions.c` — hand-rolled `strlen`/`strcpy`/`strrev` to
+- `code/06_Strings/02_manualStringFunctions.c` — hand-rolled `strlen`/`strcpy`/`strrev` to
   see what the library functions are doing under the hood.
-- `code/08_Strings/03_tokenizeString.c` — `strtok` splits a string in place (it overwrites
+- `code/06_Strings/03_tokenizeString.c` — `strtok` splits a string in place (it overwrites
   each delimiter with `\0`), which is why later calls pass `NULL` to continue the same
   tokenization.
 
 ## 11. Recursion
 
-Not covered by dedicated notes — `code/09_Recursion/` builds the concept in three steps:
+Not covered by dedicated notes — `code/12_Recursion/` builds the concept in three steps:
 - `01_factorial.c` — the canonical base-case + recursive-case example, next to an
   iterative version for comparison.
 - `02_fibonacci.c` — naive recursion's hidden cost (`fibNaive` is O(2^n) because it
@@ -172,8 +172,8 @@ Not covered by dedicated notes — `code/09_Recursion/` builds the concept in th
 
 ## 12. Dynamic memory
 
-Not covered by dedicated notes — `code/10_DynamicMemory/` extends the single
-`malloc`/`free` pair already seen in `pointers/04_doublePointer.c`:
+Not covered by dedicated notes — `code/13_DynamicMemory/` extends the single
+`malloc`/`free` pair already seen in `03_pointers/04_doublePointer.c`:
 - `01_mallocCalloc.c` — `malloc` gives raw uninitialized memory, `calloc` gives
   zero-initialized memory of the same total size.
 - `02_realloc.c` — growing a buffer on demand; `realloc` may move the block, so the
@@ -184,7 +184,7 @@ Not covered by dedicated notes — `code/10_DynamicMemory/` extends the single
 
 ## 13. Enums
 
-Not covered by dedicated notes — `code/12_Enum/`:
+Not covered by dedicated notes — `code/08_Enum/`:
 - `01_basicEnum.c` — default sequential values starting at 0 vs. explicit values (useful
   for protocol/status constants).
 - `02_enumStateMachine.c` — an enum-driven state machine, dispatching on state via
@@ -192,7 +192,7 @@ Not covered by dedicated notes — `code/12_Enum/`:
 
 ## 14. Storage classes
 
-Not covered by dedicated notes — `code/13_StorageClasses/` covers the classes not
+Not covered by dedicated notes — `code/15_StorageClasses/` covers the classes not
 already handled by the scope/linkage notes in section 5:
 - `01_staticLocal.c` — a `static` local variable is initialized once and persists across
   calls, instead of being reinitialized on every call like an ordinary local.
@@ -206,21 +206,21 @@ already handled by the scope/linkage notes in section 5:
 
 ## 15. Multi-file programs and headers
 
-Not covered by dedicated notes — `code/14_MultiFile/` splits declarations from
+Not covered by dedicated notes — `code/27_MultiFile/` splits declarations from
 definitions across files, the pattern this repo's own `common/utils.h` header uses for
-sharing code between `BitManipulation/` files:
+sharing code between `05_BitManipulation/` files:
 - `mathutils.h` — function declarations plus an `#ifndef`/`#define`/`#endif` include
   guard, so the header is safe to `#include` more than once in a build.
 - `mathutils.c` — the definitions matching that header, compiled as its own translation
   unit (it has no `main`, so it can't be built as a standalone program — see the
-  Makefile's special-cased link rule for `14_MultiFile/01_main`).
+  Makefile's special-cased link rule for `27_MultiFile/01_main`).
 - `01_main.c` — `#include "mathutils.h"` and calls the functions; linking `01_main.c` and
   `mathutils.c` together produces one binary, demonstrating declaration (header) vs.
   definition (source) vs. linking (section 5) all in one place.
 
 ## 16. `const` and `volatile` qualifiers
 
-Not covered by dedicated notes — `code/15_ConstVolatile/`:
+Not covered by dedicated notes — `code/14_ConstVolatile/`:
 - `01_constPointers.c` — the three distinct combinations: pointer-to-const (can't modify
   the pointee, can reassign the pointer), const-pointer (can modify the pointee, can't
   reassign the pointer), and const-pointer-to-const (neither).
@@ -253,14 +253,14 @@ Not covered by dedicated notes — `code/17_Variadic/`:
 
 ## 20. File I/O and I/O system calls
 
-- `code/11_FileIO/01_writeRead.c` — text mode: `fopen`/`fprintf`/`fgets`/`fclose`.
-- `code/11_FileIO/02_binaryFreadFwrite.c` — binary mode: `fwrite`/`fread`.
-- `code/11_FileIO/03_syscallIO.c` — raw I/O system calls: `open`/`read`/`write`/`close`/
+- `code/26_FileIO/01_writeRead.c` — text mode: `fopen`/`fprintf`/`fgets`/`fclose`.
+- `code/26_FileIO/02_binaryFreadFwrite.c` — binary mode: `fwrite`/`fread`.
+- `code/26_FileIO/03_syscallIO.c` — raw I/O system calls: `open`/`read`/`write`/`close`/
   `lseek`, the unbuffered layer `fopen`/`fread` sit on top of.
 
 ## 21. Processes
 
-Not covered by dedicated notes — `code/18_Processes/` (Linux/POSIX, `<unistd.h>`):
+Not covered by dedicated notes — `code/45_Processes/` (Linux/POSIX, `<unistd.h>`):
 - `01_forkBasics.c` — `fork()` creates a near-identical copy of the calling process; the
   return value tells each side which one it is (`0` in the child, the child's PID in the
   parent). `waitpid()` blocks the parent until the child exits, and reports the child's
@@ -271,7 +271,7 @@ Not covered by dedicated notes — `code/18_Processes/` (Linux/POSIX, `<unistd.h
 
 ## 22. Threads
 
-Not covered by dedicated notes — `code/19_Threads/` (POSIX threads, `<pthread.h>`; the
+Not covered by dedicated notes — `code/49_Threads/` (POSIX threads, `<pthread.h>`; the
 Makefile links these with `-pthread`):
 - `01_pthreadBasics.c` — `pthread_create()`/`pthread_join()`, the thread equivalent of
   `fork()`/`waitpid()`. The key difference from processes (section 21): threads share
@@ -298,7 +298,7 @@ Makefile links these with `-pthread`):
 
 ## 23. Inter-process communication (IPC) and process synchronization
 
-Not covered by dedicated notes — `code/20_IPC/` builds directly on `fork()` from section
+Not covered by dedicated notes — `code/66_IPC/` builds directly on `fork()` from section
 21:
 - `01_pipeCommunication.c` — `pipe()` creates a one-way byte stream with a read end and a
   write end; a forked child inherits both ends, so closing the end it isn't using and
@@ -316,7 +316,7 @@ Not covered by dedicated notes — `code/20_IPC/` builds directly on `fork()` fr
 
 ## 24. Signal handling
 
-Not covered by dedicated notes — `code/21_SignalHandling/` extends the signal *concepts*
+Not covered by dedicated notes — `code/47_SignalHandling/` extends the signal *concepts*
 from section 19 (which only covers signals the OS delivers automatically on an error)
 with installing your own handlers:
 - `01_customHandler.c` — `sigaction()` installs a handler for `SIGINT`; the handler only
@@ -329,7 +329,7 @@ with installing your own handlers:
 
 ## 25. Linked lists
 
-Not covered by dedicated notes — `code/22_LinkedList/` builds on structs (section 10)
+Not covered by dedicated notes — `code/29_LinkedList/` builds on structs (section 10)
 and dynamic memory (section 12), one node at a time:
 - `01_singlyLinkedList.c` — a self-referential `struct Node { ...; struct Node *next; }`,
   appending by walking to the last node's `next == NULL`, and `freeList` saving the
@@ -352,7 +352,7 @@ and dynamic memory (section 12), one node at a time:
 
 ## 26. Binary trees
 
-Not covered by dedicated notes — `code/23_BinaryTree/` extends the recursion intuition
+Not covered by dedicated notes — `code/30_BinaryTree/` extends the recursion intuition
 from section 11 to a branching structure:
 - `01_bstInsertSearch.c` — a binary search tree keeps every left-subtree value smaller
   and every right-subtree value larger than a node's own value, so both `insert` and
@@ -370,26 +370,26 @@ from section 11 to a branching structure:
 
 ## 27. Socket programming
 
-- `code/24_SocketProgramming/01_tcpServer.c` — TCP server: `socket`/`bind`/`listen`/
+- `code/69_SocketProgramming/01_tcpServer.c` — TCP server: `socket`/`bind`/`listen`/
   `accept`.
-- `code/24_SocketProgramming/02_tcpClient.c` — TCP client: `socket`/`connect`, talking to
+- `code/69_SocketProgramming/02_tcpClient.c` — TCP client: `socket`/`connect`, talking to
   the server over loopback. Run the server first, then the client, in separate
   terminals.
 
 ## 28. `_Generic` keyword
 
-- `code/25_Generics/01_genericMacro.c` — compile-time type dispatch with `_Generic`, used
+- `code/28_Generics/01_genericMacro.c` — compile-time type dispatch with `_Generic`, used
   to fake function overloading and to write a type-name macro.
 
 ## 29. Heaps
 
 `Notes/12_Heap.c` covers the basic definition (min-heap vs. max-heap, the array-index
 parent/child formulas, and why a heap can't be binary-searched) before the code:
-- `code/26_Heap/01_minHeap.c` — a binary min-heap stored in a flat array (child at
+- `code/31_Heap/01_minHeap.c` — a binary min-heap stored in a flat array (child at
   `2i+1`/`2i+2`, parent at `(i-1)/2` — no explicit pointers, unlike the BST in
-  `23_BinaryTree/`); `push` bubbles a new element up, `pop` removes the root and bubbles
+  `30_BinaryTree/`); `push` bubbles a new element up, `pop` removes the root and bubbles
   the replacement down, both O(log n).
-- `code/26_Heap/02_heapSort.c` — heap sort: build a max-heap in place, then repeatedly
+- `code/31_Heap/02_heapSort.c` — heap sort: build a max-heap in place, then repeatedly
   swap the root to the end of the shrinking heap and re-sift — O(n log n), in place, no
   extra array.
 
@@ -398,14 +398,14 @@ parent/child formulas, and why a heap can't be binary-searched) before the code:
 `Notes/13_Graph.c` covers the basic definition (vertices/edges, directed vs. undirected,
 weighted vs. unweighted, and how a graph relates to the trees in section 26) before the
 code:
-- `code/27_Graph/01_adjacencyListBFS.c` — graph as an adjacency list (array of per-vertex
+- `code/32_Graph/01_adjacencyListBFS.c` — graph as an adjacency list (array of per-vertex
   linked lists); breadth-first search with an explicit queue, marking vertices `visited`
   to handle cycles (which trees, in section 26, don't have to worry about).
-- `code/27_Graph/02_adjacencyMatrixDFS.c` — graph as an adjacency matrix (O(1) edge check,
+- `code/32_Graph/02_adjacencyMatrixDFS.c` — graph as an adjacency matrix (O(1) edge check,
   O(V²) memory regardless of edge count — contrast with the adjacency list's O(degree)
   check but edge-proportional memory); depth-first search recursing via the call stack
   instead of BFS's explicit queue.
-- `code/27_Graph/03_dijkstraShortestPath.c` — Dijkstra's shortest path: repeatedly
+- `code/32_Graph/03_dijkstraShortestPath.c` — Dijkstra's shortest path: repeatedly
   finalize the closest unvisited vertex and relax its neighbors' distances through it;
   only correct with non-negative edge weights. `minDistanceVertex`'s linear scan is the
   same "take the cheapest next option" idea as popping from the min-heap in section 29 —
@@ -416,11 +416,11 @@ code:
 `Notes/14_Trie.c` covers the basic definition (one child slot per possible next
 character, shared prefixes stored once, and the difference between a node existing at
 all vs. `isEndOfWord` being set) before the code:
-- `code/28_Trie/01_insertSearch.c` — `insert` walking one character at a time, creating
+- `code/33_Trie/01_insertSearch.c` — `insert` walking one character at a time, creating
   nodes only where the path doesn't already exist; `search` requires both reaching the
   last character's node *and* `isEndOfWord` being set — a node existing only means some
   inserted word passes through it, not that this exact path is itself a complete word.
-- `code/28_Trie/02_prefixSearch.c` — `startsWith`, the trie's signature use case
+- `code/33_Trie/02_prefixSearch.c` — `startsWith`, the trie's signature use case
   (autocomplete/spell-check): just walking a path and checking it exists, without
   needing `isEndOfWord` on the final node.
 
@@ -429,12 +429,12 @@ all vs. `isEndOfWord` being set) before the code:
 `Notes/15_DynamicProgramming.c` covers the basic definition (optimal substructure,
 overlapping sub-problems, and top-down/memoization vs. bottom-up/tabulation) before the
 code:
-- `code/29_DynamicProgramming/01_fibMemoVsTabulation.c` — the same fibonacci problem
+- `code/34_DynamicProgramming/01_fibMemoVsTabulation.c` — the same fibonacci problem
   solved both ways side by side; compare against the naive O(2^n) recursion in
-  `09_Recursion/02_fibonacci.c` to see exactly what memoization is fixing.
-- `code/29_DynamicProgramming/02_knapsack.c` — a 2D DP table (items considered ×
+  `12_Recursion/02_fibonacci.c` to see exactly what memoization is fixing.
+- `code/34_DynamicProgramming/02_knapsack.c` — a 2D DP table (items considered ×
   remaining capacity), each cell choosing the better of "skip this item" vs. "take it".
-- `code/29_DynamicProgramming/03_longestCommonSubsequence.c` — a 2D DP table over two
+- `code/34_DynamicProgramming/03_longestCommonSubsequence.c` — a 2D DP table over two
   strings' positions instead of items/capacity, showing the same table-filling pattern
   applies once you identify what two numbers describe a sub-problem.
 
@@ -443,24 +443,24 @@ code:
 `Notes/16_SystemCalls.c` covers the basic definition (crossing into kernel-space,
 libc wrappers vs. raw syscalls, and errno-based failure reporting) and groups every
 syscall example in this repo by category:
-- `code/30_SystemCalls/01_libcWrapperVsRawSyscall.c` — `getpid()` vs.
+- `code/44_SystemCalls/01_libcWrapperVsRawSyscall.c` — `getpid()` vs.
   `syscall(SYS_getpid)`, showing a libc wrapper and the raw syscall interface doing the
   same thing.
-- `code/30_SystemCalls/02_errnoAndPerror.c` — `errno`/`perror`; save `errno` into a local
+- `code/44_SystemCalls/02_errnoAndPerror.c` — `errno`/`perror`; save `errno` into a local
   immediately after a failing call, since another library call in between (even a
   successful one) can overwrite it.
-- **File system**: `code/11_FileIO/03_syscallIO.c` (`open`/`read`/`write`/`close`/
-  `lseek` — file *contents*) and `code/30_SystemCalls/03_fileSystemCalls.c`
+- **File system**: `code/26_FileIO/03_syscallIO.c` (`open`/`read`/`write`/`close`/
+  `lseek` — file *contents*) and `code/44_SystemCalls/03_fileSystemCalls.c`
   (`stat`/`mkdir`/`rmdir`/`creat`/`unlink` — file *metadata and directory entries*).
-- **Process control**: `code/18_Processes/01_forkBasics.c` (`fork`/`waitpid`) and
-  `code/18_Processes/02_execFamily.c` (`execvp`) — section 21.
-- **Memory management**: `code/30_SystemCalls/05_memoryManagementMprotect.c` —
+- **Process control**: `code/45_Processes/01_forkBasics.c` (`fork`/`waitpid`) and
+  `code/45_Processes/02_execFamily.c` (`execvp`) — section 21.
+- **Memory management**: `code/44_SystemCalls/05_memoryManagementMprotect.c` —
   `mprotect` changes an already-mapped region's page permissions; writing to a page
   after marking it read-only faults with `SIGSEGV`. See also section 34 (paging) and
   section 12 (dynamic memory).
-- **IPC**: `code/20_IPC/` (`pipe`, `mmap`+`MAP_SHARED`, process-shared semaphores) —
+- **IPC**: `code/66_IPC/` (`pipe`, `mmap`+`MAP_SHARED`, process-shared semaphores) —
   section 23.
-- **Device management**: `code/30_SystemCalls/04_deviceManagementIoctl.c` — `ioctl`, the
+- **Device management**: `code/44_SystemCalls/04_deviceManagementIoctl.c` — `ioctl`, the
   catch-all syscall for device-specific requests that don't fit the read/write model
   (here, asking a terminal for its window size).
 
@@ -469,12 +469,228 @@ syscall example in this repo by category:
 `Notes/17_Paging.c` covers the basic definition (fixed-size pages, virtual-to-physical
 translation via page tables, per-page protection bits, and demand paging) before the
 code:
-- `code/31_Paging/01_pageSizeAndMmap.c` — querying the runtime page size
+- `code/57_Paging/01_pageSizeAndMmap.c` — querying the runtime page size
   (`sysconf(_SC_PAGESIZE)`) and `mmap`'ing a multi-page region, one byte written per page.
-- `code/31_Paging/02_demandPaging.c` — reading this process's own resident set size (RSS)
+- `code/57_Paging/02_demandPaging.c` — reading this process's own resident set size (RSS)
   from `/proc/self/status` before an `mmap`, right after it (barely changes — no physical
   memory assigned yet), and after touching every page (grows roughly one page at a time)
   — demand paging made directly observable.
+
+## 35. `qsort`/`bsearch` and control-flow escapes
+
+`Notes/18_GenericAlgorithmsAndControlFlowEscapes.c` covers both clusters below:
+- `code/19_QsortBsearch/01_qsortInts.c` — `qsort`'s comparator does all the type-specific
+  work, the same `void *` type-erasure idea as `03_pointers/06_voidPointer.c` applied to a
+  whole algorithm.
+- `code/19_QsortBsearch/02_bsearchStructs.c` — `bsearch` on structs, requiring the array
+  pre-sorted with the *same* comparator it's given.
+- `code/18_ControlFlowExtras/01_goto.c` — breaking out of nested loops in one jump, `goto`'s
+  one broadly accepted use.
+- `code/18_ControlFlowExtras/02_assert.c` — checking an invariant, not validating real
+  (possibly-wrong) input; compiled out entirely under `NDEBUG`.
+- `code/18_ControlFlowExtras/03_setjmpLongjmp.c` — unwinding the call stack straight back
+  to a matching `setjmp`, C's closest thing to an exception.
+
+## 36. Time, math, qualifiers, and wide characters
+
+`Notes/19_TimeMathQualifiersAndWideChars.c` covers all of the below:
+- `code/35_TimeAndMath/01_timeBasics.c` — `time`/`localtime`/`strftime` vs. `clock`
+  (CPU time, not wall-clock time).
+- `code/35_TimeAndMath/02_mathFunctions.c` — `sqrt`/`pow`/`floor`/`ceil`/`fabs`/trig
+  (radians, not degrees), and `isnan` as the only correct way to test for `NAN`.
+- `code/21_RestrictQualifier/01_restrict.c` — `restrict` promises the compiler two
+  pointer parameters never overlap, the same assumption `memcpy` relies on.
+- `code/23_InlineFunctions/01_inline.c` — `inline` as a hint the compiler may ignore,
+  like `register` in section 14.
+- `code/22_WideChars/01_wcharBasics.c` — `wchar_t` for characters outside a plain
+  `char`'s one-byte range.
+
+## 37. Concurrency and memory-layout extras
+
+`Notes/20_ConcurrencyAndMemoryLayoutExtras.c` covers all of the below:
+- `code/52_Atomics/01_stdatomicCounter.c` — `atomic_int`/`atomic_fetch_add` as a
+  lock-free alternative to the mutex-protected counter in section 22
+  (`49_Threads/02_mutex.c`).
+- `code/52_Atomics/02_threadLocalStorage.c` — `_Thread_local` gives each thread its own
+  copy, so there's nothing shared to race on.
+- `code/20_AdvancedArrays/01_variableLengthArray.c` — a runtime-sized, stack-allocated
+  array; no `malloc` failure check is possible, unlike section 12.
+- `code/20_AdvancedArrays/02_flexibleArrayMember.c` — a struct's variable-length payload
+  allocated in the same block as its fixed fields, contributing 0 to `sizeof(struct)`.
+- `code/25_BitFields/01_bitFieldStruct.c` — claiming exactly N bits per struct member,
+  at the cost of implementation-defined bit order/padding (contrast with the portable
+  shifting/masking in section 8).
+
+## 38. System V IPC, CLI parsing, and process scheduling
+
+`Notes/21_SystemVIpcCliAndScheduling.c` covers all of the below:
+- `code/67_SystemVIPC/01_sharedMemorySegment.c` — `shmget`/`shmat`/`shmctl(IPC_RMID)`, a
+  key-based, kernel-owned alternative to the POSIX `mmap` region in section 23.
+- `code/67_SystemVIPC/02_messageQueue.c` — `msgget`/`msgsnd`/`msgrcv`, type-tagged
+  messages instead of a pipe's undifferentiated byte stream.
+- `code/67_SystemVIPC/03_semaphoreSet.c` — `semget`/`semop`/`semctl` operating on a
+  *set* of semaphores by index, vs. the single POSIX `sem_t` in section 23.
+- `code/24_CommandLineOptions/01_getoptBasics.c` — `getopt`/`optarg`/`optind` flag
+  parsing, built on the raw `argc`/`argv` from section 17.
+- `code/53_ProcessScheduling/01_niceAndProcInspection.c` — `nice()` as a scheduler
+  priority hint, and reading `/proc/self/status` for this process's own state (RSS was
+  already read from the same file in section 34).
+
+## 39. Classic synchronization problems
+
+`Notes/22_SynchronizationProblems.c` covers all three:
+- `code/50_SyncProblems/01_boundedBufferProducerConsumer.c` — a multi-slot buffer
+  extending the single-slot handoff in section 22 (`49_Threads/03_conditionVariable.c`).
+- `code/50_SyncProblems/02_readerWriter.c` — many readers may overlap safely; a writer
+  needs full exclusive access; only the first reader in/last reader out touches the
+  writer-exclusion lock.
+- `code/50_SyncProblems/03_diningPhilosophers.c` — the textbook circular-wait deadlock
+  (same shape as section 22's `05_deadlockAvoidance.c`, five participants instead of
+  two), fixed by having one participant acquire locks in the opposite order.
+
+## 40. CPU scheduling algorithms
+
+`Notes/23_CPUSchedulingAlgorithms.c` covers all four, each tracked via
+waiting-time/turnaround-time:
+- `code/54_CPUScheduling/01_fcfs.c` — First-Come, First-Served; simplest policy, suffers
+  the "convoy effect".
+- `code/54_CPUScheduling/02_sjf.c` — Shortest Job First; minimizes average waiting time,
+  requires knowing burst times in advance.
+- `code/54_CPUScheduling/03_roundRobin.c` — fixed time-slice preemption; bounds worst-case
+  wait, costs more context switches.
+- `code/54_CPUScheduling/04_priorityScheduling.c` — always run the highest-priority ready
+  process; structurally the same loop as SJF, comparing priority instead of burst time.
+
+## 41. Memory management algorithms
+
+`Notes/24_MemoryManagementAlgorithms.c` covers both families, extending section 34
+(paging):
+- `code/56_MemoryManagement/01_pageReplacement.c` — FIFO vs. LRU page replacement on the
+  same reference string; LRU is not guaranteed to beat FIFO on every string, and this
+  example demonstrates that directly.
+- `code/56_MemoryManagement/02_contiguousAllocation.c` — First Fit vs. Best Fit block
+  allocation, comparing resulting fragmentation and allocation failures.
+
+## 42. Process lifecycle edge cases and memory-mapping extras
+
+`Notes/25_ProcessLifecycleAndMemoryExtras.c` covers all four:
+- `code/46_ProcessLifecycle/01_zombieProcess.c` — a child that exited but hasn't been
+  `wait()`-ed on yet; visible as state `Z` in `ps` until reaped.
+- `code/46_ProcessLifecycle/02_orphanProcess.c` — a child whose parent exits first gets
+  re-parented to init/PID 1; `getppid()` visibly changes.
+- `code/46_ProcessLifecycle/03_daemonProcess.c` — the double-fork + `setsid()` sequence
+  that detaches a process from its controlling terminal entirely.
+- `code/59_MmapFile/01_fileBackedMmap.c` — mapping a real file descriptor (not anonymous,
+  contrast with section 34) so reads/writes through the pointer act directly on the
+  file's contents.
+- `code/60_CopyOnWrite/01_forkCow.c` — physical pages stay shared and read-only after
+  `fork()` until a write triggers copy-on-write, using the same page-fault mechanism as
+  demand paging (section 34).
+
+## 43. Lock-free ring buffer and false sharing
+
+`Notes/26_SeniorCInterviewQuestions.c` covers the concepts behind both files:
+- `code/61_LockFreeRingBuffer/01_spscRingBuffer.c` — a single-producer/single-consumer
+  ring buffer using plain atomic loads/stores (no CAS loop needed, since each index has
+  exactly one writer) instead of the mutex + condition variables in section 39's
+  `50_SyncProblems/01_boundedBufferProducerConsumer.c`.
+- `code/62_FalseSharing/01_falseSharingBenchmark.c` — two per-thread counters sharing a
+  cache line slow each other down purely from layout, with zero logical contention;
+  padding each counter to its own cache line measurably fixes it. Relies on this repo's
+  Makefile building without `-O2`/`-O3` — see the file's comment on why.
+
+## 44. Custom allocators
+
+`Notes/26_SeniorCInterviewQuestions.c` covers both:
+- `code/65_CustomAllocator/01_arenaAllocator.c` — a bump allocator over one static
+  buffer; O(1) allocation (a pointer add), but only frees everything at once via
+  `arenaReset()` — the right tool when a batch of allocations share one lifetime.
+- `code/65_CustomAllocator/02_fixedSizePoolAllocator.c` — a free list threaded directly
+  through the unused fixed-size blocks themselves (no separate bookkeeping array); O(1)
+  allocation *and* individual free, for repeated same-size allocations.
+
+## 45. Strict aliasing violation
+
+`Notes/26_SeniorCInterviewQuestions.c` covers the rule; the code demonstrates it directly:
+- `code/42_StrictAliasing/01_strictAliasingViolation.c` — writing through an `int *` then
+  a `float *` to the same address, and reading back through the `int *`, returns the
+  stale value `10` at `-O2` (the compiler assumes unrelated pointer types can't alias)
+  but the actual reinterpreted bits at `-O0` (this repo's Makefile default) — the same
+  divergence, and the same reason, as section 43's false-sharing benchmark being
+  optimization-level-dependent. `memcpy`-based reinterpretation is the safe fix, shown in
+  the same file.
+
+## 46. I/O multiplexing (select/poll/epoll)
+
+`Notes/26_SeniorCInterviewQuestions.c` covers the tradeoffs; all three watch the same two
+pipes:
+- `code/71_IOMultiplexing/01_selectMultiplePipes.c` — `select()`'s fixed-size `fd_set`
+  bitmask, rebuilt on every call.
+- `code/71_IOMultiplexing/02_pollMultiplePipes.c` — `poll()`'s array of `{fd, events}`,
+  no fixed-size cap.
+- `code/71_IOMultiplexing/03_epollServer.c` — `epoll_create1`/`epoll_ctl`/`epoll_wait`;
+  the kernel remembers the watch list across calls instead of it being passed in full
+  every time, the reason real servers use epoll at scale.
+
+## 47. UDP sockets
+
+`Notes/26_SeniorCInterviewQuestions.c` covers TCP vs. UDP, Nagle's algorithm, and
+`SO_REUSEADDR`/`SO_REUSEPORT`:
+- `code/70_UDPSockets/01_udpServer.c`/`02_udpClient.c` — `SOCK_DGRAM`,
+  `sendto`/`recvfrom` with no `connect()`/`accept()`, contrasting directly with the TCP
+  pair in `69_SocketProgramming/`.
+
+## 48. Security demonstrations
+
+`Notes/26_SeniorCInterviewQuestions.c` covers all three:
+- `code/77_SecurityDemos/01_bufferOverflowStackCanary.c` — an unchecked `strcpy`
+  overflow; `-fstack-protector-all` catches it with "stack smashing detected", the
+  default build here does not (raw `SIGSEGV`) — see the file's comment.
+- `code/77_SecurityDemos/02_formatStringVulnerability.c` — passing user input as
+  `printf`'s format string directly leaks stack/register contents via `%x`.
+- `code/77_SecurityDemos/03_integerOverflowToBufferOverflow.c` — a size multiplication
+  that wraps before reaching `malloc`, undersizing the buffer relative to the caller's
+  actual intent.
+
+## 49. ThreadSanitizer
+
+`Notes/26_SeniorCInterviewQuestions.c` covers the tool:
+- `code/78_ThreadSanitizerDemo/01_racyCounter.c` — deliberately unsynchronized on
+  purpose; compile with `-fsanitize=thread -pthread` to see the exact race reported.
+
+## 50. Dynamic loading and symbol visibility
+
+`Notes/26_SeniorCInterviewQuestions.c` covers both:
+- `code/74_DynamicLoading/01_loader.c`/`plugin.c` — `dlopen`/`dlsym`/`dlclose` loading a
+  shared library built with `-fvisibility=hidden`; only the symbol marked
+  `__attribute__((visibility("default")))` is reachable via `dlsym`.
+
+## 51. `extern "C"` (C/C++ interop)
+
+`Notes/26_SeniorCInterviewQuestions.c` covers name mangling:
+- `code/75_ExternC/mathutils.h`/`.c`/`01_main.cpp` — a C++ caller linking against a
+  C-compiled TU through `extern "C"` declarations guarded by `#ifdef __cplusplus`.
+
+## 52. Resource limits
+
+`Notes/26_SeniorCInterviewQuestions.c` covers `ulimit`/fork bombs conceptually (not run):
+- `code/76_ResourceLimits/01_rlimitFileDescriptors.c` — `getrlimit`/`setrlimit` on
+  `RLIMIT_NOFILE`, deliberately lowered and then hit, producing `EMFILE`.
+
+## 53. Opaque pointers and vtable emulation
+
+`Notes/26_SeniorCInterviewQuestions.c` covers both design patterns:
+- `code/36_OpaquePointer/handle.h`/`.c`/`01_main.c` — a PIMPL-equivalent: callers only
+  ever see a pointer to an incomplete type, never the real struct fields.
+- `code/37_VTableEmulation/01_shapeVtable.c` — a hand-rolled struct-of-function-pointers
+  vtable, close to what a C++ compiler generates for virtual dispatch.
+
+## 54. Unit testing in C
+
+`Notes/26_SeniorCInterviewQuestions.c` covers `-Werror` and testing philosophy:
+- `code/38_UnitTesting/01_assertBasedTests.c` — a minimal `EXPECT_EQ`-style test macro
+  that records every failure instead of aborting on the first one, unlike a raw
+  `assert()` (section 35).
 
 ## Suggested order for a first pass
 
@@ -525,17 +741,49 @@ code:
     now filled out with file-metadata, device-management, and memory-management syscalls
 23. Section 34 (paging) right after section 33 (system calls) and section 12 (dynamic
     memory) — makes concrete what `mmap`/`mprotect` are actually doing underneath
+24. Section 35 (`qsort`/`bsearch`/control-flow escapes) once section 7 (pointers,
+    specifically function pointers) feels solid
+25. Section 36 (time/math/qualifiers/wide chars) any time — all self-contained,
+    no dependency on anything above
+26. Section 37 (concurrency/memory-layout extras) after section 22 (threads) and
+    section 12 (dynamic memory) — each item directly extends one of those two
+27. Section 38 (System V IPC/CLI/scheduling) right after section 23 (IPC) and
+    section 17 (command-line args)
+28. Section 39 (synchronization problems) right after section 22 (threads) — each
+    problem is a direct, slightly harder variant of that section's mutex/condition-
+    variable/deadlock material
+29. Section 40 (CPU scheduling algorithms) any time after section 38's `nice()` — makes
+    concrete what a scheduler actually decides, beyond the priority hint alone
+30. Section 41 (memory management algorithms) right after section 34 (paging) — extends
+    "what a page is" to "how the OS decides what to evict or allocate"
+31. Section 42 (process lifecycle/mmap extras) right after section 21 (processes) and
+    section 34 (paging) — edge cases and follow-on mmap/COW material for both
+32. Section 43 (lock-free ring buffer/false sharing) last of the concurrency material —
+    both assume section 22 (threads) and section 37 (atomics) are already comfortable
+33. Section 44 (custom allocators) any time after section 12 (dynamic memory) — both
+    are alternatives to plain `malloc`/`free` for a specific allocation pattern
+34. Section 45 (strict aliasing) any time after section 6 (pointers/`06_voidPointer.c`)
+    and section 16 (`const`/`volatile`, for the general "compiler assumptions" theme)
+35. Section 46 (I/O multiplexing) → section 47 (UDP) after section 23 (IPC, for pipes)
+    and section 27 (TCP sockets) — both extend the socket/descriptor material there
+36. Section 48 (security demos) after section 7 (pointers) and section 10 (strings) —
+    every one of these bugs is a pointer/buffer-bounds mistake at heart
+37. Section 49 (ThreadSanitizer) right after section 22 (threads) — the tool for
+    catching exactly the race-condition mistakes that section demonstrates by hand
+38. Section 50 (dynamic loading) → section 51 (`extern "C"`) after section 15
+    (multi-file programs) — both are advanced linking topics building on it
+39. Section 52 (resource limits) any time after section 21 (processes)
+40. Section 53 (opaque pointers/vtables) after section 10 (structs) and section 7
+    (function pointers, for the vtable half)
+41. Section 54 (unit testing) any time after section 35 (`assert`)
 
 ## Gaps not yet covered by this repo
 
 Common C topics still without notes or examples here — worth adding as you learn them,
 following the existing numbering/naming convention:
-- `getopt`-style command-line option parsing (section 17 covers raw `argc`/`argv` only)
-- `qsort`/`bsearch` from `<stdlib.h>` (function pointers, covered in
-  `pointers/05_functionPointer.c`, are the prerequisite)
-- Bit-fields in structs
-- `errno` and `perror` for standard-library error reporting
-- System V IPC (`shmget`/`msgget`/`semget`) as an alternative to the POSIX `mmap`/pipe
-  approach in `code/20_IPC/`
-- Process scheduling/priority (`nice`, `sched_setscheduler`) and `/proc` inspection
+- `sched_setscheduler` and other scheduling-policy calls beyond the `nice()` hint in
+  section 38
+- `<stdint.h>` fixed-width integer types (`int32_t`, `uint64_t`, etc.)
+- Designated initializers and compound literals (C99)
+- `alignas`/`alignof` (C11) and `_Static_assert`
 

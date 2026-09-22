@@ -40,6 +40,6 @@ What tries are actually used for:
 *   IP routing tables (longest-prefix matching, using bits instead of
     characters as the "alphabet").
 
-See the runnable examples: `code/28_Trie/01_insertSearch.c` (insert and
-exact-word search) and `code/28_Trie/02_prefixSearch.c` (the startsWith
+See the runnable examples: `code/33_Trie/01_insertSearch.c` (insert and
+exact-word search) and `code/33_Trie/02_prefixSearch.c` (the startsWith
 prefix query that's the trie's signature use case).
