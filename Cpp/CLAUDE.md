@@ -16,15 +16,23 @@ otherwise self-contained and independently compilable.
 ## Structure
 
 - `code/` — numbered topic folders (`01_Namespaces`, `02_References`,
-  `03_ClassesAndObjects`, ... `24_Concurrency`, `25_TemplateMetaprogramming`,
-  `26_STLInternals`, `27_PImplIdiom`, `28_CustomAllocatorCpp`,
-  `29_Cpp20Features`, `30_SOLIDPrinciples`), numbered in easiest-to-hardest study order, each holding
+  `03_ClassesAndObjects`, ... `24_Concurrency`, `25_CustomSharedPtr`,
+  `26_TemplateMetaprogramming`, `27_STLInternals`, `28_PImplIdiom`,
+  `29_CustomAllocatorCpp`, `30_Cpp20Features`, `31_SOLIDPrinciples`,
+  `32_RpcMechanismsCpp`), numbered in
+  easiest-to-hardest study order, each holding
   small example programs for that topic, plus `DesignPatterns/<Category>/<PatternName>.cpp`
   for classic design pattern examples grouped under `Creational/`, `Structural/`, and
   `Behavioral/`. Some topic folders also have a `NOTES.md` with concise,
   interview-focused bullet points (what the topic is, key gotchas/tradeoffs, complexity
   facts) — add one when a topic benefits from quick-reference notes beyond the code
   itself.
+  `24_Concurrency` was extended with memory-ordering levels
+  (relaxed/acquire-release/seq_cst) and a lock-striped thread-safe LRU cache;
+  `26_TemplateMetaprogramming` was extended with hand-rolled type erasure
+  (`MyAny`) and SFINAE member detection via `void_t`. `25_CustomSharedPtr` is a
+  new folder implementing an atomic-refcounted `SharedPtr`/`WeakPtr` pair from
+  scratch, for studying what `std::shared_ptr` does internally.
 
 ## Working with this codebase
 

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Abstract Factory: families of related UI widgets (Light and Dark themes).
 class Button
 {
@@ -22,7 +24,7 @@ public:
     // trivial override
     void paint() const override
     {
-        std::cout << "Rendering a light-themed button" << std::endl;
+        cout << "Rendering a light-themed button" << endl;
     }
 };
 
@@ -32,7 +34,7 @@ public:
     // trivial override
     void paint() const override
     {
-        std::cout << "Rendering a light-themed checkbox" << std::endl;
+        cout << "Rendering a light-themed checkbox" << endl;
     }
 };
 
@@ -42,7 +44,7 @@ public:
     // trivial override
     void paint() const override
     {
-        std::cout << "Rendering a dark-themed button" << std::endl;
+        cout << "Rendering a dark-themed button" << endl;
     }
 };
 
@@ -52,7 +54,7 @@ public:
     // trivial override
     void paint() const override
     {
-        std::cout << "Rendering a dark-themed checkbox" << std::endl;
+        cout << "Rendering a dark-themed checkbox" << endl;
     }
 };
 
@@ -60,23 +62,23 @@ class WidgetFactory
 {
 public:
     virtual ~WidgetFactory() = default;
-    virtual std::unique_ptr<Button> createButton() const = 0;
-    virtual std::unique_ptr<Checkbox> createCheckbox() const = 0;
+    virtual unique_ptr<Button> createButton() const = 0;
+    virtual unique_ptr<Checkbox> createCheckbox() const = 0;
 };
 
 class LightFactory : public WidgetFactory
 {
 public:
     // trivial override
-    std::unique_ptr<Button> createButton() const override
+    unique_ptr<Button> createButton() const override
     {
-        return std::make_unique<LightButton>();
+        return make_unique<LightButton>();
     }
 
     // trivial override
-    std::unique_ptr<Checkbox> createCheckbox() const override
+    unique_ptr<Checkbox> createCheckbox() const override
     {
-        return std::make_unique<LightCheckbox>();
+        return make_unique<LightCheckbox>();
     }
 };
 
@@ -84,15 +86,15 @@ class DarkFactory : public WidgetFactory
 {
 public:
     // trivial override
-    std::unique_ptr<Button> createButton() const override
+    unique_ptr<Button> createButton() const override
     {
-        return std::make_unique<DarkButton>();
+        return make_unique<DarkButton>();
     }
 
     // trivial override
-    std::unique_ptr<Checkbox> createCheckbox() const override
+    unique_ptr<Checkbox> createCheckbox() const override
     {
-        return std::make_unique<DarkCheckbox>();
+        return make_unique<DarkCheckbox>();
     }
 };
 

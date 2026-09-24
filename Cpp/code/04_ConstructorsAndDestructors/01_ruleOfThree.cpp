@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstring>
 
+using namespace std;
+
 // Demonstrates default, parameterized, and copy constructors, the destructor,
 // initializer lists, and the "rule of three" for a class that owns a raw
 // resource (a heap-allocated buffer).
@@ -26,10 +28,10 @@ class Buffer
          * Returns:
          *         None.
          *****************************************************************************/
-        explicit Buffer(const char *text) : length(std::strlen(text))
+        explicit Buffer(const char *text) : length(strlen(text))
         {
             data = new char[length + 1];
-            std::strcpy(data, text);
+            strcpy(data, text);
         }
 
         /*****************************************************************************
@@ -47,7 +49,7 @@ class Buffer
         Buffer(const Buffer &other) : length(other.length)
         {
             data = new char[length + 1];
-            std::strcpy(data, other.data);
+            strcpy(data, other.data);
         }
 
         /*****************************************************************************
@@ -72,7 +74,7 @@ class Buffer
             delete[] data;
             length = other.length;
             data = new char[length + 1];
-            std::strcpy(data, other.data);
+            strcpy(data, other.data);
             return *this;
         }
 
@@ -111,8 +113,8 @@ int main()
     Buffer copyAssigned;
     copyAssigned = original;
 
-    std::cout << "original: " << original.c_str() << "\n";
-    std::cout << "copyConstructed: " << copyConstructed.c_str() << "\n";
-    std::cout << "copyAssigned: " << copyAssigned.c_str() << "\n";
+    cout << "original: " << original.c_str() << "\n";
+    cout << "copyConstructed: " << copyConstructed.c_str() << "\n";
+    cout << "copyAssigned: " << copyAssigned.c_str() << "\n";
     return 0;
 }

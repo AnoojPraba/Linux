@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <string>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: main
  *
@@ -17,39 +19,39 @@
  *****************************************************************************/
 int main()
 {
-    std::vector<int> numbers = {5, 3, 1, 4};
+    vector<int> numbers = {5, 3, 1, 4};
     numbers.push_back(2);
-    std::cout << "vector: ";
+    cout << "vector: ";
     for (int n : numbers)
     {
-        std::cout << n << " ";
+        cout << n << " ";
     }
-    std::cout << "\n";
+    cout << "\n";
 
-    std::map<std::string, int> ages;
+    map<string, int> ages;
     ages["Alice"] = 30;
     ages["Bob"] = 25;
-    std::cout << "map:\n";
+    cout << "map:\n";
     for (const auto &entry : ages)
     {
-        std::cout << "  " << entry.first << " -> " << entry.second << "\n";
+        cout << "  " << entry.first << " -> " << entry.second << "\n";
     }
 
-    std::set<int> uniqueValues = {4, 2, 4, 1, 2};
-    std::cout << "set: ";
+    set<int> uniqueValues = {4, 2, 4, 1, 2};
+    cout << "set: ";
     for (int value : uniqueValues)
     {
-        std::cout << value << " ";
+        cout << value << " ";
     }
-    std::cout << "\n";
+    cout << "\n";
 
-    std::unordered_map<std::string, double> prices;
+    unordered_map<string, double> prices;
     prices["apple"] = 1.5;
     prices["bread"] = 2.75;
     auto found = prices.find("apple");
     if (found != prices.end())
     {
-        std::cout << "unordered_map lookup: apple costs " << found->second << "\n";
+        cout << "unordered_map lookup: apple costs " << found->second << "\n";
     }
     return 0;
 }

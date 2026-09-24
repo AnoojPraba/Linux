@@ -5,6 +5,8 @@
 #define ELEMENT_COUNT 5
 #define RESERVED_CAPACITY 1
 
+using namespace std;
+
 // Move constructor is NOT noexcept. On reallocation, vector<NoisyThrowingMove> cannot
 // safely use it: if a move threw partway through, the vector could be left with some
 // elements moved-from and some not, breaking the strong exception guarantee for
@@ -18,12 +20,12 @@ public:
 
     NoisyThrowingMove(const NoisyThrowingMove &)
     {
-        std::cout << "  NoisyThrowingMove copy constructed (reallocation copied)\n";
+        cout << "  NoisyThrowingMove copy constructed (reallocation copied)\n";
     }
 
     NoisyThrowingMove(NoisyThrowingMove &&)
     {
-        std::cout << "  NoisyThrowingMove move constructed\n";
+        cout << "  NoisyThrowingMove move constructed\n";
     }
 };
 
@@ -40,12 +42,12 @@ public:
 
     NoisyNoexceptMove(const NoisyNoexceptMove &)
     {
-        std::cout << "  NoisyNoexceptMove copy constructed\n";
+        cout << "  NoisyNoexceptMove copy constructed\n";
     }
 
     NoisyNoexceptMove(NoisyNoexceptMove &&) noexcept
     {
-        std::cout << "  NoisyNoexceptMove move constructed (reallocation moved)\n";
+        cout << "  NoisyNoexceptMove move constructed (reallocation moved)\n";
     }
 };
 
@@ -63,21 +65,21 @@ public:
  *****************************************************************************/
 int main()
 {
-    static_assert(!std::is_nothrow_move_constructible<NoisyThrowingMove>::value,
+    static_assert(!is_nothrow_move_constructible<NoisyThrowingMove>::value,
                   "NoisyThrowingMove's move ctor is expected to be throwing");
-    static_assert(std::is_nothrow_move_constructible<NoisyNoexceptMove>::value,
+    static_assert(is_nothrow_move_constructible<NoisyNoexceptMove>::value,
                   "NoisyNoexceptMove's move ctor is expected to be noexcept");
 
-    std::cout << "-- vector<NoisyThrowingMove>: reallocation falls back to copy --\n";
-    std::vector<NoisyThrowingMove> throwingMoveVec;
+    cout << "-- vector<NoisyThrowingMove>: reallocation falls back to copy --\n";
+    vector<NoisyThrowingMove> throwingMoveVec;
     throwingMoveVec.reserve(RESERVED_CAPACITY);
     for (int i = 0; i < ELEMENT_COUNT; i = i + 1)
     {
         throwingMoveVec.emplace_back();
     }
 
-    std::cout << "-- vector<NoisyNoexceptMove>: reallocation moves elements --\n";
-    std::vector<NoisyNoexceptMove> noexceptMoveVec;
+    cout << "-- vector<NoisyNoexceptMove>: reallocation moves elements --\n";
+    vector<NoisyNoexceptMove> noexceptMoveVec;
     noexceptMoveVec.reserve(RESERVED_CAPACITY);
     for (int i = 0; i < ELEMENT_COUNT; i = i + 1)
     {

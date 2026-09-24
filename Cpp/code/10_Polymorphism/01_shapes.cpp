@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 #define PI 3.14159265358979323846
 
 // Demonstrates virtual functions, override, an abstract base class, and a
@@ -21,7 +23,7 @@ class Shape
          *****************************************************************************/
         virtual void describe() const
         {
-            std::cout << "Shape with area " << area() << "\n";
+            cout << "Shape with area " << area() << "\n";
         }
 
         virtual ~Shape() = default;

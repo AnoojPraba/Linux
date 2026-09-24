@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 // Builder: assemble a Pizza step by step.
 class Pizza
 {
 public:
-    std::string size;
+    string size;
     bool cheese = false;
     bool pepperoni = false;
     bool mushrooms = false;
@@ -21,20 +23,20 @@ public:
      *****************************************************************************/
     void describe() const
     {
-        std::cout << size << " pizza with:";
+        cout << size << " pizza with:";
         if (cheese)
         {
-            std::cout << " cheese";
+            cout << " cheese";
         }
         if (pepperoni)
         {
-            std::cout << " pepperoni";
+            cout << " pepperoni";
         }
         if (mushrooms)
         {
-            std::cout << " mushrooms";
+            cout << " mushrooms";
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 };
 
@@ -42,7 +44,7 @@ class PizzaBuilder
 {
 public:
     // returns builder for chaining
-    PizzaBuilder& setSize(const std::string& newSize)
+    PizzaBuilder& setSize(const string& newSize)
     {
         pizza.size = newSize;
         return *this;

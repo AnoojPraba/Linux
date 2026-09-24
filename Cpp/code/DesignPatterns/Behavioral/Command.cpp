@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Command: encapsulate light on/off requests as objects for a remote control.
 class Light
 {
@@ -7,13 +9,13 @@ public:
     // trivial
     void on()
     {
-        std::cout << "Light is ON" << std::endl;
+        cout << "Light is ON" << endl;
     }
 
     // trivial
     void off()
     {
-        std::cout << "Light is OFF" << std::endl;
+        cout << "Light is OFF" << endl;
     }
 };
 

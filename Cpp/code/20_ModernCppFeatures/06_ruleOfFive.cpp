@@ -2,6 +2,8 @@
 #include <cstring>
 #include <utility>
 
+using namespace std;
+
 // Rule of five: any class that manages a raw resource and needs a custom
 // destructor should also define (or explicitly delete) the copy
 // constructor, copy assignment, move constructor, and move assignment.
@@ -28,7 +30,7 @@ class Buffer
         {
             data = new char[strlen(text) + 1];
             strcpy(data, text);
-            std::cout << "constructor ran\n";
+            cout << "constructor ran\n";
         }
 
         /*****************************************************************************
@@ -47,7 +49,7 @@ class Buffer
         {
             data = new char[strlen(other.data) + 1];
             strcpy(data, other.data);
-            std::cout << "copy constructor ran\n";
+            cout << "copy constructor ran\n";
         }
 
         /*****************************************************************************
@@ -65,7 +67,7 @@ class Buffer
          *****************************************************************************/
         Buffer &operator=(const Buffer &other)
         {
-            std::cout << "copy assignment ran\n";
+            cout << "copy assignment ran\n";
             if (this != &other)
             {
                 delete[] data;
@@ -92,7 +94,7 @@ class Buffer
         {
             data = other.data;
             other.data = nullptr;
-            std::cout << "move constructor ran\n";
+            cout << "move constructor ran\n";
         }
 
         /*****************************************************************************
@@ -110,7 +112,7 @@ class Buffer
          *****************************************************************************/
         Buffer &operator=(Buffer &&other) noexcept
         {
-            std::cout << "move assignment ran\n";
+            cout << "move assignment ran\n";
             if (this != &other)
             {
                 delete[] data;
@@ -131,7 +133,7 @@ class Buffer
          *****************************************************************************/
         ~Buffer()
         {
-            std::cout << "destructor ran\n";
+            cout << "destructor ran\n";
             delete[] data;
         }
 };

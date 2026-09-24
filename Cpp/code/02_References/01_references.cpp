@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: incrementViaReference
  *
@@ -53,7 +55,7 @@ void incrementViaPointer(int *value)
  *****************************************************************************/
 void describeRvalue(int &&value)
 {
-    std::cout << "rvalue reference bound to temporary: " << value << "\n";
+    cout << "rvalue reference bound to temporary: " << value << "\n";
 }
 
 /*****************************************************************************
@@ -71,14 +73,14 @@ int main()
     int counter = 0;
 
     incrementViaReference(counter);
-    std::cout << "after reference increment: " << counter << "\n";
+    cout << "after reference increment: " << counter << "\n";
 
     incrementViaPointer(&counter);
-    std::cout << "after pointer increment: " << counter << "\n";
+    cout << "after pointer increment: " << counter << "\n";
 
     int &aliasOfCounter = counter;
     aliasOfCounter += 10;
-    std::cout << "after alias modification: " << counter << "\n";
+    cout << "after alias modification: " << counter << "\n";
 
     describeRvalue(42);
     return 0;

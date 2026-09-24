@@ -1,12 +1,14 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Adapter: make an old media player interface work with a new player.
 class ModernPlayer
 {
 public:
     virtual ~ModernPlayer() = default;
-    virtual void playMp4(const std::string& file) const = 0;
+    virtual void playMp4(const string& file) const = 0;
 };
 
 // Legacy class with an incompatible interface we cannot change.
@@ -25,9 +27,9 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void playAvi(const std::string& file) const
+    void playAvi(const string& file) const
     {
-        std::cout << "Playing AVI file: " << file << std::endl;
+        cout << "Playing AVI file: " << file << endl;
     }
 };
 
@@ -48,9 +50,9 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void playMp4(const std::string& file) const override
+    void playMp4(const string& file) const override
     {
-        std::cout << "Adapter converting request for: " << file << std::endl;
+        cout << "Adapter converting request for: " << file << endl;
         legacyPlayer.playAvi(file);
     }
 
@@ -70,7 +72,7 @@ private:
  *****************************************************************************/
 int main()
 {
-    std::unique_ptr<ModernPlayer> player = std::make_unique<AviToModernAdapter>();
+    unique_ptr<ModernPlayer> player = make_unique<AviToModernAdapter>();
     player->playMp4("vacation.mp4");
     return 0;
 }

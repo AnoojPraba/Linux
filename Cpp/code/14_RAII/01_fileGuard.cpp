@@ -2,6 +2,8 @@
 #include <cstdio>
 #include <string>
 
+using namespace std;
+
 // Demonstrates RAII via a class that manages a FILE* resource: the file is
 // opened in the constructor and always closed in the destructor.
 class FileGuard
@@ -24,9 +26,9 @@ class FileGuard
          * Returns:
          *         None.
          *****************************************************************************/
-        FileGuard(const std::string &path, const std::string &mode)
+        FileGuard(const string &path, const string &mode)
         {
-            file = std::fopen(path.c_str(), mode.c_str());
+            file = fopen(path.c_str(), mode.c_str());
         }
 
         /*****************************************************************************
@@ -43,8 +45,8 @@ class FileGuard
         {
             if (file != nullptr)
             {
-                std::fclose(file);
-                std::cout << "FileGuard closed the file\n";
+                fclose(file);
+                cout << "FileGuard closed the file\n";
             }
         }
 
@@ -77,11 +79,11 @@ class FileGuard
          * Returns:
          *         None.
          *****************************************************************************/
-        void write(const std::string &text)
+        void write(const string &text)
         {
             if (file != nullptr)
             {
-                std::fputs(text.c_str(), file);
+                fputs(text.c_str(), file);
             }
         }
 };
@@ -103,9 +105,9 @@ int main()
         if (guard.isOpen())
         {
             guard.write("RAII manages this file's lifetime\n");
-            std::cout << "wrote to file inside scope\n";
+            cout << "wrote to file inside scope\n";
         }
     }
-    std::cout << "file was closed automatically when the scope ended\n";
+    cout << "file was closed automatically when the scope ended\n";
     return 0;
 }

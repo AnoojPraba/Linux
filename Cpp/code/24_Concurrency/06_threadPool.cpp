@@ -10,6 +10,8 @@
 #define POOL_SIZE 4
 #define TASK_COUNT 8
 
+using namespace std;
+
 // A minimal thread pool: a fixed set of worker threads pull tasks off a
 // shared queue guarded by a mutex/condition_variable pair until told to stop.
 class ThreadPool
@@ -37,10 +39,10 @@ class ThreadPool
          * Returns:
          *         None.
          *****************************************************************************/
-        void submit(std::function<void()> task)
+        void submit(function<void()> task)
         {
             {
-                std::lock_guard<std::mutex> guard(queueMutex);
+                lock_guard<mutex> guard(queueMutex);
                 tasks.push(std::move(task));
             }
             taskAvailable.notify_one();
@@ -59,11 +61,11 @@ class ThreadPool
         ~ThreadPool()
         {
             {
-                std::lock_guard<std::mutex> guard(queueMutex);
+                lock_guard<mutex> guard(queueMutex);
                 stopping = true;
             }
             taskAvailable.notify_all();
-            for (std::thread &worker : workers)
+            for (thread &worker : workers)
             {
                 worker.join();
             }
@@ -84,9 +86,9 @@ class ThreadPool
         {
             while (true)
             {
-                std::function<void()> task;
+                function<void()> task;
                 {
-                    std::unique_lock<std::mutex> lock(queueMutex);
+                    unique_lock<mutex> lock(queueMutex);
                     taskAvailable.wait(lock, [this] { return (!tasks.empty()) || stopping; });
 
                     if (tasks.empty() && stopping)
@@ -101,10 +103,10 @@ class ThreadPool
             }
         }
 
-        std::vector<std::thread> workers;
-        std::queue<std::function<void()>> tasks;
-        std::mutex queueMutex;
-        std::condition_variable taskAvailable;
+        vector<thread> workers;
+        queue<function<void()>> tasks;
+        mutex queueMutex;
+        condition_variable taskAvailable;
         bool stopping;
 };
 
@@ -120,19 +122,19 @@ class ThreadPool
  *****************************************************************************/
 int main()
 {
-    std::atomic<int> completedCount(0);
+    atomic<int> completedCount(0);
     {
         ThreadPool pool(POOL_SIZE);
         for (int i = 0; i < TASK_COUNT; i = i + 1)
         {
             pool.submit([i, &completedCount]
             {
-                std::cout << "running task " << i << " on thread "
-                          << std::this_thread::get_id() << "\n";
-                completedCount.fetch_add(1, std::memory_order_relaxed);
+                cout << "running task " << i << " on thread "
+                          << this_thread::get_id() << "\n";
+                completedCount.fetch_add(1, memory_order_relaxed);
             });
         }
     }
-    std::cout << "completed " << completedCount.load() << " tasks\n";
+    cout << "completed " << completedCount.load() << " tasks\n";
     return 0;
 }

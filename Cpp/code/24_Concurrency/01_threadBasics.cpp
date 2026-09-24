@@ -4,12 +4,14 @@
 
 #define WORKER_ITERATIONS 3
 
+using namespace std;
+
 /*****************************************************************************
  * Name: printMessage
  *
  * Description:
  *         Prints a message a fixed number of times, used as a thread entry
- *         point to show a function running on its own std::thread.
+ *         point to show a function running on its own thread.
  *
  * Inputs:
  *         label : text identifying which caller is printing.
@@ -17,11 +19,11 @@
  * Returns:
  *         None.
  *****************************************************************************/
-void printMessage(const std::string &label)
+void printMessage(const string &label)
 {
     for (int i = 0; i < WORKER_ITERATIONS; i = i + 1)
     {
-        std::cout << label << " iteration " << i << "\n";
+        cout << label << " iteration " << i << "\n";
     }
 }
 
@@ -29,7 +31,7 @@ void printMessage(const std::string &label)
  * Name: main
  *
  * Description:
- *         Creates two std::thread objects running printMessage with
+ *         Creates two thread objects running printMessage with
  *         different arguments, then joins both before exiting.
  *
  * Returns:
@@ -37,12 +39,12 @@ void printMessage(const std::string &label)
  *****************************************************************************/
 int main()
 {
-    std::thread worker1(printMessage, "worker1");
-    std::thread worker2(printMessage, "worker2");
+    thread worker1(printMessage, "worker1");
+    thread worker2(printMessage, "worker2");
 
     worker1.join();
     worker2.join();
 
-    std::cout << "both threads finished\n";
+    cout << "both threads finished\n";
     return 0;
 }

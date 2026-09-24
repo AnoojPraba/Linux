@@ -1,12 +1,14 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Prototype: clone existing shapes instead of rebuilding them from scratch.
 class Shape
 {
 public:
     virtual ~Shape() = default;
-    virtual std::unique_ptr<Shape> clone() const = 0;
+    virtual unique_ptr<Shape> clone() const = 0;
     virtual void draw() const = 0;
 };
 
@@ -17,15 +19,15 @@ public:
     explicit Circle(int radius) : radius(radius) {}
 
     // trivial override
-    std::unique_ptr<Shape> clone() const override
+    unique_ptr<Shape> clone() const override
     {
-        return std::make_unique<Circle>(*this);
+        return make_unique<Circle>(*this);
     }
 
     // trivial override
     void draw() const override
     {
-        std::cout << "Circle with radius " << radius << std::endl;
+        cout << "Circle with radius " << radius << endl;
     }
 
 private:
@@ -39,15 +41,15 @@ public:
     Rectangle(int width, int height) : width(width), height(height) {}
 
     // trivial override
-    std::unique_ptr<Shape> clone() const override
+    unique_ptr<Shape> clone() const override
     {
-        return std::make_unique<Rectangle>(*this);
+        return make_unique<Rectangle>(*this);
     }
 
     // trivial override
     void draw() const override
     {
-        std::cout << "Rectangle " << width << "x" << height << std::endl;
+        cout << "Rectangle " << width << "x" << height << endl;
     }
 
 private:
@@ -67,11 +69,11 @@ private:
  *****************************************************************************/
 int main()
 {
-    std::unique_ptr<Shape> circlePrototype = std::make_unique<Circle>(5);
-    std::unique_ptr<Shape> rectPrototype = std::make_unique<Rectangle>(3, 4);
+    unique_ptr<Shape> circlePrototype = make_unique<Circle>(5);
+    unique_ptr<Shape> rectPrototype = make_unique<Rectangle>(3, 4);
 
-    std::unique_ptr<Shape> circleCopy = circlePrototype->clone();
-    std::unique_ptr<Shape> rectCopy = rectPrototype->clone();
+    unique_ptr<Shape> circleCopy = circlePrototype->clone();
+    unique_ptr<Shape> rectCopy = rectPrototype->clone();
 
     circlePrototype->draw();
     circleCopy->draw();

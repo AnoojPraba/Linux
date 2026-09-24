@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 #define MAX_HEALTH 100
 
 // Demonstrates a basic class with private data, public member functions,
@@ -8,12 +10,12 @@
 class Character
 {
     private:
-        std::string name;
+        string name;
         int health;
 
     public:
         // Trivial constructor with initializer list.
-        Character(const std::string &charName, int startHealth)
+        Character(const string &charName, int startHealth)
             : name(charName), health(startHealth)
         {
         }
@@ -53,7 +55,7 @@ class Character
          *****************************************************************************/
         void describe() const
         {
-            std::cout << name << " has " << health << "/" << MAX_HEALTH << " health\n";
+            cout << name << " has " << health << "/" << MAX_HEALTH << " health\n";
         }
 };
 

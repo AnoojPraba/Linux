@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 // Observer: subscribers get notified when the weather station updates.
 class Observer
 {
@@ -27,7 +29,7 @@ public:
      *****************************************************************************/
     void update(double temperature) const override
     {
-        std::cout << "Phone display shows: " << temperature << " C" << std::endl;
+        cout << "Phone display shows: " << temperature << " C" << endl;
     }
 };
 
@@ -37,7 +39,7 @@ public:
     // trivial override
     void update(double temperature) const override
     {
-        std::cout << "Web display shows: " << temperature << " C" << std::endl;
+        cout << "Web display shows: " << temperature << " C" << endl;
     }
 };
 
@@ -83,7 +85,7 @@ public:
     }
 
 private:
-    std::vector<Observer*> observers;
+    vector<Observer*> observers;
 };
 
 /*****************************************************************************

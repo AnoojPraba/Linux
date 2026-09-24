@@ -1,3 +1,8 @@
+# Auto-parallelize: `make` alone runs with one job per CPU core, same as
+# passing -j$(nproc) by hand. An explicit `-j<N>` on the command line still
+# overrides this.
+MAKEFLAGS += -j$(shell nproc)
+
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -I. -pthread
 BIN_DIR := bin

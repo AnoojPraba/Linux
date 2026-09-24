@@ -1,22 +1,24 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // State: a media player's behavior changes with its playback state.
 class PlayerState
 {
 public:
     virtual ~PlayerState() = default;
-    virtual std::unique_ptr<PlayerState> pressPlay() const = 0;
-    virtual std::string name() const = 0;
+    virtual unique_ptr<PlayerState> pressPlay() const = 0;
+    virtual string name() const = 0;
 };
 
 class PlayingState : public PlayerState
 {
 public:
-    std::unique_ptr<PlayerState> pressPlay() const override;
+    unique_ptr<PlayerState> pressPlay() const override;
 
     // trivial override
-    std::string name() const override
+    string name() const override
     {
         return "Playing";
     }
@@ -34,14 +36,14 @@ public:
      * Returns:
      *         A new PlayingState representing the next state.
      *****************************************************************************/
-    std::unique_ptr<PlayerState> pressPlay() const override
+    unique_ptr<PlayerState> pressPlay() const override
     {
-        std::cout << "Resuming playback" << std::endl;
-        return std::make_unique<PlayingState>();
+        cout << "Resuming playback" << endl;
+        return make_unique<PlayingState>();
     }
 
     // trivial override
-    std::string name() const override
+    string name() const override
     {
         return "Paused";
     }
@@ -56,17 +58,17 @@ public:
  * Returns:
  *         A new PausedState representing the next state.
  *****************************************************************************/
-std::unique_ptr<PlayerState> PlayingState::pressPlay() const
+unique_ptr<PlayerState> PlayingState::pressPlay() const
 {
-    std::cout << "Pausing playback" << std::endl;
-    return std::make_unique<PausedState>();
+    cout << "Pausing playback" << endl;
+    return make_unique<PausedState>();
 }
 
 class MediaPlayer
 {
 public:
     // trivial constructor
-    MediaPlayer() : state(std::make_unique<PausedState>()) {}
+    MediaPlayer() : state(make_unique<PausedState>()) {}
 
     /*****************************************************************************
      * Name: pressPlay
@@ -81,11 +83,11 @@ public:
     void pressPlay()
     {
         state = state->pressPlay();
-        std::cout << "Now in state: " << state->name() << std::endl;
+        cout << "Now in state: " << state->name() << endl;
     }
 
 private:
-    std::unique_ptr<PlayerState> state;
+    unique_ptr<PlayerState> state;
 };
 
 /*****************************************************************************

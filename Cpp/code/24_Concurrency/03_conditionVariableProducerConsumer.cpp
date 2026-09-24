@@ -6,9 +6,11 @@
 
 #define ITEM_COUNT 5
 
-std::mutex queueMutex;
-std::condition_variable queueCondition;
-std::queue<int> sharedQueue;
+using namespace std;
+
+mutex queueMutex;
+condition_variable queueCondition;
+queue<int> sharedQueue;
 bool productionDone = false;
 
 /*****************************************************************************
@@ -26,15 +28,15 @@ void producer()
     for (int i = 0; i < ITEM_COUNT; i = i + 1)
     {
         {
-            std::lock_guard<std::mutex> guard(queueMutex);
+            lock_guard<mutex> guard(queueMutex);
             sharedQueue.push(i);
-            std::cout << "produced " << i << "\n";
+            cout << "produced " << i << "\n";
         }
         queueCondition.notify_one();
     }
 
     {
-        std::lock_guard<std::mutex> guard(queueMutex);
+        lock_guard<mutex> guard(queueMutex);
         productionDone = true;
     }
     queueCondition.notify_one();
@@ -54,14 +56,14 @@ void consumer()
 {
     while (true)
     {
-        std::unique_lock<std::mutex> lock(queueMutex);
+        unique_lock<mutex> lock(queueMutex);
         queueCondition.wait(lock, [] { return (!sharedQueue.empty()) || productionDone; });
 
         while (!sharedQueue.empty())
         {
             int value = sharedQueue.front();
             sharedQueue.pop();
-            std::cout << "consumed " << value << "\n";
+            cout << "consumed " << value << "\n";
         }
 
         if (productionDone)
@@ -84,8 +86,8 @@ void consumer()
  *****************************************************************************/
 int main()
 {
-    std::thread producerThread(producer);
-    std::thread consumerThread(consumer);
+    thread producerThread(producer);
+    thread consumerThread(consumer);
 
     producerThread.join();
     consumerThread.join();

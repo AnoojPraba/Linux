@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Strategy: interchangeable payment algorithms chosen at runtime.
 class PaymentStrategy
 {
@@ -15,7 +17,7 @@ public:
     // trivial override
     void pay(double amount) const override
     {
-        std::cout << "Paid " << amount << " using credit card" << std::endl;
+        cout << "Paid " << amount << " using credit card" << endl;
     }
 };
 
@@ -25,7 +27,7 @@ public:
     // trivial override
     void pay(double amount) const override
     {
-        std::cout << "Paid " << amount << " using PayPal" << std::endl;
+        cout << "Paid " << amount << " using PayPal" << endl;
     }
 };
 
@@ -33,7 +35,7 @@ class ShoppingCart
 {
 public:
     // trivial setter
-    void setPaymentStrategy(std::unique_ptr<PaymentStrategy> strategy)
+    void setPaymentStrategy(unique_ptr<PaymentStrategy> strategy)
     {
         paymentStrategy = std::move(strategy);
     }
@@ -57,7 +59,7 @@ public:
     }
 
 private:
-    std::unique_ptr<PaymentStrategy> paymentStrategy;
+    unique_ptr<PaymentStrategy> paymentStrategy;
 };
 
 /*****************************************************************************
@@ -72,10 +74,10 @@ private:
 int main()
 {
     ShoppingCart cart;
-    cart.setPaymentStrategy(std::make_unique<CreditCardPayment>());
+    cart.setPaymentStrategy(make_unique<CreditCardPayment>());
     cart.checkout(49.99);
 
-    cart.setPaymentStrategy(std::make_unique<PayPalPayment>());
+    cart.setPaymentStrategy(make_unique<PayPalPayment>());
     cart.checkout(19.99);
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Facade: a simple interface hiding a home theater's complex subsystems.
 class Amplifier
 {
@@ -7,7 +9,7 @@ public:
     // trivial
     void on() const
     {
-        std::cout << "Amplifier on" << std::endl;
+        cout << "Amplifier on" << endl;
     }
 };
 
@@ -26,9 +28,9 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void play(const std::string& movie) const
+    void play(const string& movie) const
     {
-        std::cout << "Playing movie: " << movie << std::endl;
+        cout << "Playing movie: " << movie << endl;
     }
 };
 
@@ -38,7 +40,7 @@ public:
     // trivial
     void on() const
     {
-        std::cout << "Projector on" << std::endl;
+        cout << "Projector on" << endl;
     }
 };
 
@@ -59,7 +61,7 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void watchMovie(const std::string& movie) const
+    void watchMovie(const string& movie) const
     {
         amplifier.on();
         projector.on();

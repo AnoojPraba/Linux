@@ -5,12 +5,14 @@
 #define INCREMENTS_PER_THREAD 100000
 #define THREAD_COUNT 4
 
+using namespace std;
+
 // C++'s std::atomic<T> is a typed template (std::atomic<int>, std::atomic<bool>, ...)
 // with member functions like load()/store()/fetch_add(), whereas C's <stdatomic.h>
 // exposes the same underlying compiler intrinsics through _Atomic-qualified types and
 // free functions (atomic_load, atomic_fetch_add, ...). Both support the same
 // std::memory_order values (relaxed, acquire, release, acq_rel, seq_cst).
-std::atomic<long> atomicCounter(0);
+atomic<long> atomicCounter(0);
 
 /*****************************************************************************
  * Name: incrementAtomic
@@ -29,7 +31,7 @@ void incrementAtomic()
         // memory_order_relaxed is enough here because we only care about the
         // final total, not about ordering this increment relative to other
         // memory operations on other variables.
-        atomicCounter.fetch_add(1, std::memory_order_relaxed);
+        atomicCounter.fetch_add(1, memory_order_relaxed);
     }
 }
 
@@ -45,11 +47,11 @@ void incrementAtomic()
  *****************************************************************************/
 int main()
 {
-    std::thread threads[THREAD_COUNT];
+    thread threads[THREAD_COUNT];
 
     for (int i = 0; i < THREAD_COUNT; i = i + 1)
     {
-        threads[i] = std::thread(incrementAtomic);
+        threads[i] = thread(incrementAtomic);
     }
 
     for (int i = 0; i < THREAD_COUNT; i = i + 1)
@@ -57,6 +59,6 @@ int main()
         threads[i].join();
     }
 
-    std::cout << "final atomic counter = " << atomicCounter.load() << "\n";
+    cout << "final atomic counter = " << atomicCounter.load() << "\n";
     return 0;
 }

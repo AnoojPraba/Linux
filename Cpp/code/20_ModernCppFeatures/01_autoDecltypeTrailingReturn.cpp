@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: addValues
  *
@@ -37,10 +39,10 @@ int main()
     auto doubleValue = 2.5;
 
     decltype(intValue) anotherInt = 10;
-    std::cout << "intValue = " << intValue << ", anotherInt = " << anotherInt << "\n";
+    cout << "intValue = " << intValue << ", anotherInt = " << anotherInt << "\n";
 
     auto mixedSum = addValues(intValue, doubleValue);
-    std::cout << "mixedSum (int + double) = " << mixedSum << "\n";
+    cout << "mixedSum (int + double) = " << mixedSum << "\n";
 
     return 0;
 }

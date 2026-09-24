@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <numeric>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: main
  *
@@ -15,33 +17,33 @@
  *****************************************************************************/
 int main()
 {
-    std::vector<int> numbers = {5, 3, 1, 4, 2};
+    vector<int> numbers = {5, 3, 1, 4, 2};
 
-    std::sort(numbers.begin(), numbers.end());
-    std::cout << "sorted: ";
+    sort(numbers.begin(), numbers.end());
+    cout << "sorted: ";
     for (int n : numbers)
     {
-        std::cout << n << " ";
+        cout << n << " ";
     }
-    std::cout << "\n";
+    cout << "\n";
 
-    auto foundIt = std::find(numbers.begin(), numbers.end(), 4);
+    auto foundIt = find(numbers.begin(), numbers.end(), 4);
     if (foundIt != numbers.end())
     {
-        std::cout << "found 4 at index " << (foundIt - numbers.begin()) << "\n";
+        cout << "found 4 at index " << (foundIt - numbers.begin()) << "\n";
     }
 
-    std::vector<int> doubled(numbers.size());
-    std::transform(numbers.begin(), numbers.end(), doubled.begin(),
+    vector<int> doubled(numbers.size());
+    transform(numbers.begin(), numbers.end(), doubled.begin(),
                     [](int n) { return n * 2; });
-    std::cout << "doubled: ";
+    cout << "doubled: ";
     for (int n : doubled)
     {
-        std::cout << n << " ";
+        cout << n << " ";
     }
-    std::cout << "\n";
+    cout << "\n";
 
-    int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
-    std::cout << "sum = " << sum << "\n";
+    int sum = accumulate(numbers.begin(), numbers.end(), 0);
+    cout << "sum = " << sum << "\n";
     return 0;
 }

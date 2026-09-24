@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Demonstrates static data members and static member functions.
 class Counter
 {
@@ -58,14 +60,14 @@ int Counter::instanceCount = 0;
  *****************************************************************************/
 int main()
 {
-    std::cout << "initial count: " << Counter::getInstanceCount() << "\n";
+    cout << "initial count: " << Counter::getInstanceCount() << "\n";
 
     Counter first;
     Counter second;
     Counter third;
 
-    std::cout << "first id: " << first.getId() << ", second id: " << second.getId()
+    cout << "first id: " << first.getId() << ", second id: " << second.getId()
               << ", third id: " << third.getId() << "\n";
-    std::cout << "final count: " << Counter::getInstanceCount() << "\n";
+    cout << "final count: " << Counter::getInstanceCount() << "\n";
     return 0;
 }

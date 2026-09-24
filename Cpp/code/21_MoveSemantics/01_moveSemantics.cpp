@@ -1,7 +1,9 @@
 #include <iostream>
 #include <utility>
 
-// Demonstrates move constructor, move assignment, std::move, and rvalue
+using namespace std;
+
+// Demonstrates move constructor, move assignment, move, and rvalue
 // references for a class that owns a heap-allocated array.
 class IntArray
 {
@@ -25,7 +27,7 @@ class IntArray
         explicit IntArray(size_t count) : size(count)
         {
             data = new int[size]();
-            std::cout << "constructed IntArray of size " << size << "\n";
+            cout << "constructed IntArray of size " << size << "\n";
         }
 
         /*****************************************************************************
@@ -45,7 +47,7 @@ class IntArray
         {
             other.data = nullptr;
             other.size = 0;
-            std::cout << "move-constructed IntArray\n";
+            cout << "move-constructed IntArray\n";
         }
 
         /*****************************************************************************
@@ -71,7 +73,7 @@ class IntArray
             size = other.size;
             other.data = nullptr;
             other.size = 0;
-            std::cout << "move-assigned IntArray\n";
+            cout << "move-assigned IntArray\n";
             return *this;
         }
 
@@ -100,7 +102,7 @@ class IntArray
  * Name: main
  *
  * Description:
- *         Creates an IntArray, moves it into another via std::move, and
+ *         Creates an IntArray, moves it into another via move, and
  *         observes the resulting ownership transfer.
  *
  * Returns:
@@ -110,12 +112,12 @@ int main()
 {
     IntArray first(10);
     IntArray second(std::move(first));
-    std::cout << "second size: " << second.getSize() << ", first size: "
+    cout << "second size: " << second.getSize() << ", first size: "
               << first.getSize() << "\n";
 
     IntArray third(5);
     third = std::move(second);
-    std::cout << "third size: " << third.getSize() << ", second size: "
+    cout << "third size: " << third.getSize() << ", second size: "
               << second.getSize() << "\n";
     return 0;
 }

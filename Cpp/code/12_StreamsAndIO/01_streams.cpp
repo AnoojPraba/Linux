@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: main
  *
@@ -15,28 +17,28 @@
  *****************************************************************************/
 int main()
 {
-    const std::string path = "/tmp/streams_example.txt";
+    const string path = "/tmp/streams_example.txt";
 
-    std::ofstream outFile(path);
+    ofstream outFile(path);
     if (outFile.is_open())
     {
         outFile << "Alice 30\nBob 25\n";
         outFile.close();
     }
 
-    std::ifstream inFile(path);
-    std::string line;
-    std::cout << "reading file back:\n";
-    while (std::getline(inFile, line))
+    ifstream inFile(path);
+    string line;
+    cout << "reading file back:\n";
+    while (getline(inFile, line))
     {
-        std::cout << "  " << line << "\n";
+        cout << "  " << line << "\n";
     }
     inFile.close();
 
-    std::stringstream ss("Charlie 40");
-    std::string name;
+    stringstream ss("Charlie 40");
+    string name;
     int age;
     ss >> name >> age;
-    std::cout << "parsed from stringstream: name=" << name << ", age=" << age << "\n";
+    cout << "parsed from stringstream: name=" << name << ", age=" << age << "\n";
     return 0;
 }
