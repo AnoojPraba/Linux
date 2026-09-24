@@ -6,6 +6,8 @@
 
 #define DIVISOR_ZERO 0
 
+using namespace std;
+
 /*****************************************************************************
  * Name: safeDivide
  *
@@ -21,11 +23,11 @@
  *         The quotient wrapped in std::optional, or std::nullopt if
  *         denominator is zero.
  *****************************************************************************/
-std::optional<int> safeDivide(int numerator, int denominator)
+optional<int> safeDivide(int numerator, int denominator)
 {
     if (denominator == DIVISOR_ZERO)
     {
-        return std::nullopt;
+        return nullopt;
     }
     return numerator / denominator;
 }
@@ -43,24 +45,24 @@ std::optional<int> safeDivide(int numerator, int denominator)
  *****************************************************************************/
 int main()
 {
-    std::optional<int> result = safeDivide(10, 2);
+    optional<int> result = safeDivide(10, 2);
     if (result)
     {
-        std::cout << "10 / 2 = " << *result << "\n";
+        cout << "10 / 2 = " << *result << "\n";
     }
 
-    std::optional<int> badResult = safeDivide(10, DIVISOR_ZERO);
-    std::cout << "10 / 0 has value: " << badResult.has_value() << "\n";
+    optional<int> badResult = safeDivide(10, DIVISOR_ZERO);
+    cout << "10 / 0 has value: " << badResult.has_value() << "\n";
 
-    std::variant<int, std::string> variantValue = 5;
-    std::cout << "variant holds int: " << std::get<int>(variantValue) << "\n";
-    variantValue = std::string("now a string");
-    std::cout << "variant holds string: " << std::get<std::string>(variantValue) << "\n";
+    variant<int, string> variantValue = 5;
+    cout << "variant holds int: " << get<int>(variantValue) << "\n";
+    variantValue = string("now a string");
+    cout << "variant holds string: " << get<string>(variantValue) << "\n";
 
-    std::any anyValue = 42;
-    std::cout << "any holds int: " << std::any_cast<int>(anyValue) << "\n";
-    anyValue = std::string("now any holds a string");
-    std::cout << std::any_cast<std::string>(anyValue) << "\n";
+    any anyValue = 42;
+    cout << "any holds int: " << any_cast<int>(anyValue) << "\n";
+    anyValue = string("now any holds a string");
+    cout << any_cast<string>(anyValue) << "\n";
 
     return 0;
 }

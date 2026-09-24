@@ -26,5 +26,5 @@
 ## C++20 features (ranges, concepts)
 
 - C++20-specific material (concepts, ranges) has been moved to its own folder,
-  `29_Cpp20Features/`, since this toolchain (GCC 8.5.0) can't actually compile C++20 —
+  `30_Cpp20Features/`, since this toolchain (GCC 8.5.0) can't actually compile C++20 —
   see that folder's NOTES.md for the details and environment limitation.

@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 #define VEC_COMPONENTS 2
 
 // Demonstrates overloading +, ==, <<, and [] for a simple 2D vector class.
@@ -81,7 +83,7 @@ class Vector2D
  * Returns:
  *         Reference to the output stream, to allow chaining.
  *****************************************************************************/
-std::ostream &operator<<(std::ostream &out, const Vector2D &vec)
+ostream &operator<<(ostream &out, const Vector2D &vec)
 {
     out << "(" << vec.x() << ", " << vec.y() << ")";
     return out;
@@ -102,10 +104,10 @@ int main()
     Vector2D b(3.0, 4.0);
     Vector2D sum = a + b;
 
-    std::cout << "a = " << a << ", b = " << b << ", a + b = " << sum << "\n";
-    std::cout << "a == a? " << (a == a) << ", a == b? " << (a == b) << "\n";
+    cout << "a = " << a << ", b = " << b << ", a + b = " << sum << "\n";
+    cout << "a == a? " << (a == a) << ", a == b? " << (a == b) << "\n";
 
     sum[0] = 99.0;
-    std::cout << "sum after sum[0] = 99: " << sum << "\n";
+    cout << "sum after sum[0] = 99: " << sum << "\n";
     return 0;
 }

@@ -1,16 +1,18 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 // Demonstrates single inheritance, protected members, and constructor
 // chaining via a base class initializer list call.
 class Animal
 {
     protected:
-        std::string name;
+        string name;
 
     public:
         // Trivial constructor with initializer list.
-        Animal(const std::string &animalName) : name(animalName) {}
+        Animal(const string &animalName) : name(animalName) {}
 
         /*****************************************************************************
          * Name: speak
@@ -23,14 +25,14 @@ class Animal
          *****************************************************************************/
         void speak() const
         {
-            std::cout << name << " makes a sound\n";
+            cout << name << " makes a sound\n";
         }
 };
 
 class Dog : public Animal
 {
     private:
-        std::string breed;
+        string breed;
 
     public:
         /*****************************************************************************
@@ -47,7 +49,7 @@ class Dog : public Animal
          * Returns:
          *         None.
          *****************************************************************************/
-        Dog(const std::string &dogName, const std::string &dogBreed)
+        Dog(const string &dogName, const string &dogBreed)
             : Animal(dogName), breed(dogBreed)
         {
         }
@@ -63,7 +65,7 @@ class Dog : public Animal
          *****************************************************************************/
         void bark() const
         {
-            std::cout << name << " the " << breed << " says Woof!\n";
+            cout << name << " the " << breed << " says Woof!\n";
         }
 };
 

@@ -3,6 +3,8 @@
 
 #define FACTORIAL_INPUT 5
 
+using namespace std;
+
 /*****************************************************************************
  * Name: factorial
  *
@@ -38,17 +40,17 @@ constexpr long factorial(int n)
 template <typename T>
 void describe(const T &value)
 {
-    if constexpr (std::is_integral_v<T>)
+    if constexpr (is_integral_v<T>)
     {
-        std::cout << value << " is integral\n";
+        cout << value << " is integral\n";
     }
-    else if constexpr (std::is_floating_point_v<T>)
+    else if constexpr (is_floating_point_v<T>)
     {
-        std::cout << value << " is floating point\n";
+        cout << value << " is floating point\n";
     }
     else
     {
-        std::cout << "value is some other type\n";
+        cout << "value is some other type\n";
     }
 }
 
@@ -65,7 +67,7 @@ void describe(const T &value)
 int main()
 {
     constexpr long compileTimeFactorial = factorial(FACTORIAL_INPUT);
-    std::cout << FACTORIAL_INPUT << "! = " << compileTimeFactorial << " (computed at compile time)\n";
+    cout << FACTORIAL_INPUT << "! = " << compileTimeFactorial << " (computed at compile time)\n";
 
     describe(42);
     describe(3.14);

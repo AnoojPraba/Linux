@@ -1,21 +1,23 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Factory Method: create notifications without exposing the concrete class.
 class Notification
 {
 public:
     virtual ~Notification() = default;
-    virtual void send(const std::string& message) const = 0;
+    virtual void send(const string& message) const = 0;
 };
 
 class EmailNotification : public Notification
 {
 public:
     // trivial override
-    void send(const std::string& message) const override
+    void send(const string& message) const override
     {
-        std::cout << "Email: " << message << std::endl;
+        cout << "Email: " << message << endl;
     }
 };
 
@@ -23,9 +25,9 @@ class SmsNotification : public Notification
 {
 public:
     // trivial override
-    void send(const std::string& message) const override
+    void send(const string& message) const override
     {
-        std::cout << "SMS: " << message << std::endl;
+        cout << "SMS: " << message << endl;
     }
 };
 
@@ -48,13 +50,13 @@ enum class NotificationType
  * Returns:
  *         A unique_ptr owning the newly created Notification.
  *****************************************************************************/
-std::unique_ptr<Notification> createNotification(NotificationType type)
+unique_ptr<Notification> createNotification(NotificationType type)
 {
     if (type == NotificationType::EMAIL)
     {
-        return std::make_unique<EmailNotification>();
+        return make_unique<EmailNotification>();
     }
-    return std::make_unique<SmsNotification>();
+    return make_unique<SmsNotification>();
 }
 
 /*****************************************************************************

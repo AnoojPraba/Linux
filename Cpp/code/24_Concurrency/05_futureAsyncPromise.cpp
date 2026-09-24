@@ -5,6 +5,8 @@
 #define OPERAND_A 6
 #define OPERAND_B 7
 
+using namespace std;
+
 /*****************************************************************************
  * Name: multiply
  *
@@ -37,7 +39,7 @@ int multiply(int a, int b)
  * Returns:
  *         None.
  *****************************************************************************/
-void produceViaPromise(std::promise<int> resultPromise)
+void produceViaPromise(promise<int> resultPromise)
 {
     resultPromise.set_value(multiply(OPERAND_A, OPERAND_B));
 }
@@ -55,13 +57,13 @@ void produceViaPromise(std::promise<int> resultPromise)
  *****************************************************************************/
 int main()
 {
-    std::future<int> asyncResult = std::async(std::launch::async, multiply, OPERAND_A, OPERAND_B);
-    std::cout << "async result = " << asyncResult.get() << "\n";
+    future<int> asyncResult = async(launch::async, multiply, OPERAND_A, OPERAND_B);
+    cout << "async result = " << asyncResult.get() << "\n";
 
-    std::promise<int> promise;
-    std::future<int> promiseResult = promise.get_future();
-    std::thread producerThread(produceViaPromise, std::move(promise));
-    std::cout << "promise result = " << promiseResult.get() << "\n";
+    promise<int> promise;
+    future<int> promiseResult = promise.get_future();
+    thread producerThread(produceViaPromise, std::move(promise));
+    cout << "promise result = " << promiseResult.get() << "\n";
     producerThread.join();
 
     return 0;

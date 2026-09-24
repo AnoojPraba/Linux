@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 // Iterator: traverse a playlist without exposing its internal storage.
 class Playlist
 {
@@ -18,7 +20,7 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void addSong(const std::string& title)
+    void addSong(const string& title)
     {
         songs.push_back(title);
     }
@@ -27,7 +29,7 @@ public:
     {
     public:
         // trivial constructor
-        Iterator(const std::vector<std::string>& songs, size_t index)
+        Iterator(const vector<string>& songs, size_t index)
             : songs(songs), index(index) {}
 
         // trivial
@@ -43,13 +45,13 @@ public:
         }
 
         // trivial
-        const std::string& operator*() const
+        const string& operator*() const
         {
             return songs[index];
         }
 
     private:
-        const std::vector<std::string>& songs;
+        const vector<string>& songs;
         size_t index;
     };
 
@@ -66,7 +68,7 @@ public:
     }
 
 private:
-    std::vector<std::string> songs;
+    vector<string> songs;
 };
 
 /*****************************************************************************
@@ -88,7 +90,7 @@ int main()
 
     for (const auto& song : playlist)
     {
-        std::cout << "Now playing: " << song << std::endl;
+        cout << "Now playing: " << song << endl;
     }
     return 0;
 }

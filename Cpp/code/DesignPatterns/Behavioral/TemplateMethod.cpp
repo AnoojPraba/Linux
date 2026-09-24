@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Template Method: fixed document export skeleton, customizable per format.
 class DocumentExporter
 {
@@ -27,7 +29,7 @@ protected:
     // shared step, same for every format
     void openFile() const
     {
-        std::cout << "Opening output file" << std::endl;
+        cout << "Opening output file" << endl;
     }
 
     virtual void writeBody() const = 0;
@@ -35,7 +37,7 @@ protected:
     // shared step, same for every format
     void closeFile() const
     {
-        std::cout << "Closing output file" << std::endl;
+        cout << "Closing output file" << endl;
     }
 };
 
@@ -45,7 +47,7 @@ protected:
     // trivial override
     void writeBody() const override
     {
-        std::cout << "Writing body as PDF content" << std::endl;
+        cout << "Writing body as PDF content" << endl;
     }
 };
 
@@ -55,7 +57,7 @@ protected:
     // trivial override
     void writeBody() const override
     {
-        std::cout << "Writing body as HTML content" << std::endl;
+        cout << "Writing body as HTML content" << endl;
     }
 };
 

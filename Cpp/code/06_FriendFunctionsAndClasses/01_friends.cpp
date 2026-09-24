@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Demonstrates a friend function and a friend class, both granted access to
 // a class's private members.
 class Box
@@ -54,7 +56,7 @@ class BoxInspector
          *****************************************************************************/
         void report(const Box &box) const
         {
-            std::cout << "BoxInspector sees private width: " << box.width << "\n";
+            cout << "BoxInspector sees private width: " << box.width << "\n";
         }
 };
 
@@ -71,7 +73,7 @@ class BoxInspector
 int main()
 {
     Box box = Box::create(5.5);
-    std::cout << "getWidth (friend function): " << getWidth(box) << "\n";
+    cout << "getWidth (friend function): " << getWidth(box) << "\n";
 
     BoxInspector inspector;
     inspector.report(box);

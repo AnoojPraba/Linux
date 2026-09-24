@@ -2,6 +2,8 @@
 
 #define PADDING_VALUE 42
 
+using namespace std;
+
 // Instruments every special member function so construction/copy/move activity is
 // visible on stdout.
 class Traced
@@ -9,36 +11,36 @@ class Traced
 public:
     Traced() : payload(PADDING_VALUE)
     {
-        std::cout << "  Traced() default construct\n";
+        cout << "  Traced() default construct\n";
     }
 
     Traced(const Traced &other) : payload(other.payload)
     {
-        std::cout << "  Traced(const Traced&) copy construct\n";
+        cout << "  Traced(const Traced&) copy construct\n";
     }
 
     Traced(Traced &&other) noexcept : payload(other.payload)
     {
-        std::cout << "  Traced(Traced&&) move construct\n";
+        cout << "  Traced(Traced&&) move construct\n";
     }
 
     Traced &operator=(const Traced &other)
     {
         payload = other.payload;
-        std::cout << "  operator=(const Traced&) copy assign\n";
+        cout << "  operator=(const Traced&) copy assign\n";
         return *this;
     }
 
     Traced &operator=(Traced &&other) noexcept
     {
         payload = other.payload;
-        std::cout << "  operator=(Traced&&) move assign\n";
+        cout << "  operator=(Traced&&) move assign\n";
         return *this;
     }
 
     ~Traced()
     {
-        std::cout << "  ~Traced() destruct\n";
+        cout << "  ~Traced() destruct\n";
     }
 
 private:
@@ -81,7 +83,7 @@ Traced makeViaTemporary()
 Traced makeViaNamedLocal()
 {
     Traced local;
-    std::cout << "  (about to return named local)\n";
+    cout << "  (about to return named local)\n";
     return local;
 }
 
@@ -89,11 +91,11 @@ Traced makeViaNamedLocal()
  * Name: makeViaMovedLocal
  *
  * Description:
- *         Same as makeViaNamedLocal, but explicitly std::move's the return
- *         value. This DEFEATS NRVO: std::move casts the named local to an
+ *         Same as makeViaNamedLocal, but explicitly move's the return
+ *         value. This DEFEATS NRVO: move casts the named local to an
  *         xvalue, so the compiler can no longer treat it as the elidable
  *         "return a local variable" pattern and must fall back to the move
- *         constructor. This is why std::move on a return statement is
+ *         constructor. This is why move on a return statement is
  *         usually a pessimization - it turns a potential zero-copy elision
  *         into a guaranteed move.
  *
@@ -118,13 +120,13 @@ Traced makeViaMovedLocal()
  *****************************************************************************/
 int main()
 {
-    std::cout << "-- makeViaTemporary (guaranteed elision in C++17) --\n";
+    cout << "-- makeViaTemporary (guaranteed elision in C++17) --\n";
     Traced fromTemporary = makeViaTemporary();
 
-    std::cout << "-- makeViaNamedLocal (NRVO likely, not guaranteed) --\n";
+    cout << "-- makeViaNamedLocal (NRVO likely, not guaranteed) --\n";
     Traced fromNamedLocal = makeViaNamedLocal();
 
-    std::cout << "-- makeViaMovedLocal (std::move defeats NRVO) --\n";
+    cout << "-- makeViaMovedLocal (move defeats NRVO) --\n";
     Traced fromMovedLocal = makeViaMovedLocal();
 
     (void)fromTemporary;

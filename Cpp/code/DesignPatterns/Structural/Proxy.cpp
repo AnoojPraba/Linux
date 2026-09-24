@@ -1,6 +1,8 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
 // Proxy: a lazily-loaded, access-controlled stand-in for a large image.
 class Image
 {
@@ -23,19 +25,19 @@ public:
      *         filename : path of the image file to load.
      *
      *****************************************************************************/
-    explicit RealImage(const std::string& filename) : filename(filename)
+    explicit RealImage(const string& filename) : filename(filename)
     {
-        std::cout << "Loading image from disk: " << filename << std::endl;
+        cout << "Loading image from disk: " << filename << endl;
     }
 
     // trivial override
     void display() const override
     {
-        std::cout << "Displaying " << filename << std::endl;
+        cout << "Displaying " << filename << endl;
     }
 
 private:
-    std::string filename;
+    string filename;
 };
 
 // Proxy that defers construction of the RealImage until display() is called.
@@ -43,7 +45,7 @@ class ImageProxy : public Image
 {
 public:
     // trivial constructor
-    explicit ImageProxy(const std::string& filename) : filename(filename) {}
+    explicit ImageProxy(const string& filename) : filename(filename) {}
 
     /*****************************************************************************
      * Name: display
@@ -59,14 +61,14 @@ public:
     {
         if (!realImage)
         {
-            realImage = std::make_unique<RealImage>(filename);
+            realImage = make_unique<RealImage>(filename);
         }
         realImage->display();
     }
 
 private:
-    std::string filename;
-    mutable std::unique_ptr<RealImage> realImage;
+    string filename;
+    mutable unique_ptr<RealImage> realImage;
 };
 
 /*****************************************************************************
@@ -82,7 +84,7 @@ private:
 int main()
 {
     ImageProxy proxy("landscape.png");
-    std::cout << "Proxy created, image not yet loaded." << std::endl;
+    cout << "Proxy created, image not yet loaded." << endl;
     proxy.display();
     proxy.display();
     return 0;

@@ -2,6 +2,8 @@
 #include <string_view>
 #include <string>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: startsWith
  *
@@ -17,7 +19,7 @@
  * Returns:
  *         true if text begins with prefix, false otherwise.
  *****************************************************************************/
-bool startsWith(std::string_view text, std::string_view prefix)
+bool startsWith(string_view text, string_view prefix)
 {
     return text.substr(0, prefix.size()) == prefix;
 }
@@ -35,17 +37,17 @@ bool startsWith(std::string_view text, std::string_view prefix)
  *****************************************************************************/
 int main()
 {
-    std::string owned = "hello, world";
-    std::string_view view = owned;
+    string owned = "hello, world";
+    string_view view = owned;
 
-    std::cout << "view = " << view << "\n";
-    std::cout << "startsWith(owned, \"hello\") = " << startsWith(owned, "hello") << "\n";
-    std::cout << "startsWith(\"literal text\", \"lit\") = " << startsWith("literal text", "lit") << "\n";
+    cout << "view = " << view << "\n";
+    cout << "startsWith(owned, \"hello\") = " << startsWith(owned, "hello") << "\n";
+    cout << "startsWith(\"literal text\", \"lit\") = " << startsWith("literal text", "lit") << "\n";
 
     // note: string_view can dangle if the underlying storage is destroyed or
     // reallocated while the view is still in use (e.g. viewing a temporary).
-    std::string_view firstWord = view.substr(0, view.find(','));
-    std::cout << "firstWord = " << firstWord << "\n";
+    string_view firstWord = view.substr(0, view.find(','));
+    cout << "firstWord = " << firstWord << "\n";
 
     return 0;
 }

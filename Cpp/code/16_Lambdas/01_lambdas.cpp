@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
 #define THRESHOLD 5
 
 /*****************************************************************************
@@ -16,28 +18,28 @@
  *****************************************************************************/
 int main()
 {
-    std::vector<int> numbers = {1, 6, 3, 8, 2, 9};
+    vector<int> numbers = {1, 6, 3, 8, 2, 9};
 
     auto isAboveThreshold = [](int n) { return n > THRESHOLD; };
     int countAbove = static_cast<int>(
-        std::count_if(numbers.begin(), numbers.end(), isAboveThreshold));
-    std::cout << "count above " << THRESHOLD << ": " << countAbove << "\n";
+        count_if(numbers.begin(), numbers.end(), isAboveThreshold));
+    cout << "count above " << THRESHOLD << ": " << countAbove << "\n";
 
     int total = 0;
-    std::for_each(numbers.begin(), numbers.end(), [&total](int n) { total += n; });
-    std::cout << "sum via capture-by-reference lambda: " << total << "\n";
+    for_each(numbers.begin(), numbers.end(), [&total](int n) { total += n; });
+    cout << "sum via capture-by-reference lambda: " << total << "\n";
 
     int multiplier = 10;
     auto scale = [multiplier](int n) { return n * multiplier; };
-    std::cout << "scale(3) with capture-by-value multiplier: " << scale(3) << "\n";
+    cout << "scale(3) with capture-by-value multiplier: " << scale(3) << "\n";
 
-    std::sort(numbers.begin(), numbers.end(),
+    sort(numbers.begin(), numbers.end(),
               [](int a, int b) { return a > b; });
-    std::cout << "sorted descending: ";
+    cout << "sorted descending: ";
     for (int n : numbers)
     {
-        std::cout << n << " ";
+        cout << n << " ";
     }
-    std::cout << "\n";
+    cout << "\n";
     return 0;
 }

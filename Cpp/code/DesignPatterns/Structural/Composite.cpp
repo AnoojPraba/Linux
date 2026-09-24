@@ -4,6 +4,8 @@
 
 #define INDENT_SPACES 2
 
+using namespace std;
+
 // Composite: files and folders share a uniform interface.
 class FileSystemItem
 {
@@ -16,7 +18,7 @@ class File : public FileSystemItem
 {
 public:
     // trivial constructor
-    explicit File(const std::string& name) : name(name) {}
+    explicit File(const string& name) : name(name) {}
 
     /*****************************************************************************
      * Name: print
@@ -32,18 +34,18 @@ public:
      *****************************************************************************/
     void print(int depth) const override
     {
-        std::cout << std::string(depth * INDENT_SPACES, ' ') << "File: " << name << std::endl;
+        cout << string(depth * INDENT_SPACES, ' ') << "File: " << name << endl;
     }
 
 private:
-    std::string name;
+    string name;
 };
 
 class Folder : public FileSystemItem
 {
 public:
     // trivial constructor
-    explicit Folder(const std::string& name) : name(name) {}
+    explicit Folder(const string& name) : name(name) {}
 
     /*****************************************************************************
      * Name: add
@@ -57,7 +59,7 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void add(std::unique_ptr<FileSystemItem> item)
+    void add(unique_ptr<FileSystemItem> item)
     {
         children.push_back(std::move(item));
     }
@@ -76,8 +78,8 @@ public:
      *****************************************************************************/
     void print(int depth) const override
     {
-        std::cout << std::string(depth * INDENT_SPACES, ' ') << "Folder: " << name
-                  << std::endl;
+        cout << string(depth * INDENT_SPACES, ' ') << "Folder: " << name
+                  << endl;
         for (const auto& child : children)
         {
             child->print(depth + 1);
@@ -85,8 +87,8 @@ public:
     }
 
 private:
-    std::string name;
-    std::vector<std::unique_ptr<FileSystemItem>> children;
+    string name;
+    vector<unique_ptr<FileSystemItem>> children;
 };
 
 /*****************************************************************************
@@ -101,11 +103,11 @@ private:
  *****************************************************************************/
 int main()
 {
-    auto root = std::make_unique<Folder>("root");
-    root->add(std::make_unique<File>("readme.txt"));
+    auto root = make_unique<Folder>("root");
+    root->add(make_unique<File>("readme.txt"));
 
-    auto docs = std::make_unique<Folder>("docs");
-    docs->add(std::make_unique<File>("design.md"));
+    auto docs = make_unique<Folder>("docs");
+    docs->add(make_unique<File>("design.md"));
     root->add(std::move(docs));
 
     root->print(0);

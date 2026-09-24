@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Singleton: a logger that only ever has one instance.
 class Logger
 {
@@ -23,9 +25,9 @@ public:
      * Returns:
      *         None.
      *****************************************************************************/
-    void log(const std::string& message)
+    void log(const string& message)
     {
-        std::cout << "[LOG] " << message << std::endl;
+        cout << "[LOG] " << message << endl;
     }
 
     Logger(const Logger&) = delete;
@@ -51,7 +53,7 @@ int main()
     Logger& second = Logger::instance();
     if (&first == &second)
     {
-        std::cout << "Both references point to the same Logger instance." << std::endl;
+        cout << "Both references point to the same Logger instance." << endl;
     }
     return 0;
 }

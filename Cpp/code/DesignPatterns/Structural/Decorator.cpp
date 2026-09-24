@@ -4,13 +4,15 @@
 #define MILK_COST 0.50
 #define SUGAR_COST 0.20
 
+using namespace std;
+
 // Decorator: add condiments to a coffee without modifying the base class.
 class Coffee
 {
 public:
     virtual ~Coffee() = default;
     virtual double cost() const = 0;
-    virtual std::string description() const = 0;
+    virtual string description() const = 0;
 };
 
 class PlainCoffee : public Coffee
@@ -23,7 +25,7 @@ public:
     }
 
     // trivial override
-    std::string description() const override
+    string description() const override
     {
         return "Coffee";
     }
@@ -33,17 +35,17 @@ class CoffeeDecorator : public Coffee
 {
 public:
     // trivial constructor
-    explicit CoffeeDecorator(std::unique_ptr<Coffee> wrapped) : wrapped(std::move(wrapped)) {}
+    explicit CoffeeDecorator(unique_ptr<Coffee> wrapped) : wrapped(std::move(wrapped)) {}
 
 protected:
-    std::unique_ptr<Coffee> wrapped;
+    unique_ptr<Coffee> wrapped;
 };
 
 class MilkDecorator : public CoffeeDecorator
 {
 public:
     // trivial constructor
-    explicit MilkDecorator(std::unique_ptr<Coffee> wrapped)
+    explicit MilkDecorator(unique_ptr<Coffee> wrapped)
         : CoffeeDecorator(std::move(wrapped)) {}
 
     // trivial override
@@ -53,7 +55,7 @@ public:
     }
 
     // trivial override
-    std::string description() const override
+    string description() const override
     {
         return wrapped->description() + " + Milk";
     }
@@ -63,7 +65,7 @@ class SugarDecorator : public CoffeeDecorator
 {
 public:
     // trivial constructor
-    explicit SugarDecorator(std::unique_ptr<Coffee> wrapped)
+    explicit SugarDecorator(unique_ptr<Coffee> wrapped)
         : CoffeeDecorator(std::move(wrapped)) {}
 
     // trivial override
@@ -73,7 +75,7 @@ public:
     }
 
     // trivial override
-    std::string description() const override
+    string description() const override
     {
         return wrapped->description() + " + Sugar";
     }
@@ -91,10 +93,10 @@ public:
  *****************************************************************************/
 int main()
 {
-    std::unique_ptr<Coffee> order = std::make_unique<PlainCoffee>();
-    order = std::make_unique<MilkDecorator>(std::move(order));
-    order = std::make_unique<SugarDecorator>(std::move(order));
+    unique_ptr<Coffee> order = make_unique<PlainCoffee>();
+    order = make_unique<MilkDecorator>(std::move(order));
+    order = make_unique<SugarDecorator>(std::move(order));
 
-    std::cout << order->description() << " costs $" << order->cost() << std::endl;
+    cout << order->description() << " costs $" << order->cost() << endl;
     return 0;
 }

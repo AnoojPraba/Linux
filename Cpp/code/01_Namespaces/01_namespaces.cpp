@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Demonstrates namespace basics, nested namespaces, and using declarations.
 namespace Geometry
 {
@@ -51,11 +53,11 @@ namespace Geometry
  *****************************************************************************/
 int main()
 {
-    std::cout << "Geometry::unitSquareArea() = " << Geometry::unitSquareArea() << "\n";
-    std::cout << "Geometry::ThreeD::unitCubeVolume() = "
+    cout << "Geometry::unitSquareArea() = " << Geometry::unitSquareArea() << "\n";
+    cout << "Geometry::ThreeD::unitCubeVolume() = "
               << Geometry::ThreeD::unitCubeVolume() << "\n";
 
     using Geometry::unitSquareArea;
-    std::cout << "unitSquareArea() via using declaration = " << unitSquareArea() << "\n";
+    cout << "unitSquareArea() via using declaration = " << unitSquareArea() << "\n";
     return 0;
 }

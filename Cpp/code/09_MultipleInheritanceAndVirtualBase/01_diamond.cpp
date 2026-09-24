@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 // Demonstrates the diamond problem with multiple inheritance, and its fix
 // using virtual inheritance.
 class Device
@@ -34,7 +36,7 @@ class Scanner : virtual public Device
          *****************************************************************************/
         void scan() const
         {
-            std::cout << "Scanner (device " << id << ") scanning\n";
+            cout << "Scanner (device " << id << ") scanning\n";
         }
 };
 
@@ -55,7 +57,7 @@ class Printer : virtual public Device
          *****************************************************************************/
         void print() const
         {
-            std::cout << "Printer (device " << id << ") printing\n";
+            cout << "Printer (device " << id << ") printing\n";
         }
 };
 
@@ -98,6 +100,6 @@ int main()
     MultiFunctionPrinter mfp(7);
     mfp.scan();
     mfp.print();
-    std::cout << "shared device id via mfp.getId(): " << mfp.getId() << "\n";
+    cout << "shared device id via mfp.getId(): " << mfp.getId() << "\n";
     return 0;
 }

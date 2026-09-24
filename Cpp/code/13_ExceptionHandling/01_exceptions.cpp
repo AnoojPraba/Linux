@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 #define MIN_DIVISOR 0
 
-// Custom exception class demonstrating deriving from std::exception.
-class DivideByZeroException : public std::exception
+// Custom exception class demonstrating deriving from exception.
+class DivideByZeroException : public exception
 {
     private:
-        std::string message;
+        string message;
 
     public:
         // Trivial constructor with initializer list.
-        DivideByZeroException(const std::string &msg) : message(msg) {}
+        DivideByZeroException(const string &msg) : message(msg) {}
 
         // Trivial override of what().
         const char *what() const noexcept override { return message.c_str(); }
@@ -22,14 +24,14 @@ class DivideByZeroException : public std::exception
 class UnwindTracer
 {
     private:
-        std::string label;
+        string label;
 
     public:
         // Trivial constructor with initializer list.
-        UnwindTracer(const std::string &tracerLabel) : label(tracerLabel) {}
+        UnwindTracer(const string &tracerLabel) : label(tracerLabel) {}
 
         // Trivial destructor that proves unwinding occurred.
-        ~UnwindTracer() { std::cout << "unwinding: " << label << " destroyed\n"; }
+        ~UnwindTracer() { cout << "unwinding: " << label << " destroyed\n"; }
 };
 
 /*****************************************************************************
@@ -70,16 +72,16 @@ int main()
 {
     try
     {
-        std::cout << "10 / 2 = " << divide(10, 2) << "\n";
-        std::cout << "10 / 0 = " << divide(10, 0) << "\n";
+        cout << "10 / 2 = " << divide(10, 2) << "\n";
+        cout << "10 / 0 = " << divide(10, 0) << "\n";
     }
     catch (const DivideByZeroException &e)
     {
-        std::cout << "caught exception: " << e.what() << "\n";
+        cout << "caught exception: " << e.what() << "\n";
     }
-    catch (const std::exception &e)
+    catch (const exception &e)
     {
-        std::cout << "caught unexpected exception: " << e.what() << "\n";
+        cout << "caught unexpected exception: " << e.what() << "\n";
     }
     return 0;
 }

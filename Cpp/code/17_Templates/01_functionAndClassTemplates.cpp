@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 // Demonstrates a function template and a class template.
 
 /*****************************************************************************
@@ -65,15 +67,15 @@ class Box
  *****************************************************************************/
 int main()
 {
-    std::cout << "maxOf(3, 7) = " << maxOf(3, 7) << "\n";
-    std::cout << "maxOf(2.5, 1.5) = " << maxOf(2.5, 1.5) << "\n";
+    cout << "maxOf(3, 7) = " << maxOf(3, 7) << "\n";
+    cout << "maxOf(2.5, 1.5) = " << maxOf(2.5, 1.5) << "\n";
 
     Box<int> intBox(42);
-    Box<std::string> stringBox("hello");
-    std::cout << "intBox holds " << intBox.get() << "\n";
-    std::cout << "stringBox holds " << stringBox.get() << "\n";
+    Box<string> stringBox("hello");
+    cout << "intBox holds " << intBox.get() << "\n";
+    cout << "stringBox holds " << stringBox.get() << "\n";
 
     intBox.set(100);
-    std::cout << "intBox now holds " << intBox.get() << "\n";
+    cout << "intBox now holds " << intBox.get() << "\n";
     return 0;
 }

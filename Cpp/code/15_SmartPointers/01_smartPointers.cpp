@@ -2,24 +2,26 @@
 #include <memory>
 #include <string>
 
+using namespace std;
+
 // Demonstrates unique_ptr, shared_ptr, and weak_ptr.
 class Resource
 {
     private:
-        std::string label;
+        string label;
 
     public:
         // Trivial constructor with initializer list.
-        Resource(const std::string &resourceLabel) : label(resourceLabel)
+        Resource(const string &resourceLabel) : label(resourceLabel)
         {
-            std::cout << "Resource " << label << " created\n";
+            cout << "Resource " << label << " created\n";
         }
 
         // Trivial destructor.
-        ~Resource() { std::cout << "Resource " << label << " destroyed\n"; }
+        ~Resource() { cout << "Resource " << label << " destroyed\n"; }
 
         // Trivial getter.
-        const std::string &getLabel() const { return label; }
+        const string &getLabel() const { return label; }
 };
 
 /*****************************************************************************
@@ -35,16 +37,16 @@ class Resource
  * Returns:
  *         None.
  *****************************************************************************/
-void inspectWeak(const std::weak_ptr<Resource> &weakRef)
+void inspectWeak(const weak_ptr<Resource> &weakRef)
 {
-    std::shared_ptr<Resource> locked = weakRef.lock();
+    shared_ptr<Resource> locked = weakRef.lock();
     if (locked)
     {
-        std::cout << "weak_ptr still alive: " << locked->getLabel() << "\n";
+        cout << "weak_ptr still alive: " << locked->getLabel() << "\n";
     }
     else
     {
-        std::cout << "weak_ptr has expired\n";
+        cout << "weak_ptr has expired\n";
     }
 }
 
@@ -60,15 +62,15 @@ void inspectWeak(const std::weak_ptr<Resource> &weakRef)
  *****************************************************************************/
 int main()
 {
-    std::unique_ptr<Resource> unique = std::make_unique<Resource>("Unique");
-    std::cout << "unique holds: " << unique->getLabel() << "\n";
+    unique_ptr<Resource> unique = make_unique<Resource>("Unique");
+    cout << "unique holds: " << unique->getLabel() << "\n";
 
-    std::weak_ptr<Resource> weakRef;
+    weak_ptr<Resource> weakRef;
     {
-        std::shared_ptr<Resource> shared1 = std::make_shared<Resource>("Shared");
-        std::shared_ptr<Resource> shared2 = shared1;
+        shared_ptr<Resource> shared1 = make_shared<Resource>("Shared");
+        shared_ptr<Resource> shared2 = shared1;
         weakRef = shared1;
-        std::cout << "use_count = " << shared1.use_count() << "\n";
+        cout << "use_count = " << shared1.use_count() << "\n";
         inspectWeak(weakRef);
     }
     inspectWeak(weakRef);

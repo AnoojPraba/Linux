@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 
+using namespace std;
+
 /*****************************************************************************
  * Name: main
  *
@@ -16,21 +18,21 @@
  *****************************************************************************/
 int main()
 {
-    std::vector<int> numbers = { 1, 2, 3, 4, 5 };
+    vector<int> numbers = { 1, 2, 3, 4, 5 };
     for (int value : numbers)
     {
-        std::cout << "value = " << value << "\n";
+        cout << "value = " << value << "\n";
     }
 
-    std::map<std::string, int> ages = { { "alice", 30 }, { "bob", 25 } };
+    map<string, int> ages = { { "alice", 30 }, { "bob", 25 } };
     for (const auto &[name, age] : ages)
     {
-        std::cout << name << " is " << age << " years old\n";
+        cout << name << " is " << age << " years old\n";
     }
 
-    std::pair<int, int> minMax = { numbers.front(), numbers.back() };
+    pair<int, int> minMax = { numbers.front(), numbers.back() };
     auto [minValue, maxValue] = minMax;
-    std::cout << "minValue = " << minValue << ", maxValue = " << maxValue << "\n";
+    cout << "minValue = " << minValue << ", maxValue = " << maxValue << "\n";
 
     return 0;
 }
