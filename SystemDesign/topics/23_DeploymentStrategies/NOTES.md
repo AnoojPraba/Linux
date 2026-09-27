@@ -11,7 +11,7 @@
 ## Canary deployment
 
 - Roll the new version out to a small percentage of traffic/users first,
-  monitor error rates/latency (see `22_ObservabilityLogsMetricsTraces`),
+  monitor error rates/latency (see `21_ObservabilityLogsMetricsTraces`),
   and gradually increase the percentage if healthy - or roll back
   immediately if not.
 - Lower blast radius than an all-at-once deploy.
@@ -34,6 +34,6 @@
 ## Interview framing
 
 - These strategies reduce the blast radius of a bad deploy - pairs
-  naturally with `20_ResiliencePatterns` (fail fast / fall back) and
-  `22_ObservabilityLogsMetricsTraces` (you need metrics to know a canary
+  naturally with `19_ResiliencePatterns` (fail fast / fall back) and
+  `21_ObservabilityLogsMetricsTraces` (you need metrics to know a canary
   is unhealthy before rolling it out further).

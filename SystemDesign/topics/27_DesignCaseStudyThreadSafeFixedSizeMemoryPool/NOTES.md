@@ -11,7 +11,7 @@ focuses on the design discussion and tradeoffs, not a code listing.
 - What's the expected allocation/deallocation rate? This is usually *the*
   reason to build a custom pool in the first place - avoiding
   `malloc`/`free` overhead and fragmentation in a hot path (see
-  `../26_DesignCaseStudyHFTOrderBookMatchingEngine` for a concrete
+  `../25_DesignCaseStudyHFTOrderBookMatchingEngine` for a concrete
   consumer of this pattern).
 - Is each pool instance used by a single thread (thread-local pools, no
   synchronization needed at all), or is one pool shared across many

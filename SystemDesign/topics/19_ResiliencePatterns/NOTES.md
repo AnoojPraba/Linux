@@ -38,5 +38,5 @@
 
 - These patterns are what actually makes messaging/event-driven systems
   (`09_MessageQueuesAndEventDrivenArchitecture`) and service-to-service
-  calls behind an `21_ServiceDiscoveryAndAPIGateway` gateway survive
+  calls behind an `20_ServiceDiscoveryAndAPIGateway` gateway survive
   partial failures gracefully instead of cascading.
