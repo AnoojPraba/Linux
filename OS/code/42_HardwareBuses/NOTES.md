@@ -113,3 +113,26 @@ which are OS/language-level concepts and so are fully runnable here.
   multi-device, on-board communication; PCIe is a completely different
   scale - a switched, packet-based interconnect for high-bandwidth devices,
   closer in spirit to a small network than to a simple wire.
+
+## HAL (Hardware Abstraction Layer) and BSP (Board Support Package)
+
+- A **HAL** provides a consistent software API (e.g. `uart_write()`, `gpio_set()`) that
+  hides a specific microcontroller family's register-level details, so application/
+  business logic can be written once and ported across hardware by swapping the HAL
+  implementation underneath. `../../C_Basics/code/16_ConstVolatile` is exactly the kind
+  of direct memory-mapped register access (`volatile` pointers into device registers)
+  that a HAL wraps and hides - the HAL's `uart_write()` implementation is doing that
+  register-poking internally so callers never have to.
+- A **BSP** is one level up/alongside the HAL: board-specific configuration and
+  initialization code for a SPECIFIC physical board - which pins are wired to which
+  peripherals, board-specific clock configuration, which sensors/actuators are
+  actually present on that board.
+- HAL = chip-family-level abstraction (reusable across every board using that
+  microcontroller family); BSP = specific-board-level configuration (one per physical
+  board design, even if several boards share the same microcontroller and HAL). You
+  might reuse the same HAL across many different boards built on the same chip family,
+  but each distinct board still needs its own BSP.
+- This is exactly the layering vendor SDKs provide: STM32 HAL (chip-family register
+  abstraction) plus per-board init code, ESP-IDF's board-specific `sdkconfig`, and
+  Zephyr's device tree model (a data-driven description of a specific board's wiring/
+  peripherals, compiled against a chip-family driver/HAL layer).

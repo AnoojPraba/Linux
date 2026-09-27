@@ -22,8 +22,8 @@
   usually approximated via at-least-once delivery plus idempotency keys on
   the consumer side rather than achieved as a true primitive.
 - This is the same delivery-semantics tradeoff covered from the RPC angle
-  in `../../OS/code/51_RpcMechanisms/NOTES.md` and
-  `../../Cpp/code/31_RpcMechanismsCpp` - same at-most-once/at-least-once/
+  in `../../OS/code/56_RpcMechanisms/NOTES.md` and
+  `../../Cpp/code/32_RpcMechanismsCpp` - same at-most-once/at-least-once/
   exactly-once vocabulary, just applied to async messaging instead of a
   synchronous remote call.
 

@@ -26,8 +26,8 @@
   historically (needs gRPC-Web/a proxy) and is harder to casually inspect/
   debug than plain JSON over REST.
 - Same RPC-over-the-wire fundamentals (marshalling, dispatch, sync vs async
-  calls) as the hand-rolled demo in `../../OS/code/51_RpcMechanisms` and the
-  C++ walkthrough in `../../Cpp/code/31_RpcMechanismsCpp` - gRPC is a
+  calls) as the hand-rolled demo in `../../OS/code/56_RpcMechanisms` and the
+  C++ walkthrough in `../../Cpp/code/32_RpcMechanismsCpp` - gRPC is a
   production-grade, schema-driven realization of the same ideas.
 
 ## GraphQL
