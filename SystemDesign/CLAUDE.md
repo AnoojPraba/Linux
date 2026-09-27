@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Repository purpose
 
@@ -35,7 +36,8 @@ genuinely illustrative (most topics won't have one).
   `24_DeploymentStrategies`, `25_IdempotencyInDistributedSystems`,
   `26_DesignCaseStudyHFTOrderBookMatchingEngine`,
   `27_DesignCaseStudyConcurrentInMemoryKeyValueStore`,
-  `28_DesignCaseStudyThreadSafeFixedSizeMemoryPool`.
+  `28_DesignCaseStudyThreadSafeFixedSizeMemoryPool`,
+  `29_CommonInterviewQuestionsCheatSheet`.
   Topics `01`-`08` are the distributed-systems/database foundations; `09`-`12` cover
   messaging, API protocol choices, networking, and rate limiting; `13`-`15` are
   end-to-end design case studies that draw on all the earlier topics; `16` covers
@@ -48,7 +50,10 @@ genuinely illustrative (most topics won't have one).
   systems; `26`-`28` are further low-level-systems-design case studies in the same
   vein as `13`-`15` - an HFT order book/matching engine, a concurrent in-memory
   key-value store, and a thread-safe fixed-size memory pool - that lean more heavily
-  on mechanical-sympathy/concurrency-primitive concerns than the earlier case studies.
+  on mechanical-sympathy/concurrency-primitive concerns than the earlier case studies;
+  `29_CommonInterviewQuestionsCheatSheet` is a curated question bank of quick-fire
+  system-design interview questions organized by category, distinct from the full
+  end-to-end design walkthroughs in `13`-`15` and `26`-`28`.
   `09_MessageQueuesAndEventDrivenArchitecture` and `10_APIProtocolsRESTvsGRPCvsGraphQL`
   cross-reference the RPC/delivery-semantics material in `../OS/code/51_RpcMechanisms`
   and `../Cpp/code/31_RpcMechanismsCpp`.

@@ -6,7 +6,8 @@ take for example
 int x = 0;
 int f()
 {
-   return x; //eventhough function is called from g() which has a same variable redefined it sends the global variable value.
+   return x; //eventhough function is called from g() which has a same variable redefined
+   // it sends the global variable value.
 }
 int g()
 {

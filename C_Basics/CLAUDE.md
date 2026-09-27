@@ -1,6 +1,7 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Repository purpose
 
@@ -45,45 +46,67 @@ compilable.
   `38_BinaryTree`, `39_SelfBalancingTrees` (AVL insertion/rotations and full
   Red-Black insertion/lookup in code, since a black-height invariant gives
   red-black trees the same O(log n) worst-case lookup guarantee as AVL;
-  Red-Black deletion is intentionally left conceptual-only, since it is
-  notoriously intricate), `40_BTreeAndBPlusTree` (NOTES.md-only -
-  cross-references `../OS/code/54_FileSystemStructuresAndAllocation` and
+  now also has AVL deletion (`03_avlTreeDeletion.c`) and full Red-Black
+  deletion with the double-black fixup (`04_redBlackTreeDeletion.c`)),
+  `40_BTreeAndBPlusTree` (NOTES.md-only -
+  cross-references `../OS/code/56_FileSystemStructuresAndAllocation` and
   `../SystemDesign/topics/04_DatabaseIndexingAndQueryOptimization`),
   `41_Heap`, `42_UnionFind` (naive and union-by-rank/path-compression
   variants), `43_Graph`, `44_Trie`, `45_SegmentTreeAndFenwickTree`,
-  `46_DynamicProgramming`, and `47_SkipList`.
-  Folders `52`-`57` are a later batch covering senior/interview-level
-  language-level systems topics: `52_UndefinedBehaviorCatalog`,
-  `53_ItoaAtoiSafeParsing` (inserted right after `52_UndefinedBehaviorCatalog`,
-  before `54_MemoryAlignmentAndPadding` - safe bounded `atoi` and an
+  `46_DynamicProgramming`, and `47_Backtracking`/`48_GreedyAlgorithms`/
+  `49_SlidingWindowAndTwoPointer` (inserted right after `46_DynamicProgramming`,
+  before the old `47_SkipList`, shifting everything from there through the old
+  `67_GenericMacro` up by 3 in total): `47_Backtracking` (N-Queens, Sudoku
+  solver, permutations, subset-sum), `48_GreedyAlgorithms` (activity selection,
+  fractional knapsack, and a coin-change greedy demo that cross-references
+  `46_DynamicProgramming/02_knapsack.c` and `05_coinChangeMinCoins.c` to
+  contrast the greedy approach with the DP one), and
+  `49_SlidingWindowAndTwoPointer` (two-pointer pair-sum, fixed-window max sum,
+  longest-unique-substring). `50_SkipList`.
+  Folders `56`-`61` are a later batch covering senior/interview-level
+  language-level systems topics: `56_UndefinedBehaviorCatalog`,
+  `57_ItoaAtoiSafeParsing` (inserted right after `56_UndefinedBehaviorCatalog`,
+  before `58_MemoryAlignmentAndPadding` - safe bounded `atoi` and an
   arbitrary-base `itoa`, since both hinge on the signed-overflow-is-UB
-  background the preceding folder covers), `54_MemoryAlignmentAndPadding`,
-  `55_AlignedMallocFree` (inserted right after `54_MemoryAlignmentAndPadding`,
-  before `56_FunctionPointersAndCallbacks` - a hand-rolled `aligned_malloc`/
+  background the preceding folder covers), `58_MemoryAlignmentAndPadding`,
+  `59_AlignedMallocFree` (inserted right after `58_MemoryAlignmentAndPadding`,
+  before `60_FunctionPointersAndCallbacks` - a hand-rolled `aligned_malloc`/
   `aligned_free` using the bitmask alignment trick, cross-referencing
-  `../OS/code/38_FalseSharing` for the cache-line-alignment motivation),
-  `56_FunctionPointersAndCallbacks`, `57_StrictAliasing`.
-  `58`-`67` are a later batch covering debugging/build tooling and remaining
-  core-C topics: `58_MemmoveImplementation` (inserted right after
-  `57_StrictAliasing`, before `59_ExternC` - a hand-rolled `memmove` that
-  detects overlap direction, unlike `memcpy`), `59_ExternC` (a C++ caller
-  linking against a C-compiled TU), `60_SecurityDemos`,
-  `61_ThreadSanitizerDemo`, `62_GdbWorkflow` (buggy demo + gdb session
-  transcript in NOTES.md), `63_ValgrindAndAsan` (leak/use-after-free/
+  `../OS/code/39_FalseSharing` for the cache-line-alignment motivation),
+  `60_FunctionPointersAndCallbacks`, `61_StrictAliasing`.
+  `53_FixedPointArithmetic` (inserted right after `52_TimeAndMath`, before the
+  old `53_OpaquePointer` which shifted to `54_OpaquePointer` along with
+  everything through the old `71_GenericMacro`) covers Q16.16 fixed-point
+  conversion/add/sub/mul/div (with the multiply/divide rescaling gotcha) and
+  a fixed-point-vs-float comparison (determinism/no-FPU-required tradeoffs
+  vs floating point's dynamic range).
+  `62`-`71` are a later batch covering debugging/build tooling and remaining
+  core-C topics: `62_MemmoveImplementation` (inserted right after
+  `61_StrictAliasing`, before `63_ExternC` - a hand-rolled `memmove` that
+  detects overlap direction, unlike `memcpy`), `63_ExternC` (a C++ caller
+  linking against a C-compiled TU), `64_SecurityDemos`,
+  `65_ThreadSanitizerDemo`, `66_GdbWorkflow` (buggy demo + gdb session
+  transcript in NOTES.md), `67_ValgrindAndAsan` (leak/use-after-free/
   overflow demos, Valgrind vs ASan, plus a Helgrind-vs-ThreadSanitizer
-  NOTES.md section), `64_PerfAndStrace` (strace/ltrace/perf/`/usr/bin/time`
+  NOTES.md section), `68_PerfAndStrace` (strace/ltrace/perf/`/usr/bin/time`
   notes + a cache-friendly vs cache-unfriendly loop demo, plus a gprof
   NOTES.md section with real flat-profile output),
-  `65_CombinedDebuggingCaseStudy` (inserted right after `64_PerfAndStrace`,
-  before `66_CMakeIntroduction` - one small demo seeding both a heap
+  `69_CombinedDebuggingCaseStudy` (inserted right after `68_PerfAndStrace`,
+  before `71_CMakeIntroduction` - one small demo seeding both a heap
   buffer overflow and a data race, with a NOTES.md walkthrough tying
   together GDB/ASan/TSan/perf and matching the tool to the bug class), and
-  `66_CMakeIntroduction` (a minimal two-file CMake project - `CMakeLists.txt`
+  `71_CMakeIntroduction` (a minimal two-file CMake project - `CMakeLists.txt`
   building `01_hello.c`/`02_helper.c` - alongside NOTES.md on CMake
   vocabulary and why projects use it over hand-written Makefiles).
-  `67_GenericMacro` (NOTES.md-only deep dive on `_Generic` selection mechanics,
+  `72_CrossCompilationBasics` (inserted right after `71_CMakeIntroduction`,
+  before the old `71_GenericMacro` which shifted to `73_GenericMacro`) is a
+  NOTES.md-only topic covering cross-compilation vs this repo's own native
+  builds (x86_64 desktop and Raspberry Pi ARM, each with its own native gcc),
+  toolchain triplets, sysroots, CMake's `CMAKE_TOOLCHAIN_FILE`, and QEMU
+  emulation for testing cross-compiled binaries.
+  `73_GenericMacro` (NOTES.md-only deep dive on `_Generic` selection mechanics,
   since `31_Generics` already has the runnable `_Generic` demo). A dedicated
-  `PragmaPacking` folder was deliberately not created - `54_MemoryAlignmentAndPadding`
+  `PragmaPacking` folder was deliberately not created - `58_MemoryAlignmentAndPadding`
   already demonstrates `#pragma pack` directly, so a dedicated folder would just
   duplicate it.
   OS-internals topics (processes, threads, synchronization, scheduling, memory
@@ -91,6 +114,25 @@ compilable.
   static/shared libraries, etc.) have been split out into a separate sibling
   repo, `../OS/` (see `../OS/CLAUDE.md` and `../OS/code/`), since this repo is
   meant for core C-language/tooling topics only.
+  A later batch (bringing the total, before the `53_FixedPointArithmetic`/
+  `72_CrossCompilationBasics` additions, to `01_Loops` through
+  `71_GenericMacro`) added classic interview staples that were previously
+  missing: deletion operations for
+  `33_LinkedList`/`38_BinaryTree`/`39_SelfBalancingTrees`/`44_Trie` (which were
+  insert-only before), missing sorts in `12_Sorting` (bubble/selection/insertion/
+  counting/radix), circular linked lists, a standalone max-heap in `41_Heap`,
+  classic graph algorithms in `43_Graph` (topological sort, Kruskal's/Prim's MST,
+  Bellman-Ford, Floyd-Warshall), more bitwise tricks in `05_BitManipulation`
+  (set-bit counting, power-of-2 check, XOR swap/single-number/missing-number,
+  bit set/clear/toggle/check, bit reversal/rotation), more stack/tree/list
+  problems (valid parentheses, min-stack, LCA, tree diameter, invert/balanced/
+  symmetric checks, merge-sorted-lists, find-middle), and a new
+  `50_ClassicArrayAndStringProblems` folder (inserted right after
+  `49_SlidingWindowAndTwoPointer`, before the old `50_SkipList` which shifted to
+  `51_SkipList` along with everything after it) covering two-sum, palindrome/
+  anagram checks, merge-intervals, rotate-array, spiral-matrix, best-time-to-buy-
+  sell-stock, climbing-stairs, trapping-rain-water, and container-with-most-water.
+  The final layout runs contiguously `01_Loops` through `73_GenericMacro`.
 - `Notes/` — numbered `.c` files that double as written notes/explanations (e.g.
   `04_MacroPreprocessor.c`, `06_Error_Signals.c`, `09_VariableScope.c`,
   `11_complicatedDeclaration.c`), plus two "Crack the Interview" PDF references.

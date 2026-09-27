@@ -168,7 +168,10 @@ class SharedPtr
          * Returns:
          *         The strong reference count, or 0 if empty.
          *****************************************************************************/
-        int useCount() const { return control ? control->strongCount.load(memory_order_relaxed) : 0; }
+        int useCount() const
+        {
+            return control ? control->strongCount.load(memory_order_relaxed) : 0;
+        }
 
         // Trivial emptiness check.
         bool operator!() const { return control == nullptr; }

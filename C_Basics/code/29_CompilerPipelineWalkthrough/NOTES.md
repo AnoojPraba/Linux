@@ -64,6 +64,6 @@ and final binary artifacts appear.
 This single-file walkthrough only touches linking in passing (resolving a
 call into libc). For linking that combines *this project's own* object
 files, see `30_MultiFile` (a `main.c` and `mathutils.c` linked together) and
-`49_OpaquePointer`/`59_ExternC` (linking a caller against a separately
+`54_OpaquePointer`/`64_ExternC` (linking a caller against a separately
 compiled implementation file, including a C/C++ linkage-naming example in
 the latter).

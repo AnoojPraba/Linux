@@ -19,6 +19,6 @@
     `unique_ptr`'s deleter needs a complete type at instantiation.
   - Move operations are cheap (just move the pointer); copy operations still require a
     deep copy of `Impl`.
-- C analogue: `C_Basics/code/49_OpaquePointer` does the same thing with a `struct handle *`
+- C analogue: `C_Basics/code/54_OpaquePointer` does the same thing with a `struct handle *`
   and a `.c`/`.h` split - PImpl is the same "hide the layout behind a pointer" idea,
   expressed with RAII (`unique_ptr`) instead of manual malloc/free.

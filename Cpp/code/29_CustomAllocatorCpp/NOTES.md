@@ -28,7 +28,7 @@
   - Lets code use standard containers (`vector`, `list`, `map`) with predictable,
     pool-bounded memory instead of the general-purpose heap, which matters when heap use
     is restricted, fragmentation must be avoided, or allocation latency must be bounded.
-- C analogue: `OS/code/42_CustomAllocator` implements the same
+- C analogue: `OS/code/44_CustomAllocator` implements the same
   arena/fixed-size-pool ideas manually (a `void *` bump pointer, a free list) without any
   language-level allocator interface - here the C++ allocator template is just the
   "pluggable" hook that lets `std::vector` and friends use that same strategy

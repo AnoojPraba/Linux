@@ -56,8 +56,12 @@ everything that happens before that.
 | Max primary partitions | 4 | effectively unlimited (128 typical) |
 | Max disk size | 2 TB | far beyond 2 TB (64-bit LBA addressing) |
 | CPU mode at boot | 16-bit real mode | can run in 32/64-bit mode directly |
-| Pre-OS environment | minimal, boot-code-in-512-bytes only | richer - has its own drivers, shell, can run `.efi` apps |
-| Security | none built in | **Secure Boot** - firmware verifies bootloader/kernel signatures before running them, to block unsigned/tampered boot code |
+
+- **Pre-OS environment** - BIOS: minimal, boot-code-in-512-bytes only. UEFI: richer -
+  has its own drivers, shell, can run `.efi` apps.
+- **Security** - BIOS: none built in. UEFI: **Secure Boot** - firmware verifies
+  bootloader/kernel signatures before running them, to block unsigned/tampered
+  boot code.
 
 - Secure Boot is a chain-of-trust concept: firmware trusts a set of keys,
   and only runs bootloader images signed by a trusted key - the same
@@ -77,17 +81,17 @@ everything that happens before that.
   - it's the ancestor every orphaned process gets reparented to, and it's
   responsible for reaping zombies system-wide, not just for its own
   children.
-- **`59_LinkerAndLoaderMechanics`**: a boot loader is conceptually a much
+- **`61_LinkerAndLoaderMechanics`**: a boot loader is conceptually a much
   more primitive version of a program loader - both read code from
   storage, place it in memory, and transfer control to it. The boot loader
   just does this with no OS underneath to help (no `exec()`, no dynamic
   linker, no relocation) - it hand-loads a flat kernel image and jumps to
   its entry point directly.
-- **`55_FilesystemInternals`**: "mounting the root filesystem" during
+- **`57_FilesystemInternals`**: "mounting the root filesystem" during
   kernel init means the kernel is now walking inode structures to resolve
   `/` and everything under it - the mount step is where the filesystem
   layer this folder describes actually becomes available for use.
-- **`32_VirtualMemoryDeepDive`**: "kernel initializes memory management"
+- **`33_VirtualMemoryDeepDive`**: "kernel initializes memory management"
   in step 4 is where page tables, the virtual address space layout, and
   paging structures described there first get set up - before this point,
   addressing is still firmware-managed, not virtual-memory-managed.

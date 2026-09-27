@@ -1,7 +1,7 @@
 # Scheduling Concepts Deep Dive
 
-Notes-only: this is the theory layer behind `23_ProcessScheduling`'s
-`nice`/`/proc` inspection demo and `24_CPUScheduling`'s FCFS/SJF/Round
+Notes-only: this is the theory layer behind `24_ProcessScheduling`'s
+`nice`/`/proc` inspection demo and `25_CPUScheduling`'s FCFS/SJF/Round
 Robin/Priority algorithm implementations - it explains the surrounding
 concepts those files assume rather than duplicating their code.
 
@@ -16,7 +16,7 @@ concepts those files assume rather than duplicating their code.
 - **Short-term scheduler (CPU scheduler)**: picks which *ready* process
   runs next on the CPU. Runs very frequently (potentially every few
   milliseconds, on every timer interrupt/blocking call/preemption). This
-  is what `24_CPUScheduling`'s FCFS/SJF/Round-Robin/Priority algorithms
+  is what `25_CPUScheduling`'s FCFS/SJF/Round-Robin/Priority algorithms
   implement the decision logic for.
 - **Medium-term scheduler**: sits between the two - handles *swapping*, i.e.
   temporarily moving a process out of main memory to disk (suspending it)
@@ -28,14 +28,14 @@ concepts those files assume rather than duplicating their code.
 ## Dispatcher vs scheduler
 
 - The **scheduler** is the *policy* - it decides *which* ready process
-  should run next (FCFS, SJF, Round Robin, Priority - `24_CPUScheduling`'s
+  should run next (FCFS, SJF, Round Robin, Priority - `25_CPUScheduling`'s
   algorithms are all schedulers in this sense).
 - The **dispatcher** is the *mechanism* - it actually performs the context
   switch to give the CPU to the process the scheduler chose: switching to
   kernel mode if needed, saving the outgoing process's registers/PC into
   its PCB, loading the incoming process's registers/PC from its PCB,
   switching to user mode, and jumping to the resumed instruction (see
-  `26_ContextSwitchMechanics` for the mechanics in detail).
+  `27_ContextSwitchMechanics` for the mechanics in detail).
 - **Dispatch latency**: the time the dispatcher takes to stop one process
   and start another. Pure overhead from the workload's point of view - a
   scheduler that picks the theoretically perfect process is still bad in
@@ -49,7 +49,7 @@ concepts those files assume rather than duplicating their code.
 - **Preemptive**: the scheduler *can* forcibly take the CPU away from a
   running process - on a timer interrupt (quantum expiry) or when a
   higher-priority process becomes ready - and hand it to someone else.
-- What `24_CPUScheduling` actually implements:
+- What `25_CPUScheduling` actually implements:
   - `01_fcfs.c` (FCFS) - **non-preemptive**: processes run to completion
     strictly in arrival order, no interruption logic at all.
   - `02_sjf.c` (SJF) - **non-preemptive**: picks the shortest remaining job
@@ -82,12 +82,12 @@ concepts those files assume rather than duplicating their code.
 
 ## Cross-references
 
-- `23_ProcessScheduling` - the `nice`/`/proc` demo shows the *priority*
+- `24_ProcessScheduling` - the `nice`/`/proc` demo shows the *priority*
   input to these algorithms (nice value -> scheduling priority) without
   implementing the algorithms themselves.
-- `24_CPUScheduling` - the FCFS/SJF/Round-Robin/Priority implementations
+- `25_CPUScheduling` - the FCFS/SJF/Round-Robin/Priority implementations
   this folder's preemptive/non-preemptive classification is based on.
 - `03_ProcessControlBlockAndStates` - the Ready/Running/Waiting state
   diagram that the short-term scheduler and dispatcher operate over.
-- `26_ContextSwitchMechanics` - the detailed mechanics of what the
+- `27_ContextSwitchMechanics` - the detailed mechanics of what the
   dispatcher does during a context switch.

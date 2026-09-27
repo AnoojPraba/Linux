@@ -1,6 +1,6 @@
 # RPC Mechanisms in Modern C++
 
-- Same conceptual territory as `OS/code/53_RpcMechanisms` (dispatch table +
+- Same conceptual territory as `OS/code/55_RpcMechanisms` (dispatch table +
   client stub), but shows the *type-safe* / idiomatic-C++ side of implementing an RPC
   framework's internals instead of a hand-parsed text protocol over raw sockets. See
   that folder's `NOTES.md` for the wire-protocol, marshalling, and delivery-semantics

@@ -23,5 +23,7 @@ On a normal environment all the temp files will be deleted.
 Incase we want to store all the files,
         $gcc -Wall -save-temps filename.c –o filename
 Will save all the temp files
-filename with extentions i and s (preprocessed file and compilation files) can be read with vim editor
-we can check the size utilized using size command followed by the .o file or output application to check the memory used.
+filename with extentions i and s (preprocessed file and compilation files) can be read
+with vim editor
+we can check the size utilized using size command followed by the .o file or output
+application to check the memory used.
