@@ -12,8 +12,10 @@ vertical scaling, statelessness), load balancing, caching, database internals
 theory (CAP theorem, consistency models), messaging/event-driven architecture, API
 protocol tradeoffs (REST/gRPC/GraphQL), networking basics (DNS/TLS), rate limiting,
 end-to-end design case studies (URL shortener, chat system, distributed cache), security
-fundamentals, and behavioral/leadership interview prep. Unlike the sibling `../C_Basics/`,
-`../Cpp/`, and `../OS/` repos, this material is almost entirely whiteboard/conceptual -
+fundamentals. Behavioral/leadership interview prep moved to the sibling `../Behavioral/`
+repo, since it's conceptually distinct from technical system-design content. Unlike the
+sibling `../C_Basics/`, `../Cpp/`, and `../OS/` repos, this material is almost entirely
+whiteboard/conceptual -
 there is no runnable code, no build system, and no test suite. Each topic is a
 `NOTES.md` writeup; a code snippet or ASCII-art diagram is included only where it's
 genuinely illustrative (most topics won't have one).
@@ -21,39 +23,40 @@ genuinely illustrative (most topics won't have one).
 ## Structure
 
 - `topics/` - numbered topic folders (`01_ScalabilityBasics` through
-  `25_IdempotencyInDistributedSystems`) in foundational -> advanced -> case-study ->
-  soft-skills order, each holding a `NOTES.md`: `01_ScalabilityBasics`,
+  `28_CommonInterviewQuestionsCheatSheet`) in foundational -> advanced -> case-study
+  order, each holding a `NOTES.md`: `01_ScalabilityBasics`,
   `02_LoadBalancing`, `03_CachingStrategies`, `04_DatabaseIndexingAndQueryOptimization`,
   `05_ACIDAndTransactionIsolation`, `06_SQLvsNoSQLTradeoffs`,
   `07_DatabaseShardingAndReplication`, `08_CAPTheoremAndConsistencyModels`,
   `09_MessageQueuesAndEventDrivenArchitecture`, `10_APIProtocolsRESTvsGRPCvsGraphQL`,
   `11_DNSAndTLSBasics`, `12_RateLimiting`, `13_DesignCaseStudyURLShortener`,
   `14_DesignCaseStudyChatSystem`, `15_DesignCaseStudyDistributedCache`,
-  `16_SecurityFundamentalsForInterviews`, `17_BehavioralAndLeadershipInterviewPrep`,
-  `18_CapacityEstimationAndBackOfEnvelopeMath`, `19_MicroservicesVsMonolith`,
-  `20_ResiliencePatterns`, `21_ServiceDiscoveryAndAPIGateway`,
-  `22_ObservabilityLogsMetricsTraces`, `23_ConsensusAndCoordination`,
-  `24_DeploymentStrategies`, `25_IdempotencyInDistributedSystems`,
-  `26_DesignCaseStudyHFTOrderBookMatchingEngine`,
-  `27_DesignCaseStudyConcurrentInMemoryKeyValueStore`,
-  `28_DesignCaseStudyThreadSafeFixedSizeMemoryPool`,
-  `29_CommonInterviewQuestionsCheatSheet`.
+  `16_SecurityFundamentalsForInterviews`,
+  `17_CapacityEstimationAndBackOfEnvelopeMath`, `18_MicroservicesVsMonolith`,
+  `19_ResiliencePatterns`, `20_ServiceDiscoveryAndAPIGateway`,
+  `21_ObservabilityLogsMetricsTraces`, `22_ConsensusAndCoordination`,
+  `23_DeploymentStrategies`, `24_IdempotencyInDistributedSystems`,
+  `25_DesignCaseStudyHFTOrderBookMatchingEngine`,
+  `26_DesignCaseStudyConcurrentInMemoryKeyValueStore`,
+  `27_DesignCaseStudyThreadSafeFixedSizeMemoryPool`,
+  `28_CommonInterviewQuestionsCheatSheet`.
   Topics `01`-`08` are the distributed-systems/database foundations; `09`-`12` cover
   messaging, API protocol choices, networking, and rate limiting; `13`-`15` are
   end-to-end design case studies that draw on all the earlier topics; `16` covers
-  security fundamentals; `17` is behavioral/leadership interview prep, distinct from the
-  technical topics but expected at this experience level; `18`-`25` are additional
-  interview-prep coverage areas added later - capacity estimation/back-of-envelope math,
-  microservices vs monolith, resilience patterns (circuit breakers/retries/bulkheads),
-  service discovery and API gateways, observability (logs/metrics/traces), distributed
-  consensus and coordination, deployment strategies, and idempotency in distributed
-  systems; `26`-`28` are further low-level-systems-design case studies in the same
+  security fundamentals; `17`-`24` are additional interview-prep coverage areas added
+  later - capacity estimation/back-of-envelope math, microservices vs monolith,
+  resilience patterns (circuit breakers/retries/bulkheads), service discovery and API
+  gateways, observability (logs/metrics/traces), distributed consensus and
+  coordination, deployment strategies, and idempotency in distributed systems;
+  `25`-`27` are further low-level-systems-design case studies in the same
   vein as `13`-`15` - an HFT order book/matching engine, a concurrent in-memory
   key-value store, and a thread-safe fixed-size memory pool - that lean more heavily
   on mechanical-sympathy/concurrency-primitive concerns than the earlier case studies;
-  `29_CommonInterviewQuestionsCheatSheet` is a curated question bank of quick-fire
+  `28_CommonInterviewQuestionsCheatSheet` is a curated question bank of quick-fire
   system-design interview questions organized by category, distinct from the full
-  end-to-end design walkthroughs in `13`-`15` and `26`-`28`.
+  end-to-end design walkthroughs in `13`-`15` and `25`-`27`, and cross-references the
+  `../Behavioral/` repo's leadership-narrative topic for how senior-level thinking
+  pairs with the behavioral portion of an interview.
   `09_MessageQueuesAndEventDrivenArchitecture` and `10_APIProtocolsRESTvsGRPCvsGraphQL`
   cross-reference the RPC/delivery-semantics material in `../OS/code/51_RpcMechanisms`
   and `../Cpp/code/31_RpcMechanismsCpp`.

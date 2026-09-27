@@ -34,7 +34,7 @@ mechanical sympathy) matter as much as the high-level architecture.
 
 - **No dynamic allocation in the hot path**: orders and book nodes come
   from pre-allocated, fixed-size object pools, not `malloc`/`new` per
-  order (see `../28_DesignCaseStudyThreadSafeFixedSizeMemoryPool` for the
+  order (see `../27_DesignCaseStudyThreadSafeFixedSizeMemoryPool` for the
   pool design itself).
 - **No locks in the hot path**: a single-threaded matching engine per
   instrument is a common design - since only one thread ever mutates a

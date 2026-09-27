@@ -25,7 +25,7 @@
 
 - You can't operate what you can't observe - production systems at scale
   need all three pillars, not just logs.
-- Ties directly into `20_ResiliencePatterns`: circuit breaker trips and
+- Ties directly into `19_ResiliencePatterns`: circuit breaker trips and
   retry storms are only visible/debuggable if metrics and traces are in
-  place; and into `19_MicroservicesVsMonolith`: the more services a
+  place; and into `18_MicroservicesVsMonolith`: the more services a
   request crosses, the more essential tracing becomes.

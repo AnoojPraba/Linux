@@ -32,5 +32,5 @@
 
 - Service discovery answers "how do services find each other internally";
   the API gateway answers "how do external clients find the system as a
-  whole." Both typically sit alongside `20_ResiliencePatterns` (timeouts,
+  whole." Both typically sit alongside `19_ResiliencePatterns` (timeouts,
   circuit breakers) at the call boundary.

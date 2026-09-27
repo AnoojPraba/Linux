@@ -18,7 +18,7 @@
   - No more simple cross-service ACID transactions - need sagas / eventual
     consistency instead (ties into `08_CAPTheoremAndConsistencyModels`).
   - Operational overhead: more services to deploy, monitor, and secure
-    (see `22_ObservabilityLogsMetricsTraces`).
+    (see `21_ObservabilityLogsMetricsTraces`).
 
 ## The "distributed monolith" anti-pattern
 
