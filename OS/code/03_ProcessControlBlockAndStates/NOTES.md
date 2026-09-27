@@ -94,7 +94,7 @@ R
   this folder describes; this folder explains what's actually inside it.
 - `04_ProcessLifecycle` - the zombie/orphan demos are concrete instances of
   the Terminated state (zombie) and of PPID reparenting to init on orphan.
-- `23_ProcessScheduling`/`24_CPUScheduling` - use the scheduling-info field
+- `24_ProcessScheduling`/`25_CPUScheduling` - use the scheduling-info field
   of the PCB (priority/nice) to decide Ready -> Running transitions.
 - `22_SchedulingConceptsDeepDive` - the long/short/medium-term scheduler
   distinction referenced in the New -> Ready and Ready <-> "swapped out"

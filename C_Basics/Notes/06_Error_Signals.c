@@ -1,5 +1,6 @@
 Signals are used to communicate between process and os.
-When executing the program and the os detects any serious error it sends signal to the process and may not execute anymore.
+When executing the program and the os detects any serious error it sends signal to the
+process and may not execute anymore.
 Process can have handlers for before exiting the process perform some activities.
 
 Interrupts vs signal

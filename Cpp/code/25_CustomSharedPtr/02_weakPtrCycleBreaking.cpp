@@ -58,7 +58,10 @@ class SharedPtr
         // Trivial default constructor: an empty SharedPtr.
         SharedPtr() : control(nullptr) {}
 
-        explicit SharedPtr(T *pointer) : control(pointer ? new ControlBlock<T>(pointer) : nullptr) {}
+        explicit SharedPtr(T *pointer)
+            : control(pointer ? new ControlBlock<T>(pointer) : nullptr)
+        {
+        }
 
         SharedPtr(const SharedPtr &other) : control(other.control)
         {

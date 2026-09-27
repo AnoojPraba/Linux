@@ -32,7 +32,7 @@
   relational databases implement indexes and how filesystems implement
   directory/extent structures.
 - Cross-references:
-  - `../../OS/code/54_FileSystemStructuresAndAllocation` covers how
+  - `../../OS/code/56_FileSystemStructuresAndAllocation` covers how
     filesystems organize on-disk structures and allocation, the same
     block-oriented motivation that drives B-tree design.
   - `../../SystemDesign/topics/04_DatabaseIndexingAndQueryOptimization`

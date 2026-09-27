@@ -64,7 +64,7 @@ described below.
     the MMU.
   - Cons: heavier - context switches change the address space (TLB/cache
     effects), and communication requires IPC (pipes, shared memory,
-    sockets - see `45_IPC`/`46_SystemVIPC`), which is slower than sharing
+    sockets - see `47_IPC`/`48_SystemVIPC`), which is slower than sharing
     memory directly.
 - **Threads within one process**: share the same address space (code, heap,
   globals, open file descriptors), each with its own stack and register
@@ -82,7 +82,7 @@ described below.
   concrete one-to-one-model kernel threads under the hood (NPTL); this
   folder is the model that explains *why* they behave the way they do
   (real parallelism, independent blocking, per-thread kernel overhead).
-- `26_ContextSwitchMechanics` - contrasts the cheap user-level-thread switch
+- `27_ContextSwitchMechanics` - contrasts the cheap user-level-thread switch
   with the full kernel-level context switch referenced above.
-- `45_IPC`/`46_SystemVIPC` - the IPC mechanisms processes need precisely
+- `47_IPC`/`48_SystemVIPC` - the IPC mechanisms processes need precisely
   because they don't share an address space the way threads do.

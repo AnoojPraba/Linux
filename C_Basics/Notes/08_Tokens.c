@@ -24,10 +24,12 @@
         letter and underscroll can be first letter in naming convension.
         It should be up to 31 characters long as only the first 31 characters are significant.
 *   constant or litrals
-        Their values can not be modified by the program once they are defined. Constants refer to fixed values
+        Their values can not be modified by the program once they are defined. Constants
+        refer to fixed values
 *   strings
 *   special symbols
-        following symbols cannot be used for some other purpose.[] () {}, ; * = # as it has some other purpose
+        following symbols cannot be used for some other purpose.[] () {}, ; * = # as it
+        has some other purpose
 *   operators
         Symbols that trigger action while applied on c variables.
             Three broad classification
