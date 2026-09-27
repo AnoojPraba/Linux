@@ -40,7 +40,7 @@
     free. Bounds external fragmentation (every free block is a power-of-2
     size, so blocks combine cleanly) at the cost of internal fragmentation
     (rounding up to the next power of 2).
-- Contrast with `44_CustomAllocator`, which covers pool/arena allocators -
+- Contrast with `45_CustomAllocator`, which covers pool/arena allocators -
   allocation *layout* strategies for a language-level `malloc()` replacement
   (bump-pointer arenas, fixed-size free-list pools) - whereas next-fit and
   buddy here are about how the OS/allocator *chooses which free block* to

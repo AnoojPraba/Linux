@@ -60,3 +60,43 @@ enforces on its own. For a general embedded interview, the expected depth
 is simply "know that MISRA-C exists and roughly why" - memorizing specific
 rule numbers is only expected when applying for an automotive/safety-critical-
 specific role.
+
+## ISO 26262 / ASIL awareness
+
+ISO 26262 is the automotive functional safety standard. It defines a
+risk-based classification for automotive electronic/software systems,
+assigning each function an **ASIL** (Automotive Safety Integrity Level)
+rating based on the severity, exposure, and controllability of a potential
+failure:
+
+- **QM** (Quality Managed) - no special safety requirements beyond normal
+  quality processes.
+- **ASIL A / B / C** - increasing risk, increasing rigor required.
+- **ASIL D** - the highest level; failure could cause severe, life-
+  threatening injury (e.g. airbag deployment, steering/braking control).
+
+Higher ASIL levels demand progressively more rigorous development
+practices:
+
+- More thorough testing/verification (e.g. higher code coverage targets,
+  more formal test methods).
+- Stricter coding standards - MISRA-C compliance (see the section above)
+  becomes effectively mandatory at higher ASILs.
+- Redundancy/diverse implementations for critical functions (e.g. two
+  independently-implemented algorithms cross-checking each other's result).
+- Formal hazard analysis (systematically identifying failure modes and
+  their severity/exposure/controllability up front).
+
+This is why ASIL-D-rated code tends to look far more restrictive/verbose
+than typical code - defensive checks, explicit error handling on every
+path, and no constructs a MISRA/ASIL audit would flag.
+
+As with MISRA-C, the expected interview depth for a general embedded role
+is "know it exists, roughly what the ASIL levels represent, and why
+higher-ASIL code looks more restrictive" - only automotive-safety-specific
+roles would expect deeper knowledge (e.g. actually performing an ASIL
+hazard analysis).
+
+For context: ISO 26262 is derived from **IEC 61508**, the parent industrial
+functional-safety standard used for non-automotive industrial safety
+systems (e.g. PLCs, industrial machinery).

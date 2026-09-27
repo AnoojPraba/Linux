@@ -81,13 +81,13 @@ everything that happens before that.
   - it's the ancestor every orphaned process gets reparented to, and it's
   responsible for reaping zombies system-wide, not just for its own
   children.
-- **`61_LinkerAndLoaderMechanics`**: a boot loader is conceptually a much
+- **`62_LinkerAndLoaderMechanics`**: a boot loader is conceptually a much
   more primitive version of a program loader - both read code from
   storage, place it in memory, and transfer control to it. The boot loader
   just does this with no OS underneath to help (no `exec()`, no dynamic
   linker, no relocation) - it hand-loads a flat kernel image and jumps to
   its entry point directly.
-- **`57_FilesystemInternals`**: "mounting the root filesystem" during
+- **`58_FilesystemInternals`**: "mounting the root filesystem" during
   kernel init means the kernel is now walking inode structures to resolve
   `/` and everything under it - the mount step is where the filesystem
   layer this folder describes actually becomes available for use.

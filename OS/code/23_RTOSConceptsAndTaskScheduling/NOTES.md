@@ -83,3 +83,33 @@ per-task fixed stacks in a way that's genuinely different from `09_Threads`.
   newer IoT/embedded designs.
 - **ThreadX (Azure RTOS)** - widely deployed in industry (billions of
   devices), now maintained by Microsoft/Eclipse Foundation.
+
+## WCET (Worst-Case Execution Time) analysis
+
+- Proving schedulability under RMS/EDF (`26_AdvancedSchedulingAlgorithms`) requires
+  each task's WCET as an input - the theoretical bounds are only sound if the
+  execution-time number fed into them is a true worst case, not a typical one.
+- Average-case profiling is not enough for hard real-time: a profiler reports what a
+  task usually takes, but a single run can run far longer due to cache misses (a cold
+  cache line stalls the pipeline), branch mispredictions (the CPU must discard
+  speculatively executed work and refetch), interrupt preemption (another ISR runs in
+  the middle of the measured task, inflating wall-clock time for that one run), and
+  pipeline effects (data/structural hazards stalling issue). A hard-real-time system
+  must never miss a deadline - "usually fast enough" is a soft-real-time or best-effort
+  guarantee, not a hard one.
+- **Static analysis**: examines the code/control-flow graph and the target CPU's
+  timing model (instruction latencies, cache/pipeline behavior) without executing it.
+  Mathematically sound - it can't miss a path that manifests only at runtime - but
+  often pessimistic, since it must assume the worst outcome (e.g. cache miss) at every
+  point where it can't prove otherwise.
+- **Measurement-based analysis**: runs the code many times under varied inputs/
+  conditions and takes the observed maximum execution time. Easier to apply than static
+  analysis, but it can't guarantee the true worst case was actually observed unless the
+  test coverage is rigorous about exercising worst-case paths (deepest branch, coldest
+  cache, maximal interrupt contention) - an unseen worse path can still exist in the
+  field.
+- In practice: WCET is the number that feeds the schedulability tests in
+  `26_AdvancedSchedulingAlgorithms`'s RMS/EDF simulations - RMS/EDF answer "is this set
+  of tasks schedulable given these execution times and periods/deadlines", while WCET
+  analysis is how you obtain a trustworthy execution-time number to plug into that
+  test in the first place.

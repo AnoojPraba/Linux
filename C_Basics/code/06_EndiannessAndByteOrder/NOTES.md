@@ -23,8 +23,8 @@ manually byte-swaps a 32-bit value and compares the result against
 ## Cross-reference
 
 The socket code that used to live in this repo now lives in `../OS/code/`
-after an earlier split (see `../OS/code/51_SocketProgramming`,
-`../OS/code/52_UDPSockets`, and `../OS/code/55_RpcMechanisms`). The
+after an earlier split (see `../OS/code/52_SocketProgramming`,
+`../OS/code/53_UDPSockets`, and `../OS/code/56_RpcMechanisms`). The
 `htons(SERVER_PORT)` calls in those files are exactly the endianness
 conversion this folder explains - the port number is converted from host
 byte order to network (big-endian) byte order before being stored in the

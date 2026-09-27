@@ -29,7 +29,7 @@ int main()
 
     // Second arg 0 means "shared between threads of this process only" (not
     // across processes - see the shared, process-visible version in
-    // 47_IPC/03_processSemaphore.c).
+    // 48_IPC/03_processSemaphore.c).
     sem_init(&slotSemaphore, 0, MAX_CONCURRENT);
 
     for (i = 0; i < NUM_WORKERS; i++)

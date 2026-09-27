@@ -114,3 +114,33 @@ $ gdb ./01_segfaultDemo -c core
 $1 = (Record *) 0x0
 ```
 Same conclusion, without ever attaching gdb before the crash happened.
+
+## JTAG/SWD hardware debugging vs this folder's GDB workflow
+
+No new code here - real JTAG/SWD hardware debugging can't be demonstrated on
+this dev box (no target microcontroller/debug probe attached); this is a
+conceptual comparison only.
+
+- **JTAG** (Joint Test Action Group) and **SWD** (Serial Wire Debug, ARM's
+  2-wire alternative to JTAG) are HARDWARE debugging interfaces. An external
+  debug probe (e.g. a J-Link, ST-Link, or Black Magic Probe) connects
+  directly to the target microcontroller's debug port, giving the debugger
+  direct access to the CPU's registers, memory, and execution control
+  (halt/step/breakpoints) at the hardware level.
+- Crucially, this is independent of whether ANY software is running yet -
+  not even a bootloader. Contrast with the GDB session above: that debugs a
+  process running under a fully-booted OS, using OS-provided mechanisms
+  (`ptrace` on Linux) to inspect it - it fundamentally REQUIRES a running OS
+  and a process to attach to.
+- JTAG/SWD debugging works when there's no OS at all - debugging the very
+  first instructions after reset, a bricked bootloader that never gets far
+  enough to output anything over UART, or diagnosing why a board doesn't
+  even boot.
+- On a microcontroller, JTAG/SWD is also commonly used to flash firmware
+  onto the chip in the first place - not just for debugging.
+- Tools like OpenOCD bridge a JTAG/SWD probe to a GDB-compatible interface,
+  so you actually end up typing familiar GDB commands (breakpoints,
+  stepping, memory inspection) even for this lower-level hardware debugging.
+  The debugging PROTOCOL underneath is completely different (hardware debug
+  port vs OS `ptrace`), but the GDB command-line experience on top can look
+  similar.

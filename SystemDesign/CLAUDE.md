@@ -58,8 +58,8 @@ genuinely illustrative (most topics won't have one).
   `../Behavioral/` repo's leadership-narrative topic for how senior-level thinking
   pairs with the behavioral portion of an interview.
   `09_MessageQueuesAndEventDrivenArchitecture` and `10_APIProtocolsRESTvsGRPCvsGraphQL`
-  cross-reference the RPC/delivery-semantics material in `../OS/code/51_RpcMechanisms`
-  and `../Cpp/code/31_RpcMechanismsCpp`.
+  cross-reference the RPC/delivery-semantics material in `../OS/code/56_RpcMechanisms`
+  and `../Cpp/code/32_RpcMechanismsCpp`.
 
 ## Working with this codebase
 
