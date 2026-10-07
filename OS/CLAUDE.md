@@ -27,7 +27,7 @@ builds; each `.c` file is otherwise self-contained and independently compilable.
 ## Structure
 
 - `code/` — numbered topic folders (`01_BootProcess` through
-  `64_StaticAndSharedLibraries`) in easiest-to-hardest order, each holding small example
+  `65_FutexAndSeqlock`) in easiest-to-hardest order, each holding small example
   programs for that topic: `01_BootProcess`, `02_Processes`,
   `03_ProcessControlBlockAndStates`, `04_ProcessLifecycle`, `05_ResourceLimits`,
   `06_SignalHandling`, `07_ErrnoAndErrorHandling`, `08_SystemCalls`, `09_Threads`,
@@ -54,7 +54,9 @@ builds; each `.c` file is otherwise self-contained and independently compilable.
   `57_FileSystemStructuresAndAllocation`, `58_FilesystemInternals`,
   `59_DiskSchedulingAlgorithms`, `60_SpoolingBufferingAndFreeSpace`,
   `61_IOManagementPollingInterruptsDMA`,
-  `62_LinkerAndLoaderMechanics`, `63_DynamicLoading`, `64_StaticAndSharedLibraries`.
+  `62_LinkerAndLoaderMechanics`, `63_DynamicLoading`, `64_StaticAndSharedLibraries`,
+  `65_FutexAndSeqlock` (a three-state mutex built directly on `futex(2)` plus a C11-atomics
+  seqlock, cross-referencing `16_PriorityInversion`, `20_Atomics` and `38_ConcurrentDataStructures`).
   Some folders are NOTES.md-only (a concise, bullet-point, interview-focused writeup of
   the concept, distinct from a runnable demo) when the topic is more conceptual than
   code, or when a meaningful demo either duplicates an existing folder's code or needs

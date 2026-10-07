@@ -133,6 +133,20 @@ compilable.
   anagram checks, merge-intervals, rotate-array, spiral-matrix, best-time-to-buy-
   sell-stock, climbing-stairs, trapping-rain-water, and container-with-most-water.
   The final layout runs contiguously `01_Loops` through `73_GenericMacro`.
+  `74`-`80` are a later senior-level C batch: `74_ContainerOfAndIntrusiveLists`
+  (`offsetof`/`container_of`, kernel-style intrusive list, flexible array
+  members), `75_IntegerPromotionsAndConversions` (promotion rules, usual
+  arithmetic conversions, signed/unsigned traps, sequence points),
+  `76_ErrorHandlingAndCleanupPatterns` (`goto cleanup` ladder,
+  `__attribute__((cleanup))`, `setjmp`/`longjmp`), `77_PreprocessorAndC11Tricks`
+  (X-macros, stringify/paste, double-evaluation, `_Static_assert`, designated
+  initializers, compound literals), `78_BranchHintsPrefetchAndCacheLayout`
+  (`__builtin_expect`, branch-misprediction timing, AoS vs SoA, software
+  prefetch), `79_StackFramesAndCallingConvention` (SysV x86-64 vs AAPCS64,
+  frame inspection, stack-smashing mitigations), and
+  `80_SignalSafetyAndThreadLocal` (async-signal-safety, self-pipe,
+  `_Thread_local`, `pthread_once`). The matching OS-level topic for lock
+  internals is `../OS/code/65_FutexAndSeqlock`.
 - `Notes/` — numbered `.c` files that double as written notes/explanations (e.g.
   `04_MacroPreprocessor.c`, `06_Error_Signals.c`, `09_VariableScope.c`,
   `11_complicatedDeclaration.c`), plus two "Crack the Interview" PDF references.
