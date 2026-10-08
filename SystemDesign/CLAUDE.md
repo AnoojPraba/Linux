@@ -40,6 +40,11 @@ genuinely illustrative (most topics won't have one).
   `26_DesignCaseStudyConcurrentInMemoryKeyValueStore`,
   `27_DesignCaseStudyThreadSafeFixedSizeMemoryPool`,
   `28_CommonInterviewQuestionsCheatSheet`.
+  `29`-`35` were added later (after the cheat sheet, so numbering was not shifted):
+  `29_DistributedTransactions2PCSagaOutbox`, `30_LSMTreesAndStorageEngines`,
+  `31_StreamProcessingAndKafkaInternals`, `32_CausalityVectorClocksAndCRDTs`,
+  `33_DesignCaseStudyNewsFeed`, `34_DesignCaseStudySearchAndInvertedIndex`,
+  `35_ContainersAndKubernetesBasics`; each ends with a senior interviewer Q&A section.
   Topics `01`-`08` are the distributed-systems/database foundations; `09`-`12` cover
   messaging, API protocol choices, networking, and rate limiting; `13`-`15` are
   end-to-end design case studies that draw on all the earlier topics; `16` covers

@@ -147,6 +147,14 @@ compilable.
   `80_SignalSafetyAndThreadLocal` (async-signal-safety, self-pipe,
   `_Thread_local`, `pthread_once`). The matching OS-level topic for lock
   internals is `../OS/code/65_FutexAndSeqlock`.
+  `81_MallocInternalsAndAllocators` (a first-fit free-list `malloc` with split/coalesce,
+  a size-class slab allocator, and a brk-vs-mmap/RSS observation of glibc; NOTES.md covers
+  ptmalloc arenas/bins/tcache, jemalloc/tcmalloc and hardening) and
+  `82_CoroutinesInC` (stackful `ucontext` coroutines and stackless switch-based
+  protothreads). Folders `74`-`82` end their NOTES.md with a "Senior interviewer Q&A"
+  section; `34_HashTable/NOTES.md` was backfilled the same way.
+  `Notes/TIMED_DRILLS.md` is a "write it from memory in N minutes" drill list (40 coding
+  drills mapped to the reference folders here and in `../OS`, plus debug and explain drills).
 - `Notes/` — numbered `.c` files that double as written notes/explanations (e.g.
   `04_MacroPreprocessor.c`, `06_Error_Signals.c`, `09_VariableScope.c`,
   `11_complicatedDeclaration.c`), plus two "Crack the Interview" PDF references.

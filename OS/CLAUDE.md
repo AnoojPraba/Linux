@@ -27,7 +27,7 @@ builds; each `.c` file is otherwise self-contained and independently compilable.
 ## Structure
 
 - `code/` — numbered topic folders (`01_BootProcess` through
-  `65_FutexAndSeqlock`) in easiest-to-hardest order, each holding small example
+  `76_I2cBusProtocol`) in easiest-to-hardest order, each holding small example
   programs for that topic: `01_BootProcess`, `02_Processes`,
   `03_ProcessControlBlockAndStates`, `04_ProcessLifecycle`, `05_ResourceLimits`,
   `06_SignalHandling`, `07_ErrnoAndErrorHandling`, `08_SystemCalls`, `09_Threads`,
@@ -57,6 +57,24 @@ builds; each `.c` file is otherwise self-contained and independently compilable.
   `62_LinkerAndLoaderMechanics`, `63_DynamicLoading`, `64_StaticAndSharedLibraries`,
   `65_FutexAndSeqlock` (a three-state mutex built directly on `futex(2)` plus a C11-atomics
   seqlock, cross-referencing `16_PriorityInversion`, `20_Atomics` and `38_ConcurrentDataStructures`).
+  `66`-`76` are a later batch: `66_MemoryModelLitmusTests` (MP/SB litmus harness - on
+  this Cortex-A76 Pi every row measured 0, so it demonstrates the harness not the weak
+  behavior - plus a tagged-index Treiber stack with a deterministic ABA replay),
+  `67_EpollInDepth` (level vs edge vs oneshot demo and an edge-triggered echo server with a
+  built-in client), `68_ContainersFromScratch` (unprivileged user/PID/UTS/mount namespaces
+  via `clone`, a cgroup v2 inspector), `69_TcpDeepDive` (socket options, backpressure to
+  `EAGAIN`, `TCP_INFO`, `write_all`/length-prefixed framing),
+  `70_InterruptPathAndKernelModules` and `71_EbpfAndTracingBasics` (NOTES.md-only: no
+  root/kernel headers/bpftrace assumed), `72_PerformanceDebuggingMethodology` (workflow,
+  triage table, a slow-vs-fast demo; `perf` is not installed here), `73_ConcurrentTcpServers`
+  (fork-per-connection with SIGCHLD reaping, thread pool with bounded queue/backpressure),
+  `74_UdpPatterns` (retry/backoff over simulated loss, datagram boundaries/truncation,
+  multicast on loopback), `75_UartSerialProgramming` (termios over a pty, a real-port
+  tool that exits cleanly with no hardware, SOF/len/CRC frame parser) and
+  `76_I2cBusProtocol` (a bit-level open-drain bus simulation with a master and EEPROM
+  slave, plus the `/dev/i2c-N` user-space API which skips when no adapter exists).
+  `20_Atomics`, `54_IOMultiplexing` (new NOTES.md) and `37_LockFreeRingBuffer` gained a
+  senior interviewer Q&A section.
   Some folders are NOTES.md-only (a concise, bullet-point, interview-focused writeup of
   the concept, distinct from a runnable demo) when the topic is more conceptual than
   code, or when a meaningful demo either duplicates an existing folder's code or needs

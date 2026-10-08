@@ -34,6 +34,14 @@ otherwise self-contained and independently compilable.
   (`MyAny`) and SFINAE member detection via `void_t`. `25_CustomSharedPtr` is a
   new folder implementing an atomic-refcounted `SharedPtr`/`WeakPtr` pair from
   scratch, for studying what `std::shared_ptr` does internally.
+  `33_Cpp20Coroutines` (a lazy `Generator<T>` and a round-robin coroutine scheduler,
+  with promise/awaiter/frame-lifetime pitfalls in `NOTES.md`) and
+  `34_SpanStringViewAndPmr` (`std::span`, `std::string_view` lifetime traps, `std::pmr`
+  monotonic arenas with an upstream-allocation counter) are the only folders built with
+  `-std=c++20`: the Makefile has pattern-specific `CXXFLAGS` rules for `bin/33_%` and
+  `bin/34_%`; everything else stays on `-std=c++17`. The installed g++ (12.x) supports
+  C++20, so the "GCC 8.5 cannot compile C++20" note inside `30_Cpp20Features/NOTES.md` is
+  out of date for this machine.
 
 ## Working with this codebase
 

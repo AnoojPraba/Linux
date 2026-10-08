@@ -26,6 +26,13 @@ Each topic is a `NOTES.md` writeup.
   behavioral round actually goes (format, follow-up drilling, what's scored),
   and a meta-tip on preparing flexible stories rather than one story per
   possible question.
+  `02_PeopleLeadershipHiringAndPerformance` (hiring, onboarding/delegation,
+  performance conversations, conflict, leading change, team health),
+  `03_EstimationRoadmapTradeoffsAndADRs` (estimating under uncertainty,
+  prioritization frameworks, tech debt, build-vs-buy, ADR and RFC templates), and
+  `04_QuestionBankAndStoryMatrix` (34 categorized questions, a story-to-theme matrix,
+  follow-up probes, red flags, a practice plan). These contain answer SCAFFOLDS - the
+  stories and numbers must come from the candidate's real experience.
 - Grows over time as more managerial/behavioral topics are added (e.g. team
   conflict resolution, delegation, performance conversations) - not just the
   single starting topic.
