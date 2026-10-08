@@ -38,7 +38,7 @@
   `dmb`/`mfence` for that. Prefer intrinsics (`<arm_neon.h>`, `<immintrin.h>`)
   or builtins over hand-written asm.
 - Always measure with `perf stat -e cache-misses,branch-misses` (see
-  `../68_PerfAndStrace`); micro-benchmarks lie without warm-up, repetition and
+  `../69_PerfAndStrace`); micro-benchmarks lie without warm-up, repetition and
   a defeated optimizer.
 
 ## Senior interviewer Q&A

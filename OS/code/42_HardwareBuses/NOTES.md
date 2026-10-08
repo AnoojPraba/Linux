@@ -6,6 +6,14 @@ analyzer) to observe, not something a plain userspace C program on a dev box
 can demonstrate. Contrast with `20_Atomics`/`21_AdvancedSyncPrimitives`,
 which are OS/language-level concepts and so are fully runnable here.
 
+> **Runnable companions (added later):** although the electrical layer needs real
+> hardware, the protocol/programming layers can be exercised without it:
+> `../75_UartSerialProgramming` (termios over a pseudo-terminal, real-port tool,
+> byte-stream framing with CRC) and `../76_I2cBusProtocol` (bit-level bus
+> simulation with a master and EEPROM slave, plus the `/dev/i2c-N` user-space API).
+> Sockets/TCP/UDP: `../52_SocketProgramming`, `../53_UDPSockets`,
+> `../69_TcpDeepDive`, `../73_ConcurrentTcpServers`, `../74_UdpPatterns`.
+
 ## UART (Universal Asynchronous Receiver/Transmitter)
 
 - 2-wire (TX/RX), point-to-point only - no addressing, so only 2 devices can

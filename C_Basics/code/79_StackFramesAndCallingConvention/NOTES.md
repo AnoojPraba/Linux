@@ -26,7 +26,7 @@
   saved fp / return address. Mitigations: stack canaries
   (`-fstack-protector-strong`), non-executable stack (NX), ASLR, PIE, shadow
   stacks / pointer authentication (CET, PAC), `-D_FORTIFY_SOURCE`.
-  See `../64_SecurityDemos`.
+  See `../65_SecurityDemos`.
 - **Returning a pointer to a local** = dangling pointer: the frame is reused
   by the next call.
 - **Variadic functions** need the caller to tell the callee how many args
@@ -43,7 +43,7 @@
   structs by value is costly - pass by `const` pointer.
 - **Inspecting it:** `gcc -S -O0`, `objdump -d`, gdb `bt`, `info frame`,
   `x/16gx $sp`; `__builtin_frame_address(0)`, `__builtin_return_address(0)`
-  (demo in `01_stack_inspect.c`). Debugging: `../66_GdbWorkflow`.
+  (demo in `01_stack_inspect.c`). Debugging: `../67_GdbWorkflow`.
 - Related: `../55_VTableEmulation`, `../../../OS/code/27_ContextSwitchMechanics`
   (which registers a context switch must save follows from this ABI).
 
@@ -65,7 +65,7 @@ This determines what a context switch or coroutine switch must save
 A: Overwriting the saved return address redirects `ret`. Mitigations:
 stack canaries (`-fstack-protector-strong`), NX stack, ASLR/PIE,
 `_FORTIFY_SOURCE`, CET shadow stack / ARM PAC+BTI. Bypasses (ROP, leaks)
-exist, so bounds-checked code remains the real fix. See `../64_SecurityDemos`.
+exist, so bounds-checked code remains the real fix. See `../65_SecurityDemos`.
 
 **Q: Why do profilers want `-fno-omit-frame-pointer`?**
 A: With frame pointers, unwinding is a cheap linked-list walk. Without them,
