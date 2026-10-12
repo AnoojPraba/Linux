@@ -1,15 +1,16 @@
 # C_Basics/code
 
-Index of the 82 numbered C topic folders (`01_Loops` to `82_CoroutinesInC`). Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
+Index of the 86 numbered C topic folders (`01_Loops` to `86_SleepKeyInputAndSockets`). Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
 
 ## Build everything
 - `make` here builds every `.c` (and the one `.cpp` in `12_Sorting`, plus `64_ExternC/01_main.cpp`) into `../bin/<NN_Topic>/<name>` (that is `C_Basics/bin/`, git-ignored), in parallel (`MAKEFLAGS += -j$(nproc)`). `make clean` removes `../bin`.
 - Flags: `gcc -Wall -I. -pthread ... -lm` (no `-std` or `-O`, so gnu default and -O0).
 - Special rules: `30_MultiFile` (`01_main.c` + `mathutils.c`), `54_OpaquePointer` (`01_main.c` + `handle.c`), `64_ExternC` (C object linked by g++), `71_CMakeIntroduction` (`01_hello.c` + `02_helper.c`; also has its own CMakeLists.txt). `mathutils.c` and `handle.c` have no `main()` and are excluded from the generic one-file rule.
 - Single file by hand: `gcc -Wall -Wextra -std=gnu11 -pthread NN_Topic/file.c -o /tmp/x && /tmp/x` (add `-lm` for `52_TimeAndMath/02_mathFunctions.c`, `-I.` for `05_BitManipulation/04_get_bitset.c`).
+- `86_SleepKeyInputAndSockets/03_loopbackTcpPair.c` and `04_loopbackSocketPair.c` open real loopback sockets/ports; `84_NestedFunctionsGccExtension/01_nestedFunction.c` triggers an expected `requires executable stack` linker warning (GCC nested-function trampoline) — not a bug.
 
 ## Numbering and layout
-- Two-digit prefix gives the study order; there are no gaps from 01 to 82. Files inside a folder also carry `NN_` prefixes (a few early folders use plain names such as `forloop.c`, `Pattern.c`).
+- Two-digit prefix gives the study order; there are no gaps from 01 to 86. Files inside a folder also carry `NN_` prefixes (a few early folders use plain names such as `forloop.c`, `Pattern.c`).
 - NOTES-only folders (nothing to compile): `40_BTreeAndBPlusTree`, `72_CrossCompilationBasics`, `73_GenericMacro`.
 - `common/utils.h` is a shared helper header (hex/decimal string checks), not a topic; only `05_BitManipulation/04_get_bitset.c` includes it. `HelloWorld.c` is a stray top-level example. `tags`, `cscope.*`, `compile_commands.json` are navigation/tooling artifacts.
 - Folders `74`-`82` and `34_HashTable` end NOTES.md with a "Senior interviewer Q&A" section.
@@ -23,14 +24,14 @@ Index of the 82 numbered C topic folders (`01_Loops` to `82_CoroutinesInC`). Eac
 | `02_Functions` | Short C trivia programs on float/double literals, macros, integer literal limits and variable scope |
 | `03_pointers` | Pointer fundamentals through eight small programs: address/dereference, arithmetic, double pointers, function pointers,... |
 | `04_array` | Array exercises: index tricks, copying, 2D arrays, passing arrays to functions |
-| `05_BitManipulation` | Bit manipulation interview toolkit: single-bit idioms, XOR tricks, popcount, power-of-two, bit reversal, rotation and... |
+| `05_BitManipulation` | Bit manipulation interview toolkit: single-bit idioms, XOR tricks, popcount, power-of-two, bit reversal, rotation, subsets/submasks, Gray code, bitmask DP, XOR trie and more (`01`-`24`) |
 | `06_EndiannessAndByteOrder` | Runtime endianness detection and byte swapping (manual vs htonl vs __builtin_bswap32) |
-| `07_Strings` | C string basics: null termination, strlen/strcat/strcpy, hand-written string functions and strtok |
+| `07_Strings` | C string basics through longer catalogue: null termination, strlen/strcat/strcpy, hand-written string functions, strtok, RLE, edit distance/LCS, big-number arithmetic, sliding windows, permutations (`01`-`14`) |
 | `08_Structures` | Structs, nested structs and unions: assignment semantics, composition and shared storage |
 | `09_Enum` | Enumerations in C: implicit numbering and using an enum to drive a state machine |
-| `10_Search_alg` | Searching: linear, iterative binary, ternary search and the second-largest-element problem |
-| `11_StringPatternMatching` | Substring search algorithms: naive, KMP and Rabin-Karp |
-| `12_Sorting` | Sorting algorithms from O(n^2) basics to quick/merge/heap, counting and radix sort |
+| `10_Search_alg` | Searching: linear, iterative binary, ternary search, the second-largest-element problem, binary-search family (lower/upper bound), Fibonacci search, rotated arrays, peak finding, 2D matrices, search on the answer, self-organizing lists (`01`-`11`) |
+| `11_StringPatternMatching` | Substring search algorithms: naive, KMP, Rabin-Karp, Z-algorithm, Boyer-Moore-Horspool, Aho-Corasick, Manacher, suffix array + Kasai LCP, wildcard/regex matching (`01`-`11`) |
+| `12_Sorting` | Sorting algorithms from O(n^2) basics to quick/merge/heap, counting/radix/bucket, shell, cocktail/comb/cycle/pancake, sorting networks, Dutch flag, introsort, quickselect, inversions, external merge (`01`-`23`) |
 | `13_pattern` | Console pattern-printing exercises (stars/numbers, pyramids and diamonds) built from nested loops |
 | `14_Recursion` | Recursion fundamentals: factorial, Fibonacci (naive exponential) and recursive binary search, contrasted with iterative... |
 | `15_DynamicMemory` | Heap allocation basics: malloc vs calloc, realloc growth and freeing nested allocations |
@@ -61,12 +62,12 @@ Index of the 82 numbered C topic folders (`01_Loops` to `82_CoroutinesInC`). Eac
 | `40_BTreeAndBPlusTree` | Conceptual notes on B-trees and B+ trees: why databases and filesystems use them (no code) |
 | `41_Heap` | Binary heaps as arrays: min-heap, max-heap and heap sort |
 | `42_UnionFind` | Disjoint-set union: naive version vs union-by-rank with path compression |
-| `43_Graph` | Graph representations and core algorithms: BFS, DFS, Dijkstra, topological sort, Kruskal/Prim MST, Bellman-Ford and... |
+| `43_Graph` | Graph representations and algorithms from BFS/DFS/Dijkstra/Kruskal/Prim/Bellman-Ford through SCC, articulation points, LCA, max flow (Edmonds-Karp, Dinic), 2-SAT, graph colouring and TSP (`01`-`32`) |
 | `44_Trie` | Prefix tree: insert/search, prefix queries (autocomplete) and recursive deletion with node pruning |
 | `45_SegmentTreeAndFenwickTree` | Range-query structures: a range-sum segment tree and a Fenwick (binary indexed) tree, both O(log n) per query/update |
 | `46_DynamicProgramming` | Dynamic programming staples: memoisation vs tabulation, 0/1 knapsack, LCS, LIS, coin change, edit distance and Kadane |
 | `47_Backtracking` | Backtracking (choose, explore, un-choose): N-Queens, Sudoku, permutations and subset sum |
-| `48_GreedyAlgorithms` | Greedy algorithms: activity selection, fractional knapsack |
+| `48_GreedyAlgorithms` | Greedy algorithms: activity selection, fractional knapsack, job sequencing, Huffman coding, meeting rooms, gas station/jump game, optimal merge pattern, task scheduler, greedy counterexamples (`01`-`13`) |
 | `49_SlidingWindowAndTwoPointer` | Two-pointer and sliding-window techniques for linear-time array/string problems |
 | `50_ClassicArrayAndStringProblems` | Thirteen frequently asked array and string interview problems with idiomatic C solutions |
 | `51_SkipList` | Skip list: a probabilistic ordered structure with expected O(log n) search/insert/delete and no rebalancing |
@@ -101,6 +102,10 @@ Index of the 82 numbered C topic folders (`01_Loops` to `82_CoroutinesInC`). Eac
 | `80_SignalSafetyAndThreadLocal` | Async-signal-safe handler rules and thread-local storage (_Thread_local) with pthread_once |
 | `81_MallocInternalsAndAllocators` | How malloc works: a free-list allocator with split/coalesce, a size-class (slab) allocator |
 | `82_CoroutinesInC` | Coroutines in C: stackful with ucontext and stackless with the switch/__LINE__ (protothreads) trick |
+| `83_MemoryLayoutAndSections` | Text/data/bss/heap/stack classified via the `etext`/`edata`/`end` linker symbols, `size`/`nm`/`readelf`, `#error`/`#line`, C as a mid-level language |
+| `84_NestedFunctionsGccExtension` | GCC nested functions and the stack trampoline (deliberately triggers the "requires executable stack" linker warning) |
+| `85_SearchVariantsAndAlgorithmFamilies` | Jump/exponential/interpolation search, divide and conquer, branch and bound, reservoir sampling and quickselect as algorithm-design paradigms |
+| `86_SleepKeyInputAndSockets` | `nanosleep`, raw key input via termios, and a loopback TCP client/server pair |
 
 ## Cross-domain links
 - OS internals (threads, signals, sockets, allocators) live in `../../OS/code`; C++ equivalents in `../../Cpp/code`; system-design context in `../../SystemDesign/topics`.

@@ -1,17 +1,18 @@
 # Cpp/code
 
-Index of the 34 numbered C++ topic folders plus `DesignPatterns/`. Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
+Index of the 46 numbered C++ topic folders plus `DesignPatterns/`. Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
 
 ## Build everything
 - `make` here builds every `.cpp` (one binary per file, found recursively) into `bin/<NN_Topic>/<name>` (`Cpp/code/bin/`, git-ignored), in parallel (`MAKEFLAGS += -j$(nproc)`). `make clean` removes `bin/`.
-- Flags: `g++ -std=c++17 -Wall -I. -pthread`. Exception: `33_Cpp20Coroutines` and `34_SpanStringViewAndPmr` build with `-std=c++20` (per-folder rule in the Makefile; needs GCC >= 10).
-- Single file by hand: `g++ -std=c++17 -Wall -Wextra -pthread NN_Topic/file.cpp -o /tmp/x && /tmp/x` (`-std=c++20` for 33 and 34).
+- Flags: `g++ -std=c++17 -Wall -I. -pthread`. Exception: `33_Cpp20Coroutines`, `34_SpanStringViewAndPmr`, and the whole `35`-`46` algorithms series build with `-std=c++20` (per-folder `CXXFLAGS` rules in the Makefile; needs GCC >= 10).
+- Single file by hand: `g++ -std=c++17 -Wall -Wextra -pthread NN_Topic/file.cpp -o /tmp/x && /tmp/x` (`-std=c++20` for 33, 34, and 35-46).
 - No multi-file or extra-library rules: each `.cpp` is a standalone program, so demos of cross-TU issues (`05_StaticMembers`, `28_PImplIdiom`) are single-file simplifications.
 
 ## Numbering and layout
-- Two-digit prefix gives the study order, contiguous from `01` to `34`. Files inside a folder carry `NN_` prefixes (a few collide, e.g. two `07_` and two `08_` files in `24_Concurrency`; `26_TemplateMetaprogramming` has no `03_`).
+- Two-digit prefix gives the study order, contiguous from `01` to `46`. Files inside a folder carry `NN_` prefixes (a few collide, e.g. two `07_` and two `08_` files in `24_Concurrency`; `26_TemplateMetaprogramming` has no `03_`).
 - `DesignPatterns/` has no numeric prefix: `Creational/`, `Structural/`, `Behavioral/`, one CLAUDE.md per group, one `.cpp` per pattern.
 - `33`, `34` end NOTES.md with a "Senior interviewer Q&A" section; `30_Cpp20Features` holds a C++17 fallback and a (stale) toolchain note.
+- `35`-`46` is a reading-ordered (easy to hard) algorithms series: language details, random/numerics, sorting, searching, strings, bit manipulation, hashing/heaps/range queries, trees/linked lists, graphs, greedy, algorithm techniques, systems interfaces.
 - Deliberately flawed demos: `10_Polymorphism/02_virtualDestructor.cpp` (UB delete), `24_Concurrency/10_deadlockAndScopedLock.cpp` (deadlock path never called).
 - `../INTERVIEW_QUESTIONS.md` is the question bank for this domain (one level up from this folder).
 
@@ -52,6 +53,18 @@ Index of the 34 numbered C++ topic folders plus `DesignPatterns/`. Each folder h
 | `32_RpcMechanismsCpp` | RPC mechanics in modern C++: a type-erased dispatch table and a future-based async client (simulated, no real network) |
 | `33_Cpp20Coroutines` | C++20 coroutines from first principles: a generator with co_yield and a cooperative round-robin scheduler |
 | `34_SpanStringViewAndPmr` | std::span, std::string_view and std::pmr arena allocation: non-owning views and allocation control |
+| `35_LanguageDetails` | Namespaces/ADL, iterator categories, if/switch initializers, adapters, inheritance, escape sequences, C strings, input validation, array decay, enum class, precedence |
+| `36_RandomAndNumerics` | `<random>` engines/distributions, floating point pitfalls, `numeric_limits`, `<cmath>` |
+| `37_SortingAlgorithms` | All common sorts, introsort, partitioning, quickselect, inversions, external merge, comparator/stability rules |
+| `38_SearchingAlgorithms` | Binary-search family (lower/upper bound), rotated arrays, 2D matrices, search on the answer, STL searchers |
+| `39_StringAlgorithms` | KMP, Z-algorithm, Rabin-Karp, Boyer-Moore-Horspool, Aho-Corasick, Manacher, suffix arrays + LCP, string DP (edit distance/LCS), regex/wildcard, parsing |
+| `40_BitManipulation` | C++20 `<bit>` header, `std::bitset`, subsets/submasks, Gray code, bitmask DP, XOR trie |
+| `41_HashingHeapsAndRangeQueries` | Hash tables, heaps/priority queues, Fenwick tree, segment tree |
+| `42_TreesAndLinkedLists` | Tree and linked-list fundamentals revisited in modern C++ idiom |
+| `43_GraphAlgorithms` | BFS/DFS through Dijkstra variants, SCC, max flow (Edmonds-Karp, Dinic), min-cost flow, 2-SAT, TSP |
+| `44_GreedyAlgorithms` | Activity selection, fractional knapsack, Huffman, job sequencing, interval problems, greedy counterexamples |
+| `45_AlgorithmTechniques` | Prefix sums, dynamic programming, backtracking, branch and bound, divide and conquer, randomized algorithms |
+| `46_SystemsInterfaces` | Memory layout, name mangling/ODR, errno and signals, `<chrono>`, RAII sockets, binary files, thread races |
 | `DesignPatterns/Creational` | Abstract Factory, Builder, Factory Method, Prototype, Singleton |
 | `DesignPatterns/Structural` | Adapter, Composite, Decorator, Facade, Proxy |
 | `DesignPatterns/Behavioral` | Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor |

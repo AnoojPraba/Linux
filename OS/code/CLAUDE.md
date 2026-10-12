@@ -1,6 +1,6 @@
 # OS/code
 
-Index of the 76 numbered OS-internals topic folders (`01_BootProcess` to `76_I2cBusProtocol`), ordered roughly easiest to hardest. Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
+Index of the 84 numbered OS-internals topic folders (`01_BootProcess` to `84_DeadlockVictimAndServiceOrdering`), ordered roughly easiest to hardest. Each folder has its own CLAUDE.md with files, build line, concepts, gotchas and cross-references.
 
 ## Build everything
 - `make` here builds every `.c` into `../bin/<NN_Topic>/<name>` (that is `OS/bin/`, git-ignored), in parallel (`MAKEFLAGS += -j$(nproc)`). `make clean` removes `../bin`.
@@ -10,7 +10,7 @@ Index of the 76 numbered OS-internals topic folders (`01_BootProcess` to `76_I2c
 - Single file by hand: `gcc -Wall -Wextra -std=gnu11 -pthread NN_Topic/file.c -o /tmp/x && /tmp/x` (add `-lm`, `-ldl`, `-lrt` only if the linker asks).
 
 ## Numbering and layout
-- Two-digit prefix gives the study order, contiguous from `01` to `76`; files inside a folder carry `NN_` prefixes.
+- Two-digit prefix gives the study order, contiguous from `01` to `84`; files inside a folder carry `NN_` prefixes.
 - NOTES-only folders (nothing to compile): `01`, `03`, `10`, `15`, `19`, `22`, `23`, `32`, `40`, `41`, `42`, `44`, `46`, `47`, `51`, `55`, `57`, `60`, `70`, `71`.
 - Folders `20`, `37`, `54`, `65`-`76` end NOTES.md with a "Senior interviewer Q&A" section.
 - Deliberately flawed demos: `12` (data race), `16` (illustrative priority inversion), `17/01` (hangs by deadlock), `08/05` (catches its own SIGSEGV).
@@ -97,6 +97,14 @@ Index of the 76 numbered OS-internals topic folders (`01_BootProcess` to `76_I2c
 | `74_UdpPatterns` | UDP patterns beyond the basic echo: datagram boundaries, request/retry reliability and broadcast/multicast |
 | `75_UartSerialProgramming` | UART/serial programming on Linux with termios: a pty-based loopback demo, a generic real-port terminal and a framing... |
 | `76_I2cBusProtocol` | I2C protocol from the wire up: a bit-level open-drain bus simulation with an EEPROM slave |
+| `77_FairSchedulerAndHeapScheduler` | CFS-style vruntime red-black-ish tree and a binary-heap-based priority scheduler |
+| `78_TimerWheel` | Hierarchical timer wheel: O(1) amortized timer insertion/expiry used by kernel timers |
+| `79_VmaAndMultiLevelPageTable` | VMA lookup/merge/split and a multi-level page table implemented as a radix tree |
+| `80_BuddyAndSlabAllocators` | Buddy allocator (power-of-two splitting/coalescing) and a slab allocator for fixed-size kernel objects |
+| `81_PageCachePolicies` | Page cache eviction policies: LRU (hash + list) vs 2Q, and a filesystem name cache |
+| `82_FileSystemExtentsAndPathLookup` | Extent-based block allocation with a free bitmap, and path lookup via a directory trie |
+| `83_DeadlineIoScheduler` | Deadline I/O scheduler: sweep order vs deadline-forced dispatch of a starved far-sector request |
+| `84_DeadlockVictimAndServiceOrdering` | Wait-for graph deadlock-victim selection and topological service start-up ordering |
 
 ## Cross-domain links
 - C building blocks: `../../C_Basics/code` (signals/TLS `80`, allocators `81`, coroutines `82`); C++ concurrency and RPC: `../../Cpp/code/24_Concurrency`, `32_RpcMechanismsCpp`.
