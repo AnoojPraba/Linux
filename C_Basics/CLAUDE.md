@@ -153,6 +153,23 @@ compilable.
   `82_CoroutinesInC` (stackful `ucontext` coroutines and stackless switch-based
   protothreads). Folders `74`-`82` end their NOTES.md with a "Senior interviewer Q&A"
   section; `34_HashTable/NOTES.md` was backfilled the same way.
+  The `83`-`86` batch adds `83_MemoryLayoutAndSections` (text/data/bss/heap/stack
+  classified with the linker symbols `etext`/`edata`/`end`, `size`/`nm`/`readelf`, `#error`/`#line`,
+  C as a mid-level language), `84_NestedFunctionsGccExtension` (GCC nested functions and the
+  stack trampoline), `85_SearchVariantsAndAlgorithmFamilies` (jump/exponential/interpolation search,
+  divide and conquer, branch and bound, reservoir sampling and quickselect) and
+  `86_SleepKeyInputAndSockets` (`nanosleep`, raw key input with termios, a loopback TCP pair);
+  `52_TimeAndMath` gained `03_calendarTimeBreakdown.c`.
+  The algorithm folders were also extended in numbered order: `05_BitManipulation` (`14`-`24`: bit-trick catalog, subsets/submasks, Gray code,
+  unique-number tricks, popcount variants, bitmask DP, XOR trie, bit-array sieve, arithmetic from bits, flags), `07_Strings` (`04`-`14`: word/rotation
+  tricks, RLE, brackets and expressions, LCP, edit distance/LCS, big numbers, windows, isomorphism, permutations, encodings, validation),
+  `10_Search_alg` (`05`-`11`: binary-search family, Fibonacci, rotated arrays, peaks, 2D matrices, search on the answer, self-organizing lists),
+  `11_StringPatternMatching` (`04`-`11`: Z, Horspool, prefix-function applications, Aho-Corasick, Manacher, suffix array + LCP, rolling hash, wildcard/regex DP),
+  `12_Sorting` (`09`-`23`: shell, bucket, cocktail/comb/cycle/pancake, networks, Dutch flag, natural merge, introsort, quickselect, inversions,
+  external merge, stability, comparison counts), `43_Graph` (`09`-`32`: representations, DFS/BFS applications, islands, word ladder, course schedule,
+  heap Dijkstra, 0-1 BFS/SPFA, negative cycles, A*, Prim/Boruvka, Johnson, SCC, bridges, LCA, DAG DP, girth, Euler, matching, max flow (Edmonds-Karp, Dinic),
+  2-SAT, colouring/Hamiltonian, TSP) and `48_GreedyAlgorithms` (`04`-`13`: job sequencing, Huffman, meeting rooms, gas station/jump game, merge pattern,
+  candy/cookies, digit strings, intervals, task scheduler, counterexamples).
   `Notes/TIMED_DRILLS.md` is a "write it from memory in N minutes" drill list (40 coding
   drills mapped to the reference folders here and in `../OS`, plus debug and explain drills).
 - `Notes/` — numbered `.c` files that double as written notes/explanations (e.g.

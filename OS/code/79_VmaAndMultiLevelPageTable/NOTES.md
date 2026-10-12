@@ -1,0 +1,6 @@
+# VMAs and Multi-Level Page Tables
+
+- A process address space is a set of non-overlapping **VMAs** (start, end, permissions, backing). Page fault: find the VMA (none -> SIGSEGV), check permission against the access (write to `r--` -> SIGSEGV), then allocate/load the page.
+- Needed operations: find VMA containing an address O(log n) (Linux: red-black tree + list, now a **maple tree**), find a free gap for `mmap`, **merge** a new mapping with neighbours of equal permissions/backing, **split** on `munmap`/`mprotect` in the middle (a guard page inside a big mapping adds two VMAs). `vm.max_map_count` (65530) is hit by many tiny differing mappings -> `mmap` `ENOMEM`.
+- A flat table for 48-bit addresses/4 KB pages = 2^36 entries = 512 GB per process. A **multi-level page table is a radix tree (trie)**: x86-64 uses four 9-bit indexes (PGD, PUD, PMD, PTE), each table 4 KB/512 entries, **allocated only when something below is mapped**. A walk = 4 memory accesses, hence the **TLB** caches full translations; huge pages stop one level early. 5-level paging adds 57-bit addresses; inverted page tables scale with physical memory.
+- Same radix-tree idea: page cache index, IP routing tables, file extent maps.

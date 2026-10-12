@@ -82,3 +82,16 @@
   varying keys or floating-point values without extra encoding. They also
   need O(n + k) extra memory for the count/output arrays, which can be
   wasteful if k is large relative to n.
+
+## More algorithms in this folder
+- **Shell sort:** insertion sort over decreasing gaps; the gap sequence decides the complexity (halving O(n^2), Knuth 3h+1 about O(n^1.5), Sedgewick/Ciura better). In place, not stable, no recursion - used in embedded code (uClibc `qsort`).
+- **Bucket sort:** scatter into buckets by value range, sort each, concatenate; expected O(n + k) for uniformly distributed input, O(n^2) if everything lands in one bucket. Counting/radix sort are the integer-key relatives (stable, O(n + k) and O(d(n + k))).
+- **Simple sorts:** cocktail (bidirectional bubble), gnome (insertion by swapping backwards), comb (bubble with shrinking gap ~1.3 removes 'turtles'), **cycle sort** (minimum number of writes: position = count of smaller items; matters for flash memory), pancake sort (prefix reversals, at most 2n-3 flips). All quadratic except comb (~n log n typical).
+- **Sorting networks:** odd-even transposition and **bitonic** sort use a fixed data-independent compare-exchange schedule (n a power of two), so they map to SIMD/GPU/hardware; bitonic is O(n log^2 n) with O(log^2 n) depth.
+- **Dutch national flag:** three pointers `lt/i/gt`; elements < pivot go left, > pivot go right, equals stay in the middle; one pass, O(1) space. It is sort-0-1-2 and the partition step of **three-way quick sort** (huge win with many duplicates).
+- **Natural merge sort / Timsort:** find existing ascending runs and merge them (a sorted input is a single run: O(n)); Timsort adds minimum run length via insertion sort, merge-order invariants and galloping mode; it is stable and used by Python/Java for objects.
+- **Introsort:** quick sort with a depth limit of 2*log2(n) that switches to heap sort (worst case O(n log n)) and leaves ranges <= 16 to insertion sort - the algorithm behind C++ `std::sort`. Pivot by median of three, recurse on the smaller side.
+- **Quickselect:** partition like quick sort but continue only into the side containing the k-th element: expected O(n), worst O(n^2) (median-of-medians gives O(n) worst case). Gives the median, top-k, percentiles. `nth_element` in C++.
+- **Counting inversions** with merge sort measures how unsorted data is (0 = sorted, n(n-1)/2 = reversed); also Kendall tau distance between rankings. **External sorting:** sort memory-sized chunks into runs, then k-way merge with a min-heap (O(k) memory); the number of passes is log_k(runs).
+- **Stability and comparators:** stable sorts keep equal keys in input order (merge, insertion, bubble, counting); `qsort` is not guaranteed stable, so add the original index as the last key. A comparator must be a strict weak ordering (never return `a - b` for values that can overflow). Indirect sorts order indexes or pointers to avoid moving large records.
+- **Choosing:** n small or nearly sorted -> insertion; guaranteed O(n log n) and O(1) space -> heap; stability or linked lists -> merge; fastest average in memory -> quick/introsort; small integer keys -> counting/radix; huge data -> external merge; need only top-k -> heap or quickselect.

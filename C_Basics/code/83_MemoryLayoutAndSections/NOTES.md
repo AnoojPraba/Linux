@@ -1,0 +1,11 @@
+# Memory Layout, Sections and Preprocessor Directives
+
+- **Layout, low to high address:** text (code, read-only) | read-only data (string literals, `const` globals) | data (initialized globals/statics, bytes stored in the file) | bss (zero/uninitialized statics, only a size in the file, loader gives zero pages) | heap (grows up via `brk`/`mmap`) | mmap region (shared libraries) | stack (grows down).
+- **Which segment:** locals and parameters: stack. `malloc`: heap. Initialized global/`static`: data. Zero/uninitialized global/`static`: bss. `static` local: data/bss, NOT the stack (that is why it keeps its value). String literal characters: read-only data (writing = undefined behavior, usually SIGSEGV).
+- **Why bss is zero but locals are garbage:** static storage is set up by the loader before `main`; a stack slot just holds whatever the last call left there.
+- **Inspect:** `size a.out` (text/data/bss bytes), `nm a.out` (`T` text, `D` data, `B` bss, `R` rodata), `readelf -S` / `objdump -h` (sections), `/proc/<pid>/maps` (live regions). Making a zero global initialized moves its bytes from bss to data and grows the file.
+- **Linker symbols** `etext`, `edata`, `end` (GNU ld) mark the ends of text, initialized data and bss; the demo prints region names, not addresses, because ASLR randomizes bases.
+- **Segfault vs leak:** SIGSEGV = access the page tables forbid (NULL, dangling pointer, write to a literal, stack overflow from deep recursion). A leak = unreachable heap memory never freed; nothing crashes, usage grows.
+- **Build stages:** `gcc -E` (preprocess, `.i`), `-S` (assembly), `-c` (object, external symbols unresolved), link (resolve + startup code). `-save-temps` keeps every file. Static linking copies library code in; dynamic linking records the `.so` name and the loader maps it (default).
+- **Directives:** `#error "msg"` stops the build (pair with `#if` to enforce a minimum standard); `#line n "file"` changes what the compiler and `__LINE__` report (code generators); `#pragma` is compiler-specific and ignored if unknown; `__func__` is a predefined identifier, not a macro.
+- **Stringify trick:** `#define STR_(x) #x` / `#define STR(x) STR_(x)` expands the argument first, so `STR(__LINE__)` gives `"106"` not `"__LINE__"`.

@@ -5,6 +5,7 @@ time.h basics (epoch, localtime/struct tm) and libm math functions (radians, pow
 ## Files
 - `01_timeBasics.c` - time() epoch seconds, localtime() into struct tm, formatting; CPU vs wall time notes
 - `02_mathFunctions.c` - sin/cos in radians via M_PI, sqrt, pow, NAN and isnan()
+- `03_calendarTimeBreakdown.c` - fixed epoch value through gmtime/strftime, timegm normalizing an overflowing day, difftime, clock() CPU time
 
 ## Build and run
 - `02_mathFunctions.c` needs libm: `gcc -Wall -Wextra -std=gnu11 02_mathFunctions.c -o /tmp/x -lm && /tmp/x` (Makefile adds `-lm` via LDLIBS). `-std=gnu11` is needed for `M_PI`; plain `-std=c11` hides it.

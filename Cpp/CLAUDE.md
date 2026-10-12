@@ -39,9 +39,22 @@ otherwise self-contained and independently compilable.
   `34_SpanStringViewAndPmr` (`std::span`, `std::string_view` lifetime traps, `std::pmr`
   monotonic arenas with an upstream-allocation counter) are the only folders built with
   `-std=c++20`: the Makefile has pattern-specific `CXXFLAGS` rules for `bin/33_%` and
-  `bin/34_%`; everything else stays on `-std=c++17`. The installed g++ (12.x) supports
+  `bin/34_%`; `35`-`46` (below) are C++20 too, via the same kind of rule; everything else stays on `-std=c++17`. The installed g++ (12.x) supports
   C++20, so the "GCC 8.5 cannot compile C++20" note inside `30_Cpp20Features/NOTES.md` is
   out of date for this machine.
+  `35`-`46` are a series in reading order (easy to hard), all C++20: `35_LanguageDetails` (namespaces/ADL, iterator
+  categories, `if`/`switch` initializers, adapters, inheritance, escape sequences, C strings, input validation, array
+  decay, `enum class`, precedence), `36_RandomAndNumerics` (`<random>`, floating point, `numeric_limits`, `<cmath>`),
+  `37_SortingAlgorithms`, `38_SearchingAlgorithms`, `39_StringAlgorithms`, `40_BitManipulation`,
+  `41_HashingHeapsAndRangeQueries` (hash tables, heaps, Fenwick/segment trees), `42_TreesAndLinkedLists`,
+  `43_GraphAlgorithms`, `44_GreedyAlgorithms`, `45_AlgorithmTechniques` (prefix sums, DP, backtracking, branch and
+  bound, divide and conquer, randomized) and `46_SystemsInterfaces` (memory layout, name mangling/ODR, errno and
+  signals, `<chrono>`, RAII sockets, binary files, thread races).
+  The catalogue folders mirror the C ones and go further with STL idioms: `37_SortingAlgorithms` (all common sorts, introsort, partitioning, quickselect,
+  inversions, external merge, comparator rules), `38_SearchingAlgorithms` (binary-search family, rotated arrays, 2D, search on the answer, STL searchers),
+  `39_StringAlgorithms` (KMP, Z, Rabin-Karp, Horspool, Aho-Corasick, Manacher, suffix arrays, string DP, regex, parsing), `40_BitManipulation`
+  (`<bit>`, bitset, subsets, Gray code, bitmask DP, XOR trie), `43_GraphAlgorithms` (everything from BFS to Dinic, min-cost flow, 2-SAT and TSP) and
+  `44_GreedyAlgorithms`.
 
 ## Working with this codebase
 

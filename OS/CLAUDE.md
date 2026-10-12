@@ -73,6 +73,12 @@ builds; each `.c` file is otherwise self-contained and independently compilable.
   tool that exits cleanly with no hardware, SOF/len/CRC frame parser) and
   `76_I2cBusProtocol` (a bit-level open-drain bus simulation with a master and EEPROM
   slave, plus the `/dev/i2c-N` user-space API which skips when no adapter exists).
+  `77`-`84` cover the data structures inside an OS: `78_TimerWheel`, `79_VmaAndMultiLevelPageTable`
+  (VMA lookup/merge/split, a page table as a radix tree), `80_BuddyAndSlabAllocators` (buddy, slab,
+  first-fit free list, frame bitmap), `77_FairSchedulerAndHeapScheduler` (CFS-style vruntime tree, heap
+  scheduler), `81_PageCachePolicies` (LRU with hash + list, LRU vs 2Q, name cache),
+  `82_FileSystemExtentsAndPathLookup` (bitmap + extents, path trie), `84_DeadlockVictimAndServiceOrdering`
+  (wait-for graph victim selection, topological service start-up) and `83_DeadlineIoScheduler`.
   `20_Atomics`, `54_IOMultiplexing` (new NOTES.md) and `37_LockFreeRingBuffer` gained a
   senior interviewer Q&A section.
   Some folders are NOTES.md-only (a concise, bullet-point, interview-focused writeup of

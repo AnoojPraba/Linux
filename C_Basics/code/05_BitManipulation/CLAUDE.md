@@ -16,6 +16,17 @@ Bit manipulation interview toolkit: single-bit idioms, XOR tricks, popcount, pow
 - `11_reverseBits.c` - reverse the bits of a uint32
 - `12_bitRotation.c` - rotateLeft/rotateRight by k (wrap instead of discard)
 - `13_crc8Checksum.c` - bitwise CRC-8 (poly 0x07, init 0x00)
+- `14_bitTricksCatalog.c` - A catalog of one-line bit tricks: lowest set bit, clear lowest, isolate, branch-free min/max/abs, sign, swap, average without overflow and bit-field extraction.
+- `15_flagsMasksAndBitfields.c` - Practical bit flags: permission masks, setting/clearing/toggling, packing several fields in one integer and endianness-independent extraction.
+- `16_hammingParityAndPopcountTables.c` - Counting bits several ways: Hamming distance, parity, a lookup table, Brian Kernighan and the parallel SWAR popcount.
+- `17_powersAndLogBase2.c` - Powers of two and logarithms with bit scans: is power of 2/4, next power of two, floor(log2), bit length and integer square root.
+- `18_singleNumberVariants.c` - XOR and counting tricks for finding unique elements: one single, two singles, one single among triples, and the missing/duplicate pair.
+- `19_grayCode.c` - Gray code: generate it, convert binary to Gray and back, and see why neighbouring codes differ in one bit.
+- `20_subsetsAndSubmasks.c` - Enumerating subsets with bitmasks: all subsets, all submasks of a mask, subsets of size k (Gosper's hack) and subset-sum counting.
+- `21_arithmeticWithoutOperators.c` - Arithmetic from bit operations only: add, subtract, multiply, divide, and compare without the usual operators.
+- `22_bitArraySieve.c` - A bit array (one bit per number): sieve of Eratosthenes with 8 numbers per byte, plus set/clear/test macros.
+- `23_maxXorPairTrie.c` - Maximum XOR of two numbers with a binary trie: walk the opposite bit at every level.
+- `24_bitmaskDpAssignment.c` - Bitmask DP: assign n tasks to n people with minimum cost, and count Hamiltonian-style orderings over subsets.
 - `NOTES.md` - sections: classic tricks 05-12, CRC checksum, single-bit idiom quick reference, why XOR tricks work, why asked often
 
 ## Build and run

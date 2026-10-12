@@ -7,6 +7,13 @@ Searching: linear, iterative binary, ternary search and the second-largest-eleme
 - `02_LinearSearch.c` - O(n) scan, no ordering assumption
 - `03_BinarySearchIterative.c` - O(log n) on a sorted array, halving the range each iteration
 - `04_ternarySearch.c` - splits the range in three (two comparisons per level)
+- `05_selfOrganizingAndSentinelSearch.c` - Linear-search improvements: sentinel search, move-to-front and transpose heuristics for skewed access patterns.
+- `06_binarySearchVariants.c` - The binary search family on sorted arrays: lower/upper bound, first and last occurrence, count of a value, insert position and floor/ceiling.
+- `07_fibonacciSearch.c` - Fibonacci search: divide a sorted array with Fibonacci numbers using only addition and subtraction (useful when division is costly).
+- `08_rotatedArraySearch.c` - Searching a sorted array that was rotated: find the rotation point (minimum) and search for a value in O(log n), including duplicates.
+- `09_peakElementAndMountain.c` - Binary search without a target: find a peak element, the peak of a mountain array and the single element in a sorted array of pairs.
+- `10_search2dMatrix.c` - Searching a 2D matrix: staircase search from the top-right corner (rows and columns sorted) and binary search over a fully sorted matrix.
+- `11_bisectionAndAnswerSearch.c` - Binary search on the answer: integer square root, bisection root finding, minimum eating speed and the minimum ship capacity.
 - `NOTES.md` - why ternary search is not better than binary on sorted arrays; its real use is the extremum of a unimodal function
 
 ## Build and run

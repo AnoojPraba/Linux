@@ -1,0 +1,6 @@
+# Buddy, Slab, Free List and Bitmap Allocators
+
+- **Buddy:** blocks of 2^k pages, a free list per order. Alloc: take from order k, else split a larger block (upper half goes to the next smaller list). Free: if the **buddy** (`page ^ (1 << order)`, one XOR) is free and same order, merge and repeat upward. Fast, keeps large contiguous blocks (DMA, huge pages); weakness: internal fragmentation (65 pages -> 128) and external fragmentation. Linux: orders 0..10, per-CPU page lists, migration types, `/proc/buddyinfo`.
+- **Slab/SLUB:** a cache per object type (`task_struct`, `inode`, `dentry`) carved from buddy pages into equal slots; the free list is **intrusive** (a free slot stores the next pointer inside itself); LIFO reuse = cache-hot objects; per-CPU free arrays avoid locks; constructor reuse; redzones/poisoning (`slub_debug`); `/proc/slabinfo`. A slab is released only when all its objects are free (one long-lived object pins it).
+- **First fit / best fit / worst fit:** list of blocks in address order; split on alloc, **coalesce** neighbours on free, otherwise many small useless holes (external fragmentation).
+- **Bitmap:** one bit per frame/block (4 GB of 4 KB frames = 128 KB); find first zero (`__builtin_ctzl(~word)`), good for contiguous runs; file systems use it for inode/block allocation. Free list = no extra space but poor at contiguous search.

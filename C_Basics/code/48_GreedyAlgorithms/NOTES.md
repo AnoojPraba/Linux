@@ -27,3 +27,13 @@
   problem) in front of you - fall back to the general-purpose DP solution
   (`46_DynamicProgramming/05_coinChangeMinCoins.c`) whenever it isn't known
   to be canonical.
+
+## More algorithms in this folder
+- **Greedy:** make the locally best choice and never reconsider. Correct only with **optimal substructure + greedy-choice property**; prove it by an *exchange argument* (swap an optimal solution's first choice for the greedy one without making it worse) or by staying-ahead. Counterexamples: coin change 4/3/1, 0/1 knapsack by ratio - use DP there.
+- **Job sequencing with deadlines:** sort by profit descending, put each job in the **latest free slot** at or before its deadline; union-find over slots makes the slot lookup near O(1). O(n log n).
+- **Huffman coding:** repeatedly merge the two least-frequent subtrees (min-heap); the tree gives an optimal **prefix-free** code, expected length within 1 bit of entropy. Same merge rule solves **optimal merge pattern** and **connect ropes** in O(n log n).
+- **Intervals:** activity selection (earliest finish), **minimum platforms / meeting rooms** (sort starts and ends separately and sweep, or a min-heap of end times), **minimum arrows/stabbing points** (sort by end, shoot at the end of the first uncovered interval), **cover a segment** (among intervals starting inside the covered part, take the farthest reach).
+- **Scans:** gas station (if total gas >= total cost, the start is right after the last point where the running tank went negative), jump game (track the farthest reachable index; min jumps = BFS levels over a window), best time to buy/sell stock, trapping water.
+- **Two-pass greedy:** candy distribution (left-to-right then right-to-left), assign cookies (sort both, smallest sufficient cookie to least greedy child).
+- **Digit strings:** remove k digits for the smallest number uses a **monotonic stack** (pop a larger digit when a smaller one arrives); largest number from a list sorts with the comparator `a+b > b+a` (concatenation order).
+- **Scheduling:** with cooldown n the time is `max(len, (maxfreq-1)*(n+1) + number_of_tasks_with_maxfreq)`; shortest-job-first minimizes average waiting time; earliest deadline first is optimal for feasibility on one processor.

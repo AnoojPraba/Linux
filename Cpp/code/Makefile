@@ -7,12 +7,25 @@ CXX := g++
 CXXFLAGS := -std=c++17 -Wall -I. -pthread
 BIN_DIR := bin
 
-# 33_Cpp20Coroutines and 34_SpanStringViewAndPmr use real C++20 features
-# (<coroutine>, <span>); build just those folders with -std=c++20 (needs
-# GCC >= 10) while everything else stays on C++17.
+# 33_Cpp20Coroutines, 34_SpanStringViewAndPmr and 35..46 (algorithms, systems
+# and language-detail folders) use real C++20 features (<coroutine>, <span>,
+# concepts, <bit>); build just those folders with -std=c++20 (needs GCC >= 10)
+# while everything else stays on C++17.
 CXX20FLAGS := -std=c++20 -Wall -I. -pthread
 $(BIN_DIR)/33_%: CXXFLAGS := $(CXX20FLAGS)
 $(BIN_DIR)/34_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/35_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/36_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/37_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/38_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/39_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/40_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/41_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/42_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/43_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/44_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/45_%: CXXFLAGS := $(CXX20FLAGS)
+$(BIN_DIR)/46_%: CXXFLAGS := $(CXX20FLAGS)
 
 CPP_SRCS := $(shell find . -path ./$(BIN_DIR) -prune -o -name '*.cpp' -print)
 CPP_BINS := $(patsubst ./%.cpp,$(BIN_DIR)/%,$(CPP_SRCS))
