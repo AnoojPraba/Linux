@@ -29,12 +29,13 @@ Graph representations and core algorithms: BFS, DFS, Dijkstra, topological sort,
 - `24_dagLongestPathAndCriticalPath.c` - Longest path in a DAG by DP over a topological order: project scheduling, earliest start times and the critical path.
 - `25_shortestCycleAndGirth.c` - Girth (length of the shortest cycle) of an undirected graph by running BFS from every vertex.
 - `26_eulerianPathHierholzer.c` - Eulerian circuit/path with Hierholzer's algorithm and the degree conditions for existence.
-- `27_bipartiteMatching.c` - Maximum bipartite matching with Kuhn's augmenting-path algorithm (jobs to workers) and the matching/vertex-cover relation.
+- `27_bipartiteMatching.c` - Maximum bipartite matching with Kuhn's augmenting-path algorithm and Hopcroft-Karp (BFS layering + DFS, O(E sqrt V)) (jobs to workers), plus the matching/vertex-cover relation.
 - `28_maxFlowEdmondsKarp.c` - Maximum flow with Edmonds-Karp (Ford-Fulkerson using BFS augmenting paths) and the min cut it implies.
 - `29_maxFlowDinic.c` - Dinic's maximum flow: BFS level graph plus blocking-flow DFS with current-arc pointers, O(V^2 E).
 - `30_twoSatWithScc.c` - 2-SAT solved with strongly connected components of the implication graph (Tarjan), including the satisfying assignment.
 - `31_graphColoringAndHamiltonian.c` - NP-hard graph problems by backtracking: m-colouring, Hamiltonian cycle, plus a greedy colouring heuristic.
 - `32_tspBitmaskDp.c` - Travelling salesman by Held-Karp bitmask DP: O(2^n n^2) instead of O(n!), with tour reconstruction.
+- `33_minCostMaxFlow.c` - Minimum-cost maximum flow with successive shortest paths (SPFA on the residual graph): assignment and transport problems.
 - `NOTES.md` - topological sort, Kruskal vs Prim, Bellman-Ford vs Dijkstra, Floyd-Warshall
 
 ## Build and run

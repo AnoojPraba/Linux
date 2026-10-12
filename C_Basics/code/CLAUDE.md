@@ -62,7 +62,7 @@ Index of the 86 numbered C topic folders (`01_Loops` to `86_SleepKeyInputAndSock
 | `40_BTreeAndBPlusTree` | Conceptual notes on B-trees and B+ trees: why databases and filesystems use them (no code) |
 | `41_Heap` | Binary heaps as arrays: min-heap, max-heap and heap sort |
 | `42_UnionFind` | Disjoint-set union: naive version vs union-by-rank with path compression |
-| `43_Graph` | Graph representations and algorithms from BFS/DFS/Dijkstra/Kruskal/Prim/Bellman-Ford through SCC, articulation points, LCA, max flow (Edmonds-Karp, Dinic), 2-SAT, graph colouring and TSP (`01`-`32`) |
+| `43_Graph` | Graph representations and algorithms from BFS/DFS/Dijkstra/Kruskal/Prim/Bellman-Ford through SCC, articulation points, LCA, bipartite matching, max flow (Edmonds-Karp, Dinic), min-cost flow, 2-SAT, graph colouring and TSP (`01`-`33`) |
 | `44_Trie` | Prefix tree: insert/search, prefix queries (autocomplete) and recursive deletion with node pruning |
 | `45_SegmentTreeAndFenwickTree` | Range-query structures: a range-sum segment tree and a Fenwick (binary indexed) tree, both O(log n) per query/update |
 | `46_DynamicProgramming` | Dynamic programming staples: memoisation vs tabulation, 0/1 knapsack, LCS, LIS, coin change, edit distance and Kadane |

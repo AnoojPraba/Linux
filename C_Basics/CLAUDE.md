@@ -166,9 +166,9 @@ compilable.
   `10_Search_alg` (`05`-`11`: binary-search family, Fibonacci, rotated arrays, peaks, 2D matrices, search on the answer, self-organizing lists),
   `11_StringPatternMatching` (`04`-`11`: Z, Horspool, prefix-function applications, Aho-Corasick, Manacher, suffix array + LCP, rolling hash, wildcard/regex DP),
   `12_Sorting` (`09`-`23`: shell, bucket, cocktail/comb/cycle/pancake, networks, Dutch flag, natural merge, introsort, quickselect, inversions,
-  external merge, stability, comparison counts), `43_Graph` (`09`-`32`: representations, DFS/BFS applications, islands, word ladder, course schedule,
-  heap Dijkstra, 0-1 BFS/SPFA, negative cycles, A*, Prim/Boruvka, Johnson, SCC, bridges, LCA, DAG DP, girth, Euler, matching, max flow (Edmonds-Karp, Dinic),
-  2-SAT, colouring/Hamiltonian, TSP) and `48_GreedyAlgorithms` (`04`-`13`: job sequencing, Huffman, meeting rooms, gas station/jump game, merge pattern,
+  external merge, stability, comparison counts), `43_Graph` (`09`-`33`: representations, DFS/BFS applications, islands, word ladder, course schedule,
+  heap Dijkstra, 0-1 BFS/SPFA, negative cycles, A*, Prim/Boruvka, Johnson, SCC, bridges, LCA, DAG DP, girth, Euler, matching (Kuhn/Hopcroft-Karp), max flow
+  (Edmonds-Karp, Dinic), min-cost max-flow, 2-SAT, colouring/Hamiltonian, TSP) and `48_GreedyAlgorithms` (`04`-`13`: job sequencing, Huffman, meeting rooms, gas station/jump game, merge pattern,
   candy/cookies, digit strings, intervals, task scheduler, counterexamples).
   `Notes/TIMED_DRILLS.md` is a "write it from memory in N minutes" drill list (40 coding
   drills mapped to the reference folders here and in `../OS`, plus debug and explain drills).
