@@ -11,6 +11,7 @@ Stacks, queues and deques (array and linked-list backed) plus the classic interv
 - `06_validParentheses.c` - bracket matching with a stack
 - `07_minStack.c` - O(1) push/pop/top/getMin via an auxiliary min stack
 - `08_uartRingBuffer.c` - ISR-producer / main-consumer ring buffer; notes that indices would be volatile in real firmware
+- `09_bracketBalanceChecker.c` - `{}` `[]` `<>` `()` balance check on a proper stack ADT; ignores other characters, reports error kind and index; accepts strings as argv
 - `NOTES.md` - LIFO vs FIFO use cases, array vs list backing, circular-queue full/empty trap, deque, parentheses, min stack, UART buffer
 
 ## Build and run

@@ -25,6 +25,12 @@
   stack (pop-and-match). The string is valid iff every closing bracket
   found a match and the stack ends empty - a non-empty stack at the end
   means some opening bracket was never closed.
+- Bracket balance checker (`09_bracketBalanceChecker.c`): same idea as above
+  but extended to `{}` `[]` `<>` `()`, built on a reusable stack ADT
+  (init/push/pop/peek). Each stack entry stores the bracket and its index,
+  so the failure is reported precisely: mismatched closer, closer with
+  nothing open, or the index of an opener never closed. Non-bracket
+  characters are skipped, and a full stack is reported rather than overflowed.
 - Min Stack (`07_minStack.c`): supports push/pop/top/getMin all in O(1) by
   maintaining a second auxiliary stack that tracks the running minimum at
   each level - every push also pushes the new min (the pushed value, or
